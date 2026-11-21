@@ -1,0 +1,42 @@
+# Personal data shared by both sites. Texts that need translation live in pages/*.md.
+name: Fabio Souza
+role: VoIP engineer, network engineer and developer
+company: net2phone Brazil (IDT Corporation)
+location:
+  en: São Paulo, Brazil
+  pt: São Paulo, Brasil
+email: contact@fabiohcsouza.dev   # contato@ can be added later as an alias on the mail server
+avatar: img/avatar.png   # in static/assets/; replace with a real photo (same name, ~160px square)
+socials:
+  github: https://github.com/oornnery
+  linkedin: https://www.linkedin.com/in/fabiohcsouza
+  whatsapp: https://wa.me/5511998407736
+city: São Paulo        # structured data (schema.org) and the footer
+country: BR
+knows_about:            # schema.org structured data and the #tags closing the About text: the specific things, no generic ones
+  - SIP
+  - VoIP
+  - SIP trunking
+  - Session Border Controllers (SBC)
+  - Carrier interconnection
+  - Wholesale voice
+  - Call routing
+  - Signalling System No. 7 (SS7)
+  - BGP
+  - Linux
+  - Firewalls
+  - Web application firewall (WAF)
+  - Amazon Web Services (AWS)
+  - Docker
+  - Network monitoring
+  - Wireshark
+  - Splunk
+  - Grafana
+  - Zabbix
+  - Incident response
+  - Automation
+  - Python
+  - FastAPI
+  - AI agents
+  - Retrieval-augmented generation (RAG)
+  - Model Context Protocol (MCP)
