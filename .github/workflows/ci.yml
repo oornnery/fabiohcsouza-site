@@ -13,11 +13,7 @@ jobs:
       - uses: astral-sh/setup-uv@v7
         with: { version: "0.13.7" }
       - run: uv sync --frozen
-      - run: uv run ruff check app tests
-      - run: uv run ty check
-      - run: uv run bandit -c pyproject.toml -r app -q
-      - run: uv run djlint app/templates --lint
-      - run: uv run pytest -q
+      - run: uv run task check
       - name: known vulnerabilities in dependencies
         run: uv run pip-audit --strict --progress-spinner off -r <(uv export --frozen --no-dev --no-hashes --format requirements-txt)
 
