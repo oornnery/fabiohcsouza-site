@@ -1,0 +1,14 @@
+# Build context = repository root; only app/, static/, content/ and the uv files go in the image.
+.git
+.venv
+.local
+.env
+.env.*
+.ruff_cache
+.pytest_cache
+**/__pycache__
+docker
+tests
+docs
+design
+dev

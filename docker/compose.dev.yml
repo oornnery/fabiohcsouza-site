@@ -1,0 +1,20 @@
+# Development: docker compose -f docker/compose.dev.yml up --build
+# Both sites with --reload, the code mounted: http://portfolio.localhost:8000 and http://blog.localhost:8000.
+# Settings: the repository's .env (see .env.example); without it, the defaults.
+name: fabiohcsouza-dev
+
+services:
+  app:
+    build: { context: .., dockerfile: docker/Dockerfile, target: dev }
+    env_file: [{ path: ../.env, required: false }]
+    environment: { HOST: 0.0.0.0, DATABASE_URL: "sqlite:////data/app.sqlite" }  # the container's, over .env
+    ports: ["127.0.0.1:8000:8000"]
+    volumes:
+      - ../app:/srv/app:ro
+      - ../content:/srv/content:ro
+      - ../static:/srv/static:ro
+      - ../dev:/srv/dev:ro
+      - dev-data:/data
+
+volumes:
+  dev-data:

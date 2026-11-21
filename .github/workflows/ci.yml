@@ -1,0 +1,55 @@
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request:
+permissions: { contents: read }
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with: { persist-credentials: false }
+      - uses: astral-sh/setup-uv@v7
+        with: { version: "0.13.7" }
+      - run: uv sync --frozen
+      - run: uv run ruff check app tests
+      - run: uv run ty check
+      - run: uv run bandit -c pyproject.toml -r app -q
+      - run: uv run djlint app/templates --lint
+      - run: uv run pytest -q
+      - name: known vulnerabilities in dependencies
+        run: uv run pip-audit --strict --progress-spinner off -r <(uv export --frozen --no-dev --no-hashes --format requirements-txt)
+
+  # Builds the production image; on a push to main (after the checks pass) publishes it to
+  # ghcr.io/<owner>/fabiohcsouza as :latest and :sha-<commit>, the image docker/compose.yml runs.
+  image:
+    needs: check
+    runs-on: ubuntu-latest
+    permissions: { contents: read, packages: write }
+    env:
+      PUSH: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v5
+        with: { persist-credentials: false }
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        if: env.PUSH == 'true'
+        with: { registry: ghcr.io, username: "${{ github.actor }}", password: "${{ secrets.GITHUB_TOKEN }}" }
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/fabiohcsouza
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          target: prod
+          push: ${{ env.PUSH == 'true' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
