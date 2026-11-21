@@ -1,20 +1,20 @@
 # Production: docker compose -f docker/compose.yml pull && docker compose -f docker/compose.yml up -d
-# The image comes from GitHub (CI publishes it on every push to main). Settings: docker/.env (see .env.example).
+# The image comes from GitHub (CI publishes it on every push to main). Settings: .env at the repository root.
 # The Cloudflare Tunnel on the VPS points fabiohcsouza.dev to localhost:8001 and blog.fabiohcsouza.dev to localhost:8002.
-name: fabiohcsouza
+name: fabiohcsouza-site
 
 services:
   portfolio:
-    image: ghcr.io/oornnery/fabiohcsouza:${TAG:-latest}
-    env_file: .env
+    image: ghcr.io/oornnery/fabiohcsouza-site:${TAG:-latest}
+    env_file: ../.env
     environment: { SITE: portfolio }
     ports: ["127.0.0.1:8001:8000"]
     volumes: [portfolio-data:/data]
     restart: unless-stopped
 
   blog:
-    image: ghcr.io/oornnery/fabiohcsouza:${TAG:-latest}
-    env_file: .env
+    image: ghcr.io/oornnery/fabiohcsouza-site:${TAG:-latest}
+    env_file: ../.env
     environment: { SITE: blog }
     ports: ["127.0.0.1:8002:8000"]
     volumes: [blog-data:/data]

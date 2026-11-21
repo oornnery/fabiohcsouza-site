@@ -18,7 +18,7 @@ jobs:
         run: uv run pip-audit --strict --progress-spinner off -r <(uv export --frozen --no-dev --no-hashes --format requirements-txt)
 
   # Builds the production image; on a push to main (after the checks pass) publishes it to
-  # ghcr.io/<owner>/fabiohcsouza as :latest and :sha-<commit>, the image docker/compose.yml runs.
+  # ghcr.io/<owner>/fabiohcsouza-site as :latest and :sha-<commit>, the image docker/compose.yml runs.
   image:
     needs: check
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
       - id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/fabiohcsouza
+          images: ghcr.io/${{ github.repository_owner }}/fabiohcsouza-site
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha
