@@ -1,8 +1,8 @@
 # Deploy
 
 CI builds the image on every push to `main` and, once the checks pass, publishes it as
-`ghcr.io/oornnery/fabiohcsouza` (tags `latest` and `sha-<commit>`). The VPS doesn't build anything: it needs only
-`docker/compose.yml` and `docker/.env`.
+`ghcr.io/oornnery/fabiohcsouza-site` (tags `latest` and `sha-<commit>`). The VPS doesn't build anything: it needs
+this repository's `docker/compose.yml` and a `.env` at the repository root.
 
 | Service | Site | Listens on |
 | --- | --- | --- |
@@ -37,11 +37,11 @@ right, Gmail and Outlook junk them. Check before the first `send-post --send`.
 On the VPS, with this repository's `docker/` folder (or just its two files):
 
 ```bash
-cp docker/.env.example docker/.env
+cp .env.example .env
 ```
 
 ```bash
-chmod 600 docker/.env
+chmod 600 .env
 ```
 
 Fill in `SMTP_USER`, `SMTP_PASSWORD`, `OWNER_EMAIL`, the Turnstile keys and, for the blog, `SECRET_KEY`
@@ -49,7 +49,7 @@ Fill in `SMTP_USER`, `SMTP_PASSWORD`, `OWNER_EMAIL`, the Turnstile keys and, for
 The URLs and the mail server are already there. With something missing or insecure the app doesn't start, and the log
 says why.
 
-After the first CI run, make the image public once: GitHub > your profile > Packages > fabiohcsouza > Package
+After the first CI run, make the image public once: GitHub > your profile > Packages > fabiohcsouza-site > Package
 settings > Change visibility > Public. GitHub creates packages as private even for a public repository; once public,
 the VPS pulls it without logging in.
 
@@ -123,8 +123,8 @@ and "What I keep" gets this paragraph:
 
 ## Backup and restore
 
-What matters is two files, both `/data/app.sqlite`: in the volumes `fabiohcsouza_portfolio-data` (contact messages)
-and `fabiohcsouza_blog-data` (subscribers). Everything else is in git.
+What matters is two files, both `/data/app.sqlite`: in the volumes `fabiohcsouza-site_portfolio-data` (contact messages)
+and `fabiohcsouza-site_blog-data` (subscribers). Everything else is in git.
 
 SQLite writes in WAL mode, so a file copied while the app writes can be broken. Before the VPS backup runs, take a
 consistent copy (the backup then picks up `backup.sqlite`):

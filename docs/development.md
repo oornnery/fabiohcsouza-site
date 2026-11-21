@@ -9,7 +9,7 @@ uv run task dev
 ```
 
 http://portfolio.localhost:8000 and http://blog.localhost:8000, Portuguese under `/pt/`; one process serves both
-sites. Settings are optional: `.env.example` lists them (copy it to `.env`). Without `SMTP_HOST` nothing is sent and
+sites. Settings are optional: to change one, put that line in a `.env` (`.env.example` lists them all). Without `SMTP_HOST` nothing is sent and
 the log shows the e-mail, with the newsletter's confirm link. `DEMO_POSTS=50` adds fake posts from
 `dev/demo-posts.json` to try lists and pages. The local database is `.local/app.sqlite`; delete it to start over.
 

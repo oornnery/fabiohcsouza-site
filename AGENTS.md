@@ -37,7 +37,8 @@ Run `uv run task check` before saying a change is done. CI runs the same, plus `
 | `content/` | `pages/`, `projects/`, `posts/`: one folder per item, `<slug>.md` (English) + `<slug>.pt.md`, images in `assets/` |
 | `tests/` | pytest; `tests/sample/posts/` are the sample posts (production ships no fake posts) |
 | `app/static/` | CSS, JavaScript, fonts and icons, served at `/assets` |
-| `docker/`, `.github/` | Dockerfile (dev/prod targets), compose files, `.env.example`; CI that publishes the image to GHCR |
+| `docker/`, `.github/` | Dockerfile (dev/prod targets), compose files; CI that publishes the image to GHCR |
+| `.env.example` | every setting, with the production values; production reads `.env` at the root |
 
 ## Rules
 
@@ -46,8 +47,8 @@ Run `uv run task check` before saying a change is done. CI runs the same, plus `
 - **No functions inside functions.** Routes live on module-level `APIRouter`s; helpers and dependencies at module
   level; a class with `__call__` instead of a closure.
 - **Security and privacy are not optional.** Validate input at the boundary (`app/models.py`), keep the CSP strict
-  (no inline script or style anywhere), never log message contents or addresses, never commit secrets (`.env` and
-  `docker/.env` are ignored). Production refuses insecure settings: keep that check in step with new settings.
+  (no inline script or style anywhere), never log message contents or addresses, never commit secrets (`.env` is
+  ignored). Production refuses insecure settings: keep that check in step with new settings.
 - **Every user-facing string in both languages.** Write it in English in the code (`_("…")`, `N_("…")`, `FS.t("…")`),
   then translate it in `app/locales/pt_BR/LC_MESSAGES/messages.po`. A test fails while one is missing.
 - **Copy:** short, direct, first person, each sentence adds a fact. No stock phrases, punchlines, CV tone or bold
