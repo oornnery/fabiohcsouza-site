@@ -1,5 +1,7 @@
 # fabiohcsouza.dev
 
+**English** · [Português](README.pt-BR.md)
+
 My portfolio and my blog, in English and Portuguese.
 
 | Site | Domain |
