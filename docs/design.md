@@ -76,6 +76,7 @@ Fonts are self-hosted (Fontsource, latin subset, OFL): no request leaves the dom
 | **Tags** | mono, `#tag`. Blog tags open the Tags page; project tags open the Projects search |
 | **Timeline** | current year with the last 3 months (current one marked green) + 2 previous years |
 | **Forms** | underlined fields, mono labels, amber error under the field, "Sending…" state, honeypot |
+| **Newsletter** | a one-field form in the blog home's side column and on `/subscribe`; a "Subscribe →" line at the end of each post |
 | **Share** | copy link, X, LinkedIn, WhatsApp. Side column on desktop, end of the post on phones |
 | **Table of contents** | side column on desktop (section in view marked green). On phones a bar sticks to the top: the section in view, a green line that fills as you read, and the full list on tap |
 | **Icons** | Lucide, stroke 1.75, no border, hit area ≥ 32px (`.tap`); icon-only controls carry `aria-label` and `title` |

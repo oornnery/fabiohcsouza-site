@@ -15,6 +15,15 @@ My portfolio and my blog, in English and Portuguese.
   <img src="docs/screenshots/projects-dark.png" alt="Projects" width="49%">
   <img src="docs/screenshots/project-light.png" alt="A project's page" width="49%">
 </p>
+<p>
+  <img src="docs/screenshots/blog-home-dark.png" alt="The blog home, with the newsletter" width="49%">
+  <img src="docs/screenshots/blog-post-light.png" alt="A post with its table of contents and series" width="49%">
+</p>
+<p>
+  <img src="docs/screenshots/blog-post-mobile-dark.png" alt="A post in Portuguese on a phone" width="24%">
+</p>
+
+The blog screenshots use the sample posts from `tests/sample/`.
 
 Python 3.14 and FastAPI render every page on the server with Jinja2; the CSS and JavaScript are plain files, with no
 build step. Pages, projects and posts are Markdown folders in `content/`. SQLite keeps the contact messages and the
@@ -79,4 +88,5 @@ tests/          pytest, with sample posts in tests/sample/
 - [Development](docs/development.md): tests, translations, debugging
 - [Architecture](docs/architecture.md): how a request is served and where the code is
 - [Rules](docs/business-rules.md): contact, newsletter, data retention, limits
-- [Security](docs/security.md) · [Design](docs/design.md) · [Later](docs/later.md): what was left out
+- [Security](docs/security.md) · [Design](docs/design.md)
+- [TODO](TODO.md): what may come later (webhook, send queue, observability)

@@ -1,7 +1,8 @@
-# Later
+# TODO
 
-What was left out on purpose, why, and how to put each piece back. The code of the webhook and the queue existed and
-was tested before the cut: a copy is in `.local/antes-dos-cortes.tar.gz` on the development machine (not in git).
+What may come later: pieces left out on purpose (with why and where they go back) and the plan for observability.
+The code of the webhook and the queue existed and was tested before the cut: a copy is in
+`.local/antes-dos-cortes.tar.gz` on the development machine (not in git).
 
 ## Webhook for new contacts
 
@@ -9,7 +10,7 @@ was tested before the cut: a copy is in `.local/antes-dos-cortes.tar.gz` on the 
 
 **Why it is out:** not used yet, and it was the only reason to keep an HTTP client and a signing secret around.
 
-**Where it goes:** `app/core/mail.py`, called from `notify_owner` next to `send_email`.
+**Where it goes:** `app/utils/mail.py`, called from `notify_owner` next to `send_email`.
 
 ```python
 import hashlib, hmac, json

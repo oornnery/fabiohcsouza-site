@@ -15,6 +15,15 @@ Meu portfólio e meu blog, em inglês e português.
   <img src="docs/screenshots/projects-dark.png" alt="Projetos" width="49%">
   <img src="docs/screenshots/project-light.png" alt="A página de um projeto" width="49%">
 </p>
+<p>
+  <img src="docs/screenshots/blog-home-dark.png" alt="A home do blog, com a newsletter" width="49%">
+  <img src="docs/screenshots/blog-post-light.png" alt="Um post com sumário e série" width="49%">
+</p>
+<p>
+  <img src="docs/screenshots/blog-post-mobile-dark.png" alt="Um post em português no celular" width="24%">
+</p>
+
+Os prints do blog usam os posts de exemplo de `tests/sample/`.
 
 Python 3.14 e FastAPI geram todas as páginas no servidor com Jinja2; o CSS e o JavaScript são arquivos puros, sem
 build. Páginas, projetos e posts são pastas de Markdown em `content/`. O SQLite guarda as mensagens de contato e a
@@ -81,4 +90,5 @@ As docs estão em inglês:
 - [Development](docs/development.md): testes, tradução, depuração
 - [Architecture](docs/architecture.md): como uma requisição é atendida e onde fica cada parte do código
 - [Rules](docs/business-rules.md): contato, newsletter, retenção de dados, limites
-- [Security](docs/security.md) · [Design](docs/design.md) · [Later](docs/later.md): o que ficou de fora
+- [Security](docs/security.md) · [Design](docs/design.md)
+- [TODO](TODO.md): o que pode vir depois (webhook, fila de envio, observabilidade)

@@ -49,11 +49,9 @@ Fill in `SMTP_USER`, `SMTP_PASSWORD`, `OWNER_EMAIL`, the Turnstile keys and, for
 The URLs and the mail server are already there. With something missing or insecure the app doesn't start, and the log
 says why.
 
-If the image on GitHub is private, log in once with a token that can read packages:
-
-```bash
-docker login ghcr.io -u oornnery
-```
+After the first CI run, make the image public once: GitHub > your profile > Packages > fabiohcsouza > Package
+settings > Change visibility > Public. GitHub creates packages as private even for a public repository; once public,
+the VPS pulls it without logging in.
 
 ## 4. Start
 
