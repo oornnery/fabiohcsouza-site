@@ -19,6 +19,10 @@
       <p>{{ c.page("about", p.lang, p.url)[0].short | safe }}</p>
 {{ ui.links(p, me, icons_only=True) }}
 
+      {{ ui.section_head(p, "newsletter", _("Newsletter"), p.url("/subscribe"), label=_("More →")) }}
+      <p>{{ _("New posts by e-mail.") }}</p>
+{{ ui.newsletter(p) }}
+
       {{ ui.section_head(p, "tags", _("Tags"), p.url("/tags"), count=c.blog.tags | length) }}
       <p class="tag-cloud">
 {% for tag, n in c.blog.tags[:6] %}        <a href="{{ p.url('/tags/' ~ tag) }}">#{{ tag }} <span class="faint">{{ n }}</span></a>

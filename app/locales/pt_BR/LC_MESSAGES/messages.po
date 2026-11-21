@@ -10,12 +10,12 @@ msgstr "Início"
 msgid "Posts"
 msgstr "Posts"
 
-#: app/api/routes/blog.py:31 app/templates/blog/home.html:22
+#: app/api/routes/blog.py:31 app/templates/blog/home.html:26
 #: app/templates/blog/tags.html:5
 msgid "Tags"
 msgstr "Tags"
 
-#: app/api/routes/blog.py:33 app/templates/blog/home.html:27
+#: app/api/routes/blog.py:33 app/templates/blog/home.html:31
 #: app/templates/blog/timeline.html:2 app/templates/blog/timeline.html:6
 msgid "Timeline"
 msgstr "Linha do tempo"
@@ -24,8 +24,8 @@ msgstr "Linha do tempo"
 msgid "Portfolio"
 msgstr "Portfólio"
 
-#: app/api/routes/blog.py:39 app/templates/blog/newsletter.html:5
-#: app/templates/blog/newsletter.html:9
+#: app/api/routes/blog.py:39 app/templates/blog/home.html:22
+#: app/templates/blog/newsletter.html:5 app/templates/blog/newsletter.html:9
 msgid "Newsletter"
 msgstr "Newsletter"
 
@@ -53,12 +53,12 @@ msgstr "Privacidade"
 msgid "Contact"
 msgstr "Contato"
 
-#: app/api/routes/seo.py:119 app/templates/blog/home.html:6
+#: app/api/routes/seo.py:120 app/templates/blog/home.html:6
 #: app/utils/schema.py:69
 msgid "Field notes"
 msgstr "Notas de campo"
 
-#: app/api/routes/seo.py:126 app/templates/blog/home.html:7
+#: app/api/routes/seo.py:127 app/templates/blog/home.html:7
 msgid "Notes on VoIP, networks, automation, code and AI."
 msgstr "Notas sobre VoIP, redes, automação, código e IA."
 
@@ -75,15 +75,16 @@ msgid "About me"
 msgstr "Sobre mim"
 
 #: app/templates/blog/home.html:17
-msgid "More →"
-msgstr "Mais →"
-
-#: app/templates/blog/home.html:17
 msgid "More about me"
 msgstr "Mais sobre mim"
 
-#: app/templates/blog/newsletter.html:6 app/templates/blog/newsletter.html:11
-msgid "New posts by e-mail. One e-mail per post, nothing else."
+#: app/templates/blog/home.html:17 app/templates/blog/home.html:22
+msgid "More →"
+msgstr "Mais →"
+
+#: app/templates/blog/home.html:23 app/templates/blog/newsletter.html:6
+#: app/templates/blog/newsletter.html:11 app/templates/blog/post.html:62
+msgid "New posts by e-mail."
 msgstr "Posts novos por e-mail. Um e-mail por post, mais nada."
 
 #: app/templates/blog/newsletter.html:13 app/templates/ui/newsletter.html:7
@@ -153,7 +154,7 @@ msgid "This post is only available in English for now."
 msgstr "Este post ainda está só em inglês."
 
 #: app/templates/blog/post.html:47 app/templates/blog/post.html:48
-#: app/templates/blog/post.html:73 app/templates/blog/post.html:74
+#: app/templates/blog/post.html:74 app/templates/blog/post.html:75
 msgid "On this page"
 msgstr "Nesta página"
 
@@ -161,15 +162,19 @@ msgstr "Nesta página"
 msgid "Parts"
 msgstr "Partes"
 
-#: app/templates/blog/post.html:64
+#: app/templates/blog/post.html:62 app/templates/ui/newsletter.html:6
+msgid "Subscribe →"
+msgstr "Inscrever →"
+
+#: app/templates/blog/post.html:65
 msgid "More posts"
 msgstr "Mais posts"
 
-#: app/templates/blog/post.html:65
+#: app/templates/blog/post.html:66
 msgid "← previous"
 msgstr "← anterior"
 
-#: app/templates/blog/post.html:66
+#: app/templates/blog/post.html:67
 msgid "next →"
 msgstr "próximo →"
 
@@ -464,10 +469,6 @@ msgstr "opcional"
 #: app/templates/ui/more.html:3 static/assets/js/pager.js:37
 msgid "Show more"
 msgstr "Mostrar mais"
-
-#: app/templates/ui/newsletter.html:6
-msgid "Subscribe →"
-msgstr "Inscrever →"
 
 #: app/templates/ui/search.html:3
 msgid "Search posts"
