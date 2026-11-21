@@ -59,7 +59,9 @@
       </ul>
 {% endif %}
 {% if post.series %}{{ ui.series(p, post, "series-end") }}{% endif %}
+{% if p.on("newsletter") %}
       <p class="muted">{{ _("New posts by e-mail.") }} <a href="{{ p.url('/subscribe') }}">{{ _("Subscribe →") }}</a></p>
+{% endif %}
         {{ ui.share(p, "share-end", v.title, langs) }}
 {% if prev or next %}
       <nav class="post-nav" aria-label="{{ _('More posts') }}">

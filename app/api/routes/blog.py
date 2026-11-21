@@ -6,11 +6,13 @@ from ...content import Content
 from ...core.i18n import N_
 from ..deps import maintenance, render_page
 from ..pages import Pages
+from .newsletter import newsletter_on
 
 router = Pages("blog", dependencies=[Depends(maintenance)])
 
 
 def subscribe_page(request: Request, sent: bool = False):
+    newsletter_on(request.app.state.settings)
     return render_page(request, "blog/newsletter.html", state="sent" if sent else "form")
 
 
@@ -36,4 +38,5 @@ router.link("RSS", "/rss.xml", header=False)
 router.add("/posts/{slug}", "blog/post.html", nav="/posts", context=_post,
            each=lambda c: [{"slug": p.slug} for p in [*c.blog.posts, *c.blog.project_posts]],
            lastmod=lambda c, slug: c.blog.by_slug[slug].updated, langs=lambda c, slug: list(c.blog.by_slug[slug].versions))
-router.add("/subscribe", "blog/newsletter.html", endpoint=subscribe_page, menu=N_("Newsletter"), header=False)
+router.add("/subscribe", "blog/newsletter.html", endpoint=subscribe_page, menu=N_("Newsletter"), header=False,
+           flag="newsletter")

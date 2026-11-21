@@ -26,6 +26,9 @@ class Settings(BaseSettings):
     # The blog is live: the portfolio links to it (menu, footer, latest posts on the home, RSS, a work's post).
     # Off until there is something to read; the blog's own pages always link to themselves.
     blog: bool = False
+    # The blog's newsletter: the subscribe form, /subscribe and POST /api/subscribe. Off: they're hidden and answer 404;
+    # the confirm and unsubscribe links in e-mails already sent keep working.
+    newsletter: bool = True
     host: str = "127.0.0.1"
     port: int = 8000
     maintenance: bool = False  # every page answers 503 (health check still works)

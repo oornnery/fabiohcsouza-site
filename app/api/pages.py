@@ -32,6 +32,7 @@ class MenuItem:
     site: str  # the site the link goes to
     header: bool = True
     footer: bool = True
+    flag: str = ""  # a Settings switch that hides this link when off ("newsletter")
 
 
 @dataclass(frozen=True)
@@ -44,6 +45,7 @@ class PublicPage:
     langs: Callable[..., list[str]] | None = None  # (content, **path params) -> languages it exists in (default: all)
     nav: str = ""  # nav item marked current (default: the path)
     sitemap: bool = True
+    flag: str = ""  # a Settings switch that takes this page out of the sitemap when off
 
     def values(self, c: Content, **params: str) -> dict:
         return self.context(c, **params) if self.context else {}
@@ -66,12 +68,12 @@ class Pages(APIRouter):
         page = PublicPage(path, template, **options)
         self.pages.append(page)
         if menu:
-            self.link(menu, path, header=header, footer=footer)
+            self.link(menu, path, header=header, footer=footer, flag=page.flag)
         self.add_api_route(path, endpoint or page, methods=["GET"], name=path)
 
-    def link(self, label: str, path: str, site: str = "", header: bool = True, footer: bool = True) -> None:
+    def link(self, label: str, path: str, site: str = "", header: bool = True, footer: bool = True, flag: str = "") -> None:
         """A menu entry that is not a page of this site: the other site's home, the RSS feed."""
-        self.menu.append(MenuItem(label, path, site or self.site, header, footer))
+        self.menu.append(MenuItem(label, path, site or self.site, header, footer, flag))
 
     def urls(self, c: Content) -> Iterator[tuple[PublicPage, str, dict]]:
         """Every concrete page: (page, path, path params)."""

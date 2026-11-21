@@ -269,3 +269,15 @@ def test_draft_post_images_stay_private_in_production(settings, tmp_path):
     client = TestClient(create_app(prod), base_url=B_ORIGIN.replace("http", "https"))
     assert client.get("/media/posts/secret/x.png").status_code == 404
 
+
+def test_newsletter_can_be_turned_off(settings, engine):
+    from fastapi.testclient import TestClient
+
+    from app.main import create_app
+
+    off = TestClient(create_app(settings.model_copy(update={"newsletter": False})), base_url=B_ORIGIN)
+    assert "/api/subscribe" not in off.get("/").text and "/subscribe" not in off.get("/posts/link-or-button").text
+    assert off.get("/subscribe").status_code == 404 and "/subscribe</loc>" not in off.get("/sitemap.xml").text
+    assert off.post("/api/subscribe", json={"email": "a@x.dev"}, headers={"Origin": B_ORIGIN}).status_code == 404
+    assert off.get("/unsubscribe?id=1&t=x").status_code == 400  # links already sent still answer (here: a bad token)
+

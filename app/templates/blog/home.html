@@ -19,9 +19,11 @@
       <p>{{ c.page("about", p.lang, p.url)[0].short | safe }}</p>
 {{ ui.links(p, me, icons_only=True) }}
 
+{% if p.on("newsletter") %}
       {{ ui.section_head(p, "newsletter", _("Newsletter"), p.url("/subscribe"), label=_("More →")) }}
       <p>{{ _("New posts by e-mail.") }}</p>
 {{ ui.newsletter(p) }}
+{% endif %}
 
       {{ ui.section_head(p, "tags", _("Tags"), p.url("/tags"), count=c.blog.tags | length) }}
       <p class="tag-cloud">

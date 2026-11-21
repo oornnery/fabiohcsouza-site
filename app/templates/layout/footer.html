@@ -8,7 +8,7 @@
 {% for site, name, heading in [("portfolio", "Portfolio", _("Portfolio")), ("blog", "Blog", "Blog")] if p.shows(site) %}
       <nav aria-label="{{ name }}">
         <h2>{{ heading }}</h2>
-{% for item in menus[site] if item.footer and p.shows(item.site) %}
+{% for item in menus[site] if item.footer and p.shows(item.site) and p.on(item.flag) %}
         <a href="{{ p.url(item.path, site=item.site) }}">{{ _(item.label) }}</a>
 {% endfor %}
       </nav>

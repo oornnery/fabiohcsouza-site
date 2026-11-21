@@ -10,7 +10,7 @@ Answers never tell whether an address is subscribed."""
 import logging
 from typing import Annotated
 
-from fastapi import APIRouter, BackgroundTasks, Depends, Request
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request
 from sqlmodel import Session
 
 from ... import crud
@@ -25,6 +25,12 @@ api = APIRouter(prefix="/api", dependencies=[Depends(maintenance)])
 router = APIRouter(dependencies=[Depends(maintenance)])  # the pages the e-mails link to: not in the sitemap
 
 
+def newsletter_on(settings: SettingsDep) -> None:
+    """404 while NEWSLETTER=false. Only for subscribing: confirm and unsubscribe links already sent keep working."""
+    if not settings.newsletter:
+        raise HTTPException(404)
+
+
 async def send_confirmation(settings: Settings, sub: Subscriber) -> None:
     """After the answer (a background task): a failure is logged, never shown to the visitor."""
     confirm_url = security.link(settings, "/subscribe/confirm", "confirm", sub)
@@ -37,7 +43,7 @@ async def send_confirmation(settings: Settings, sub: Subscriber) -> None:
         log.error("subscriber #%s: confirmation not sent (%s)", sub.id, e)
 
 
-@api.post("/subscribe")
+@api.post("/subscribe", dependencies=[Depends(newsletter_on)])
 def subscribe(request: Request, form: Annotated[Submitted[SubscribeIn], Depends(Submit(SubscribeIn, "subscribe"))],
               settings: SettingsDep, engine: EngineDep, tasks: BackgroundTasks):
     if not form.data.is_bot:

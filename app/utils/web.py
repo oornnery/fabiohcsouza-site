@@ -68,6 +68,10 @@ class Page:
             return self.settings.site_url(site) + full + query + frag
         return full + query + frag
 
+    def on(self, flag: str) -> bool:
+        """Whether a Settings switch is on ("newsletter"); an empty name is always on."""
+        return not flag or bool(getattr(self.settings, flag))
+
     def shows(self, site: str) -> bool:
         """Whether this page links to `site`: always, except the blog from the portfolio while BLOG is off."""
         return site != "blog" or self.site == "blog" or self.settings.blog

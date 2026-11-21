@@ -37,7 +37,7 @@ def sitemap(settings: Settings, pages: Pages, c: Content, langs: tuple[str, ...]
     base = settings.site_url(pages.site)
     rows = []
     for page, path, params in pages.urls(c):
-        if not page.sitemap:
+        if not page.sitemap or (page.flag and not getattr(settings, page.flag)):
             continue
         have = [lang for lang in langs if not page.langs or lang in page.langs(c, **params)]  # a post's own languages
         day = page.lastmod(c, **params) if page.lastmod else None

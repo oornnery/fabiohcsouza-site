@@ -3,7 +3,7 @@
   <header class="site-header">
     {{ ui.wordmark(p) }}
     <nav class="nav" id="site-nav" aria-label="{{ _('Main') }}">
-{% for item in menus[p.site] if item.header and p.shows(item.site) %}
+{% for item in menus[p.site] if item.header and p.shows(item.site) and p.on(item.flag) %}
       <a href="{{ p.url(item.path, site=item.site) }}"{% if item.site == p.site and p.nav == item.path %} aria-current="page"{% endif %}>{{ _(item.label) }}</a>
 {% endfor %}
     </nav>
