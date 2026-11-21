@@ -95,12 +95,9 @@ orange 5xx, blue 503 (maintenance). The header LED keeps cycling.
 
 ## Share images and icons
 
-- **Open Graph:** 1200×630, `app/static/assets/img/og-portfolio.png` and `og-blog.png`, served at `/og.png`. Source:
-  `dev/og.html`. A post with `image: assets/cover.png` (1200×630) is shared with that image instead.
+- **Open Graph:** 1200×630, `app/static/assets/img/og-portfolio.png` and `og-blog.png`, served at `/og.png`. A post with `image: assets/cover.png` (1200×630) is shared with that image instead.
 - **Favicon:** `~/` on a dark tile with the status LED; one file per status (`favicon.svg`, `-warn`, `-error`, `-maint`).
   `touch-icon.png` (180×180, square: iOS rounds it) is `favicon.svg` rendered for the iOS home screen, at `/apple-touch-icon.png`.
-- **E-mail signature:** `dev/signature/`, outside the sites. Mail clients drop CSS and SVG, so the LED and the cursor
-  are GIFs and the icons PNGs.
 
 ## Copy
 

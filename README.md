@@ -83,7 +83,6 @@ content/        pages, projects and posts, one folder each, images in its assets
 app/static/     CSS, JavaScript, fonts, icons
 docker/         Dockerfile, compose.yml (production), compose.dev.yml
 .env.example    every setting, with the production values
-dev/            fake posts for development, the share image source, the e-mail signature
 tests/          pytest, with sample posts in tests/sample/
 ```
 

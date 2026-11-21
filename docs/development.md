@@ -10,8 +10,7 @@ uv run task dev
 
 http://portfolio.localhost:8000 and http://blog.localhost:8000, Portuguese under `/pt/`; one process serves both
 sites. Settings are optional: to change one, put that line in a `.env` (`.env.example` lists them all). Without `SMTP_HOST` nothing is sent and
-the log shows the e-mail, with the newsletter's confirm link. `DEMO_POSTS=50` adds fake posts from
-`dev/demo-posts.json` to try lists and pages. The local database is `.local/app.sqlite`; delete it to start over.
+the log shows the e-mail, with the newsletter's confirm link. The local database is `.local/app.sqlite`; delete it to start over.
 
 With Docker, `docker compose -f docker/compose.dev.yml up --build` builds the `dev` target, mounts the code and
 reloads on changes, on the same addresses.
@@ -65,10 +64,3 @@ test that opens it in both languages.
 | A string in English on a Portuguese page | missing from the `.po`: run `i18n` and translate |
 | No blog links on the portfolio | `BLOG=false` |
 
-## Share images and the e-mail signature
-
-- `dev/og.html#portfolio` and `#blog` are the sources of the two share images (1200×630). Serve the repository root
-  (`python3 -m http.server`), open them at that size, screenshot, and save as `app/static/assets/img/og-portfolio.png`
-  and `og-blog.png`.
-- `uv run python dev/signature/make.py` writes `dev/signature/email-signature.html`: open it and press **Copy**. It
-  isn't part of the sites; for real use, its images (`dev/signature/img/`) have to be online.

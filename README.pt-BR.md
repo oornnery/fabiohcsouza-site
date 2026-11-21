@@ -83,7 +83,6 @@ content/        páginas, projetos e posts, uma pasta cada, imagens no assets/; 
 app/static/     CSS, JavaScript, fontes, ícones
 docker/         Dockerfile, compose.yml (produção), compose.dev.yml
 .env.example    todas as configurações, com os valores de produção
-dev/            posts falsos para desenvolvimento, a fonte das imagens de compartilhamento, a assinatura de e-mail
 tests/          pytest, com posts de exemplo em tests/sample/
 ```
 
