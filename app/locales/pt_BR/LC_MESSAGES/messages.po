@@ -1,0 +1,583 @@
+#: app/api/routes/blog.py:29 app/api/routes/portfolio.py:23
+#: app/templates/ui/wordmark.html:3
+msgid "Home"
+msgstr "Início"
+
+#: app/api/routes/blog.py:30 app/templates/blog/post.html:17
+#: app/templates/blog/posts.html:2 app/templates/blog/posts.html:6
+#: app/templates/portfolio/home.html:9 app/templates/portfolio/home.html:19
+#: app/templates/portfolio/project.html:38 app/utils/schema.py:87
+msgid "Posts"
+msgstr "Posts"
+
+#: app/api/routes/blog.py:31 app/templates/blog/home.html:22
+#: app/templates/blog/tags.html:5
+msgid "Tags"
+msgstr "Tags"
+
+#: app/api/routes/blog.py:33 app/templates/blog/home.html:27
+#: app/templates/blog/timeline.html:2 app/templates/blog/timeline.html:6
+msgid "Timeline"
+msgstr "Linha do tempo"
+
+#: app/api/routes/blog.py:34 app/templates/layout/footer.html:8
+msgid "Portfolio"
+msgstr "Portfólio"
+
+#: app/api/routes/blog.py:39 app/templates/blog/newsletter.html:5
+#: app/templates/blog/newsletter.html:9
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: app/api/routes/portfolio.py:24 app/templates/portfolio/home.html:9
+#: app/templates/portfolio/home.html:10 app/templates/portfolio/project.html:8
+#: app/templates/portfolio/projects.html:2
+#: app/templates/portfolio/projects.html:6
+msgid "Projects"
+msgstr "Projetos"
+
+#: app/api/routes/portfolio.py:28
+msgid "Blog"
+msgstr "Blog"
+
+#: app/api/routes/portfolio.py:29 app/templates/portfolio/about.html:2
+msgid "About"
+msgstr "Sobre"
+
+#: app/api/routes/portfolio.py:30
+msgid "Privacy"
+msgstr "Privacidade"
+
+#: app/api/routes/portfolio.py:31 app/templates/portfolio/contact.html:2
+#: app/templates/portfolio/contact.html:8
+msgid "Contact"
+msgstr "Contato"
+
+#: app/api/routes/seo.py:119 app/templates/blog/home.html:6
+#: app/utils/schema.py:69
+msgid "Field notes"
+msgstr "Notas de campo"
+
+#: app/api/routes/seo.py:126 app/templates/blog/home.html:7
+msgid "Notes on VoIP, networks, automation, code and AI."
+msgstr "Notas sobre VoIP, redes, automação, código e IA."
+
+#: app/templates/blog/home.html:8
+msgid "Latest"
+msgstr "Recentes"
+
+#: app/templates/blog/home.html:13
+msgid "All posts →"
+msgstr "Todos os posts →"
+
+#: app/templates/blog/home.html:16 app/templates/blog/home.html:17
+msgid "About me"
+msgstr "Sobre mim"
+
+#: app/templates/blog/home.html:17
+msgid "More →"
+msgstr "Mais →"
+
+#: app/templates/blog/home.html:17
+msgid "More about me"
+msgstr "Mais sobre mim"
+
+#: app/templates/blog/newsletter.html:6 app/templates/blog/newsletter.html:11
+msgid "New posts by e-mail. One e-mail per post, nothing else."
+msgstr "Posts novos por e-mail. Um e-mail por post, mais nada."
+
+#: app/templates/blog/newsletter.html:13 app/templates/ui/newsletter.html:7
+msgid "Almost there. Open the link in the e-mail I just sent to confirm."
+msgstr "Quase lá. Abra o link do e-mail que acabei de enviar para confirmar."
+
+#: app/templates/blog/newsletter.html:16
+#, python-format
+msgid "You confirm by e-mail first, and every e-mail has a link to unsubscribe. Prefer a feed reader? Use the <a href=\"%(rss)s\">RSS feed</a>. What I keep: <a href=\"%(privacy)s\">privacy</a>."
+msgstr "Você confirma por e-mail antes, e todo e-mail tem um link para cancelar. Prefere um leitor de feeds? Use o <a href=\"%(rss)s\">RSS</a>. O que eu guardo: <a href=\"%(privacy)s\">privacidade</a>."
+
+#: app/templates/blog/newsletter.html:18
+msgid "Confirm your subscription?"
+msgstr "Confirmar a inscrição?"
+
+#: app/templates/blog/newsletter.html:18
+msgid "Stop getting new posts by e-mail?"
+msgstr "Parar de receber posts novos por e-mail?"
+
+#: app/templates/blog/newsletter.html:20
+msgid "Yes, subscribe me"
+msgstr "Sim, quero receber"
+
+#: app/templates/blog/newsletter.html:20
+msgid "Yes, unsubscribe me"
+msgstr "Sim, cancelar"
+
+#: app/templates/blog/newsletter.html:23
+msgid "Subscribed. New posts will arrive by e-mail."
+msgstr "Inscrição confirmada. Os próximos posts chegam por e-mail."
+
+#: app/templates/blog/newsletter.html:25
+msgid "Unsubscribed. Your address was deleted."
+msgstr "Inscrição cancelada. Seu endereço foi apagado."
+
+#: app/templates/blog/newsletter.html:27
+msgid "This link doesn't work. It may be incomplete, or the address was already removed."
+msgstr "Este link não funciona. Ele pode estar incompleto, ou o endereço já foi removido."
+
+#: app/templates/blog/newsletter.html:28
+msgid "Subscribe again"
+msgstr "Inscrever de novo"
+
+#: app/templates/blog/post.html:15
+#, python-format
+msgid "part %(n)s of %(total)s"
+msgstr "parte %(n)s de %(total)s"
+
+#: app/templates/blog/post.html:22 app/templates/portfolio/project.html:12
+msgid "Updated"
+msgstr "Atualizado em"
+
+#: app/templates/blog/post.html:24
+msgid "min read"
+msgstr "min de leitura"
+
+#: app/templates/blog/post.html:27
+msgid "Project"
+msgstr "Projeto"
+
+#: app/templates/blog/post.html:38
+msgid "This post is only available in Portuguese for now."
+msgstr "Este post só existe em português por enquanto."
+
+#: app/templates/blog/post.html:38
+msgid "This post is only available in English for now."
+msgstr "Este post ainda está só em inglês."
+
+#: app/templates/blog/post.html:47 app/templates/blog/post.html:48
+#: app/templates/blog/post.html:73 app/templates/blog/post.html:74
+msgid "On this page"
+msgstr "Nesta página"
+
+#: app/templates/blog/post.html:55
+msgid "Parts"
+msgstr "Partes"
+
+#: app/templates/blog/post.html:64
+msgid "More posts"
+msgstr "Mais posts"
+
+#: app/templates/blog/post.html:65
+msgid "← previous"
+msgstr "← anterior"
+
+#: app/templates/blog/post.html:66
+msgid "next →"
+msgstr "próximo →"
+
+#: app/templates/blog/posts.html:3
+msgid "Every post on the blog, newest first: VoIP, networks, automation, code and AI."
+msgstr "Todos os posts do blog, do mais novo ao mais antigo: VoIP, redes, automação, código e IA."
+
+#: app/templates/blog/posts.html:7
+msgid "Everything I've written, newest first."
+msgstr "Tudo o que escrevi, do mais novo ao mais antigo."
+
+#: app/templates/blog/posts.html:9
+msgid "Showing"
+msgstr "Mostrando"
+
+#: app/templates/blog/posts.html:9
+msgid "show all"
+msgstr "mostrar tudo"
+
+#: app/templates/blog/tags.html:7
+#, python-format
+msgid "Posts about %(tag)s."
+msgstr "Posts sobre %(tag)s."
+
+#: app/templates/blog/tags.html:9
+msgid "Posts by topic: VoIP, networks, automation, code and AI."
+msgstr "Posts por assunto: VoIP, redes, automação, código e IA."
+
+#: app/templates/blog/tags.html:13
+msgid "Pick a topic."
+msgstr "Escolha um assunto."
+
+#: app/templates/blog/tags.html:15
+msgid "Filter by tag"
+msgstr "Filtrar por tag"
+
+#: app/templates/blog/tags.html:16
+msgid "all"
+msgstr "todos"
+
+#: app/templates/blog/tags.html:21
+msgid "All tags"
+msgstr "Todas as tags"
+
+#: app/templates/blog/timeline.html:3
+msgid "Every post on the blog, grouped by year and month, from the latest to the first."
+msgstr "Todos os posts do blog, agrupados por ano e mês, do mais recente ao primeiro."
+
+#: app/templates/blog/timeline.html:7
+#, python-format
+msgid "Every post, by year and month. %(n)s so far."
+msgstr "Todos os posts, por ano e mês. %(n)s até agora."
+
+#: app/templates/email/confirm.txt:1
+msgid "Confirm your subscription"
+msgstr "Confirme sua inscrição"
+
+#: app/templates/email/confirm.txt:3
+#, python-format
+msgid "Someone, probably you, asked for new posts from %(blog)s at this address. To confirm, open this link and press the button:"
+msgstr "Alguém, provavelmente você, pediu para receber os posts novos de %(blog)s neste endereço. Para confirmar, abra o link e aperte o botão:"
+
+#: app/templates/email/confirm.txt:7
+msgid "If it wasn't you, ignore this e-mail. Nothing else will arrive."
+msgstr "Se não foi você, ignore este e-mail. Nada mais vai chegar."
+
+#: app/templates/email/post.txt:5
+msgid "Read it:"
+msgstr "Leia:"
+
+#: app/templates/email/post.txt:8
+#, python-format
+msgid "You get this because you subscribed to new posts on %(blog)s."
+msgstr "Você recebe isto porque se inscreveu para receber os posts novos de %(blog)s."
+
+#: app/templates/email/post.txt:9
+msgid "Unsubscribe:"
+msgstr "Cancelar:"
+
+#: app/templates/error.html:5
+msgid "Bad request."
+msgstr "Requisição inválida."
+
+#: app/templates/error.html:5
+msgid "The request is invalid. Check the address and try again."
+msgstr "A requisição é inválida. Confira o endereço e tente de novo."
+
+#: app/templates/error.html:6
+msgid "Forbidden."
+msgstr "Acesso negado."
+
+#: app/templates/error.html:6
+msgid "This request isn't allowed."
+msgstr "Esta requisição não é permitida."
+
+#: app/templates/error.html:7
+msgid "Page not found."
+msgstr "Página não encontrada."
+
+#: app/templates/error.html:7
+msgid "This address doesn't exist or has moved."
+msgstr "Este endereço não existe ou mudou."
+
+#: app/templates/error.html:8
+msgid "Method not allowed."
+msgstr "Método não permitido."
+
+#: app/templates/error.html:8
+msgid "This address doesn't accept this kind of request."
+msgstr "Este endereço não aceita esse tipo de requisição."
+
+#: app/templates/error.html:9
+msgid "Request too large."
+msgstr "Requisição grande demais."
+
+#: app/templates/error.html:9
+msgid "The request is larger than this site accepts."
+msgstr "A requisição é maior do que o site aceita."
+
+#: app/templates/error.html:10
+msgid "Too many requests."
+msgstr "Muitas requisições."
+
+#: app/templates/error.html:10
+msgid "Try again in a minute."
+msgstr "Tente de novo em um minuto."
+
+#: app/templates/error.html:11
+msgid "Server error."
+msgstr "Erro no servidor."
+
+#: app/templates/error.html:11
+msgid "The error was logged. Try again in a moment."
+msgstr "O erro foi registrado. Tente de novo daqui a pouco."
+
+#: app/templates/error.html:12
+msgid "Under maintenance."
+msgstr "Em manutenção."
+
+#: app/templates/error.html:12
+msgid "The site is under maintenance. Try again in a few minutes."
+msgstr "O site está em manutenção. Tente de novo em alguns minutos."
+
+#: app/templates/error.html:15
+msgid "The request failed."
+msgstr "A requisição falhou."
+
+#: app/templates/error.html:15
+msgid "This request couldn't be completed. Check the address and try again."
+msgstr "Não foi possível concluir este pedido. Confira o endereço e tente de novo."
+
+#: app/templates/error.html:22
+msgid "← Back to home"
+msgstr "← Voltar ao início"
+
+#: app/templates/layout/base.html:11
+msgid "Skip to content"
+msgstr "Pular para o conteúdo"
+
+#: app/templates/layout/footer.html:6
+msgid "VoIP engineer, network engineer and developer"
+msgstr "Engenheiro de VoIP, de redes e desenvolvedor"
+
+#: app/templates/layout/footer.html:16 app/templates/layout/footer.html:17
+msgid "Elsewhere"
+msgstr "Na rede"
+
+#: app/templates/layout/footer.html:20 app/templates/ui/contact.html:6
+#: app/templates/ui/links.html:4 app/templates/ui/newsletter.html:4
+msgid "Email"
+msgstr "E-mail"
+
+#: app/templates/layout/head.html:7
+msgid "VoIP engineer, network engineer and developer. SIP, SBCs, BGP, automation and software."
+msgstr "Engenheiro de VoIP, de redes e desenvolvedor. SIP, SBCs, BGP, automação e software."
+
+#: app/templates/layout/head.html:7
+msgid "Field notes by Fabio Souza on VoIP, networks, automation, code and AI."
+msgstr "Notas de campo de Fabio Souza sobre VoIP, redes, automação, código e IA."
+
+#: app/templates/layout/header.html:5
+msgid "Main"
+msgstr "Principal"
+
+#: app/templates/layout/header.html:12
+msgid "RSS feed"
+msgstr "Feed RSS"
+
+#: app/templates/layout/header.html:19
+msgid "Toggle theme"
+msgstr "Alternar tema"
+
+#: app/templates/layout/header.html:21
+msgid "Menu"
+msgstr "Menu"
+
+#: app/templates/portfolio/about.html:3
+msgid "About Fabio Souza: VoIP and network engineer at net2phone Brazil, developer."
+msgstr "Sobre Fabio Souza: engenheiro de VoIP e redes na net2phone Brazil, desenvolvedor."
+
+#: app/templates/portfolio/contact.html:3
+#: app/templates/portfolio/contact.html:9
+msgid "Tell me what you need."
+msgstr "Conte o que você precisa."
+
+#: app/templates/portfolio/contact.html:11 app/templates/ui/contact.html:11
+msgid "Message received. I'll reply within two days."
+msgstr "Mensagem recebida. Respondo em até dois dias."
+
+#: app/templates/portfolio/contact.html:13
+msgid "Or reach me directly:"
+msgstr "Ou fale comigo direto:"
+
+#: app/templates/portfolio/home.html:12 app/templates/portfolio/project.html:10
+#: app/templates/portfolio/projects.html:10
+msgid "Work"
+msgstr "Trabalho"
+
+#: app/templates/portfolio/home.html:14 app/templates/portfolio/project.html:10
+#: app/templates/portfolio/projects.html:11
+msgid "Open Source"
+msgstr "Código aberto"
+
+#: app/templates/portfolio/project.html:31 app/templates/ui/item.html:13
+msgid "repo"
+msgstr "repo"
+
+#: app/templates/portfolio/project.html:31 app/templates/ui/item.html:13
+msgid "site"
+msgstr "site"
+
+#: app/templates/portfolio/project.html:31 app/templates/ui/item.html:13
+msgid "post"
+msgstr "post"
+
+#: app/templates/portfolio/projects.html:3
+msgid "Projects by Fabio Souza: open source code and internal work on SIP, voice networks, automation and web apps."
+msgstr "Projetos de Fabio Souza: código aberto e trabalhos internos com SIP, redes de voz, automação e aplicações web."
+
+#: app/templates/portfolio/projects.html:7
+msgid "Projects from work and open source."
+msgstr "Projetos do trabalho e de código aberto."
+
+#: app/templates/portfolio/projects.html:10
+msgid "Projects without public code."
+msgstr "Projetos sem código público."
+
+#: app/templates/portfolio/projects.html:11
+msgid "Side projects and experiments with public code."
+msgstr "Projetos pessoais e experimentos com código aberto."
+
+#: app/templates/ui/contact.html:4
+msgid "Subject"
+msgstr "Assunto"
+
+#: app/templates/ui/contact.html:4
+msgid "What's it about?"
+msgstr "Sobre o quê?"
+
+#: app/templates/ui/contact.html:5
+msgid "Name"
+msgstr "Nome"
+
+#: app/templates/ui/contact.html:5
+msgid "Your name"
+msgstr "Seu nome"
+
+#: app/templates/ui/contact.html:6 app/templates/ui/newsletter.html:4
+msgid "you@example.com"
+msgstr "voce@exemplo.com"
+
+#: app/templates/ui/contact.html:7
+msgid "Phone"
+msgstr "Telefone"
+
+#: app/templates/ui/contact.html:7
+msgid "+1 555 …"
+msgstr "+55 11 …"
+
+#: app/templates/ui/contact.html:8
+msgid "Message"
+msgstr "Mensagem"
+
+#: app/templates/ui/contact.html:10
+msgid "Send message →"
+msgstr "Enviar mensagem →"
+
+#: app/templates/ui/field.html:3
+msgid "optional"
+msgstr "opcional"
+
+#: app/templates/ui/more.html:3 static/assets/js/pager.js:37
+msgid "Show more"
+msgstr "Mostrar mais"
+
+#: app/templates/ui/newsletter.html:6
+msgid "Subscribe →"
+msgstr "Inscrever →"
+
+#: app/templates/ui/search.html:3
+msgid "Search posts"
+msgstr "Buscar posts"
+
+#: app/templates/ui/search.html:3
+msgid "Search posts…"
+msgstr "Buscar posts…"
+
+#: app/templates/ui/search.html:3
+msgid "Search projects"
+msgstr "Buscar projetos"
+
+#: app/templates/ui/search.html:3
+msgid "Search projects…"
+msgstr "Buscar projetos…"
+
+#: app/templates/ui/search.html:9
+msgid "Clear search"
+msgstr "Limpar busca"
+
+#: app/templates/ui/section_head.html:5
+msgid "All →"
+msgstr "Tudo →"
+
+#: app/templates/ui/section_head.html:5
+msgid "All"
+msgstr "Tudo"
+
+#: app/templates/ui/series.html:3 app/templates/ui/series.html:4
+msgid "In this series"
+msgstr "Nesta série"
+
+#: app/templates/ui/series.html:6
+msgid "All parts →"
+msgstr "Ver todas as partes →"
+
+#: app/templates/ui/share.html:5
+msgid "Share on X"
+msgstr "Compartilhar no X"
+
+#: app/templates/ui/share.html:6
+msgid "Share on LinkedIn"
+msgstr "Compartilhar no LinkedIn"
+
+#: app/templates/ui/share.html:7
+msgid "Share on WhatsApp"
+msgstr "Compartilhar no WhatsApp"
+
+#: app/templates/ui/share.html:10
+msgid "Share"
+msgstr "Compartilhar"
+
+#: app/templates/ui/share.html:11
+msgid "Copy link"
+msgstr "Copiar link"
+
+#: app/templates/ui/share.html:11
+msgid "Copied"
+msgstr "Copiado"
+
+#: static/assets/js/filters.js:11
+msgid "Fewer tags"
+msgstr "Menos tags"
+
+#: static/assets/js/forms.js:9
+msgid "Required."
+msgstr "Obrigatório."
+
+#: static/assets/js/forms.js:10
+msgid "Enter a valid email."
+msgstr "Informe um e-mail válido."
+
+#: static/assets/js/forms.js:11
+msgid "A bit more, please."
+msgstr "Escreva um pouco mais."
+
+#: static/assets/js/forms.js:12
+msgid "Too long."
+msgstr "Muito longo."
+
+#: static/assets/js/forms.js:56
+msgid "Sending…"
+msgstr "Enviando…"
+
+#: static/assets/js/forms.js:69
+msgid "Too many tries. Wait a minute and try again."
+msgstr "Muitas tentativas. Espere um minuto e tente de novo."
+
+#: static/assets/js/forms.js:70
+msgid "Check the fields and try again."
+msgstr "Confira os campos e tente de novo."
+
+#: static/assets/js/forms.js:71
+msgid "Something went wrong. Try again or email me."
+msgstr "Algo deu errado. Tente de novo ou me mande um e-mail."
+
+#: static/assets/js/forms.js:74
+msgid "No connection. Try again."
+msgstr "Sem conexão. Tente de novo."
+
+#: static/assets/js/pager.js:31
+msgid "Nothing matches."
+msgstr "Nada encontrado."
+
+#: static/assets/js/search.js:22
+msgid "result"
+msgstr "resultado"
+
+#: static/assets/js/search.js:22
+msgid "results"
+msgstr "resultados"
+
