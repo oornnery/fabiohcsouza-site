@@ -12,7 +12,6 @@ services:
     volumes:
       - ../app:/srv/app:ro
       - ../content:/srv/content:ro
-      - ../static:/srv/static:ro
       - ../dev:/srv/dev:ro
       - dev-data:/data
 

@@ -1,4 +1,4 @@
-# Build context = repository root; only app/, static/, content/ and the uv files go in the image.
+# Build context = repository root; only app/ (with its static files), content/ and the uv files go in the image.
 .git
 .venv
 .local

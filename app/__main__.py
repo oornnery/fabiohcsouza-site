@@ -41,7 +41,7 @@ def serve(settings: Settings, args: argparse.Namespace) -> int:
     import uvicorn
 
     uvicorn.run("app.main:create_app", factory=True, host=settings.host, port=settings.port, reload=args.reload,
-                proxy_headers=False, server_header=False, reload_dirs=["app", "content", "static"] if args.reload else None)
+                proxy_headers=False, server_header=False, reload_dirs=["app", "content"] if args.reload else None)
     return 0
 
 
@@ -154,7 +154,7 @@ def i18n(_settings: Settings, _args: argparse.Namespace) -> int:
 
     pot = Path(tempfile.mkdtemp()) / "messages.pot"  # intermediate, not kept
     cli = CommandLineInterface()
-    with contextlib.chdir(ROOT):  # file references in the .po stay relative (app/…, static/…)
+    with contextlib.chdir(ROOT):  # file references in the .po stay relative (app/…)
         cli.run(["pybabel", "-q", "extract", "-F", "babel.cfg", "--no-wrap", "--sort-by-file", "--omit-header", "-o", str(pot), "."])
     for lang in lang_catalog.LANGS[1:]:
         cli.run(["pybabel", "-q", "update", "-i", str(pot), "-d", str(lang_catalog.LOCALES), "-l", lang_catalog.locale(lang),

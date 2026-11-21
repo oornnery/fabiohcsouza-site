@@ -31,7 +31,6 @@ CMD ["python", "-m", "app", "serve", "--reload"]
 
 FROM base AS prod
 COPY app ./app
-COPY static ./static
 COPY content ./content
 ENV ENVIRONMENT=production
 CMD ["uvicorn", "app.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--no-server-header", "--no-proxy-headers"]

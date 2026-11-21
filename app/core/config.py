@@ -12,7 +12,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ROOT = Path(__file__).resolve().parents[2]
 APP = ROOT / "app"
-STATIC = ROOT / "static"  # CSS, JS, fonts and images, served at /assets on both sites
+STATIC = APP / "static"  # CSS, JS, fonts and images, served at /assets on both sites
 SITES = ("portfolio", "blog")
 DOMAINS = {"portfolio": "fabiohcsouza.dev", "blog": "blog.fabiohcsouza.dev"}  # the public names (wordmark, share images, signature)
 
