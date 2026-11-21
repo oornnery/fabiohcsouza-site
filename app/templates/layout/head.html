@@ -4,7 +4,7 @@
     No inline script or style: the CSP only allows files from 'self' (JSON-LD is data, not script). -#}
 {% set page_title = title | default("") %}
 {% set langs = langs | default(none) %}
-{% set page_desc = description | default(_("VoIP engineer, network engineer and developer. SIP, SBCs, BGP, automation and software.") if p.site == "portfolio" else _("Field notes by Fabio Souza on VoIP, networks, automation, code and AI.")) %}
+{% set page_desc = description | default(_("VoIP engineer, network engineer and developer. SIP, SBCs, BGP, automation and software.") if p.site == "portfolio" else _("Field notes by Fabio Souza: VoIP, networks, automation, labs, development and AI.")) %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 {#- search results cut titles around 60 chars: the site suffix only goes in when it fits -#}

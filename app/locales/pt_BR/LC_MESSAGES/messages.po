@@ -1,30 +1,30 @@
-#: app/api/routes/blog.py:29 app/api/routes/portfolio.py:23
+#: app/api/routes/blog.py:31 app/api/routes/portfolio.py:23
 #: app/templates/ui/wordmark.html:3
 msgid "Home"
 msgstr "Início"
 
-#: app/api/routes/blog.py:30 app/templates/blog/post.html:17
+#: app/api/routes/blog.py:32 app/templates/blog/post.html:17
 #: app/templates/blog/posts.html:2 app/templates/blog/posts.html:6
 #: app/templates/portfolio/home.html:9 app/templates/portfolio/home.html:19
 #: app/templates/portfolio/project.html:38 app/utils/schema.py:87
 msgid "Posts"
 msgstr "Posts"
 
-#: app/api/routes/blog.py:31 app/templates/blog/home.html:26
+#: app/api/routes/blog.py:33 app/templates/blog/home.html:28
 #: app/templates/blog/tags.html:5
 msgid "Tags"
 msgstr "Tags"
 
-#: app/api/routes/blog.py:33 app/templates/blog/home.html:31
+#: app/api/routes/blog.py:35 app/templates/blog/home.html:33
 #: app/templates/blog/timeline.html:2 app/templates/blog/timeline.html:6
 msgid "Timeline"
 msgstr "Linha do tempo"
 
-#: app/api/routes/blog.py:34 app/templates/layout/footer.html:8
+#: app/api/routes/blog.py:36 app/templates/layout/footer.html:8
 msgid "Portfolio"
 msgstr "Portfólio"
 
-#: app/api/routes/blog.py:39 app/templates/blog/home.html:22
+#: app/api/routes/blog.py:41 app/templates/blog/home.html:23
 #: app/templates/blog/newsletter.html:5 app/templates/blog/newsletter.html:9
 msgid "Newsletter"
 msgstr "Newsletter"
@@ -53,14 +53,70 @@ msgstr "Privacidade"
 msgid "Contact"
 msgstr "Contato"
 
-#: app/api/routes/seo.py:120 app/templates/blog/home.html:6
+#: app/api/routes/seo.py:22 app/templates/blog/home.html:7
+msgid "Notes on subjects I'm into: VoIP, networks, automation, labs, development and AI."
+msgstr "Notas sobre assuntos que me interessam: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
+
+#: app/api/routes/seo.py:121 app/templates/blog/home.html:6
 #: app/utils/schema.py:69
 msgid "Field notes"
 msgstr "Notas de campo"
 
-#: app/api/routes/seo.py:127 app/templates/blog/home.html:7
-msgid "Notes on VoIP, networks, automation, code and AI."
-msgstr "Notas sobre VoIP, redes, automação, código e IA."
+#: app/static/assets/js/filters.js:11
+msgid "Fewer tags"
+msgstr "Menos tags"
+
+#: app/static/assets/js/forms.js:9
+msgid "Required."
+msgstr "Obrigatório."
+
+#: app/static/assets/js/forms.js:10
+msgid "Enter a valid email."
+msgstr "Informe um e-mail válido."
+
+#: app/static/assets/js/forms.js:11
+msgid "A bit more, please."
+msgstr "Escreva um pouco mais."
+
+#: app/static/assets/js/forms.js:12
+msgid "Too long."
+msgstr "Muito longo."
+
+#: app/static/assets/js/forms.js:56
+msgid "Sending…"
+msgstr "Enviando…"
+
+#: app/static/assets/js/forms.js:69
+msgid "Too many tries. Wait a minute and try again."
+msgstr "Muitas tentativas. Espere um minuto e tente de novo."
+
+#: app/static/assets/js/forms.js:70
+msgid "Check the fields and try again."
+msgstr "Confira os campos e tente de novo."
+
+#: app/static/assets/js/forms.js:71
+msgid "Something went wrong. Try again or email me."
+msgstr "Algo deu errado. Tente de novo ou me mande um e-mail."
+
+#: app/static/assets/js/forms.js:74
+msgid "No connection. Try again."
+msgstr "Sem conexão. Tente de novo."
+
+#: app/static/assets/js/pager.js:31
+msgid "Nothing matches."
+msgstr "Nada encontrado."
+
+#: app/static/assets/js/pager.js:37 app/templates/ui/more.html:3
+msgid "Show more"
+msgstr "Mostrar mais"
+
+#: app/static/assets/js/search.js:22
+msgid "result"
+msgstr "resultado"
+
+#: app/static/assets/js/search.js:22
+msgid "results"
+msgstr "resultados"
 
 #: app/templates/blog/home.html:8
 msgid "Latest"
@@ -78,12 +134,12 @@ msgstr "Sobre mim"
 msgid "More about me"
 msgstr "Mais sobre mim"
 
-#: app/templates/blog/home.html:17 app/templates/blog/home.html:22
+#: app/templates/blog/home.html:17 app/templates/blog/home.html:23
 msgid "More →"
 msgstr "Mais →"
 
-#: app/templates/blog/home.html:23 app/templates/blog/newsletter.html:6
-#: app/templates/blog/newsletter.html:11 app/templates/blog/post.html:62
+#: app/templates/blog/home.html:24 app/templates/blog/newsletter.html:6
+#: app/templates/blog/newsletter.html:11 app/templates/blog/post.html:63
 msgid "New posts by e-mail."
 msgstr "Posts novos por e-mail. Um e-mail por post, mais nada."
 
@@ -154,7 +210,7 @@ msgid "This post is only available in English for now."
 msgstr "Este post ainda está só em inglês."
 
 #: app/templates/blog/post.html:47 app/templates/blog/post.html:48
-#: app/templates/blog/post.html:74 app/templates/blog/post.html:75
+#: app/templates/blog/post.html:76 app/templates/blog/post.html:77
 msgid "On this page"
 msgstr "Nesta página"
 
@@ -162,25 +218,25 @@ msgstr "Nesta página"
 msgid "Parts"
 msgstr "Partes"
 
-#: app/templates/blog/post.html:62 app/templates/ui/newsletter.html:6
+#: app/templates/blog/post.html:63 app/templates/ui/newsletter.html:6
 msgid "Subscribe →"
 msgstr "Inscrever →"
 
-#: app/templates/blog/post.html:65
+#: app/templates/blog/post.html:67
 msgid "More posts"
 msgstr "Mais posts"
 
-#: app/templates/blog/post.html:66
+#: app/templates/blog/post.html:68
 msgid "← previous"
 msgstr "← anterior"
 
-#: app/templates/blog/post.html:67
+#: app/templates/blog/post.html:69
 msgid "next →"
 msgstr "próximo →"
 
 #: app/templates/blog/posts.html:3
-msgid "Every post on the blog, newest first: VoIP, networks, automation, code and AI."
-msgstr "Todos os posts do blog, do mais novo ao mais antigo: VoIP, redes, automação, código e IA."
+msgid "Every post on the blog, newest first: VoIP, networks, automation, labs, development and AI."
+msgstr "Todos os posts do blog, do mais novo ao mais antigo: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
 
 #: app/templates/blog/posts.html:7
 msgid "Everything I've written, newest first."
@@ -200,8 +256,8 @@ msgid "Posts about %(tag)s."
 msgstr "Posts sobre %(tag)s."
 
 #: app/templates/blog/tags.html:9
-msgid "Posts by topic: VoIP, networks, automation, code and AI."
-msgstr "Posts por assunto: VoIP, redes, automação, código e IA."
+msgid "Posts by topic: VoIP, networks, automation, labs, development and AI."
+msgstr "Posts por assunto: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
 
 #: app/templates/blog/tags.html:13
 msgid "Pick a topic."
@@ -352,8 +408,8 @@ msgid "VoIP engineer, network engineer and developer. SIP, SBCs, BGP, automation
 msgstr "Engenheiro de VoIP, de redes e desenvolvedor. SIP, SBCs, BGP, automação e software."
 
 #: app/templates/layout/head.html:7
-msgid "Field notes by Fabio Souza on VoIP, networks, automation, code and AI."
-msgstr "Notas de campo de Fabio Souza sobre VoIP, redes, automação, código e IA."
+msgid "Field notes by Fabio Souza: VoIP, networks, automation, labs, development and AI."
+msgstr "Notas de campo de Fabio Souza: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
 
 #: app/templates/layout/header.html:5
 msgid "Main"
@@ -466,10 +522,6 @@ msgstr "Enviar mensagem →"
 msgid "optional"
 msgstr "opcional"
 
-#: app/templates/ui/more.html:3 static/assets/js/pager.js:37
-msgid "Show more"
-msgstr "Mostrar mais"
-
 #: app/templates/ui/search.html:3
 msgid "Search posts"
 msgstr "Buscar posts"
@@ -529,56 +581,4 @@ msgstr "Copiar link"
 #: app/templates/ui/share.html:11
 msgid "Copied"
 msgstr "Copiado"
-
-#: static/assets/js/filters.js:11
-msgid "Fewer tags"
-msgstr "Menos tags"
-
-#: static/assets/js/forms.js:9
-msgid "Required."
-msgstr "Obrigatório."
-
-#: static/assets/js/forms.js:10
-msgid "Enter a valid email."
-msgstr "Informe um e-mail válido."
-
-#: static/assets/js/forms.js:11
-msgid "A bit more, please."
-msgstr "Escreva um pouco mais."
-
-#: static/assets/js/forms.js:12
-msgid "Too long."
-msgstr "Muito longo."
-
-#: static/assets/js/forms.js:56
-msgid "Sending…"
-msgstr "Enviando…"
-
-#: static/assets/js/forms.js:69
-msgid "Too many tries. Wait a minute and try again."
-msgstr "Muitas tentativas. Espere um minuto e tente de novo."
-
-#: static/assets/js/forms.js:70
-msgid "Check the fields and try again."
-msgstr "Confira os campos e tente de novo."
-
-#: static/assets/js/forms.js:71
-msgid "Something went wrong. Try again or email me."
-msgstr "Algo deu errado. Tente de novo ou me mande um e-mail."
-
-#: static/assets/js/forms.js:74
-msgid "No connection. Try again."
-msgstr "Sem conexão. Tente de novo."
-
-#: static/assets/js/pager.js:31
-msgid "Nothing matches."
-msgstr "Nada encontrado."
-
-#: static/assets/js/search.js:22
-msgid "result"
-msgstr "resultado"
-
-#: static/assets/js/search.js:22
-msgid "results"
-msgstr "resultados"
 

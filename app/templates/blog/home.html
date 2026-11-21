@@ -4,7 +4,7 @@
 {% block main %}
     <div class="prose">
       <h1>{{ _("Field notes") }}</h1>
-      <p class="lead">{{ _("Notes on VoIP, networks, automation, code and AI.") }}</p>
+      <p class="lead">{{ _("Notes on subjects I'm into: VoIP, networks, automation, labs, development and AI.") }}</p>
       <h2 id="latest"><a href="#latest">{{ _("Latest") }}</a></h2>
       <ul class="items">
 {% for post in c.blog.posts[:5] %}{{ ui.post_item(p, post) }}

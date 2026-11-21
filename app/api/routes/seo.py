@@ -19,6 +19,7 @@ from ..pages import Pages
 router = APIRouter()
 feed = APIRouter()  # the blog only
 
+TAGLINE = i18n.N_("Notes on subjects I'm into: VoIP, networks, automation, labs, development and AI.")  # the feed's
 DAY = {"Cache-Control": "public, max-age=86400"}  # fixed URLs (no ?v=): crawlers and browsers ask for them by name
 
 
@@ -124,7 +125,7 @@ def rss(settings: Settings, c: Content, lang: str = "en", limit: int = 30) -> st
         '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" '
         'xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel>'
         f"<title>{escape(title)}</title><link>{escape(base)}/</link>"
-        f"<description>{escape(i18n.t('Notes on VoIP, networks, automation, code and AI.', lang))}</description>"
+        f"<description>{escape(i18n.t(TAGLINE, lang))}</description>"
         f"<language>{i18n.HTML_LANG[lang].lower()}</language>{built}"
         f'<atom:link href="{escape(base)}/rss.xml" rel="self" type="application/rss+xml"/>' + "".join(items) + "</channel></rss>\n"
     )
