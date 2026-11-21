@@ -1,0 +1,19 @@
+# Python and tools
+.venv/
+__pycache__/
+*.py[oc]
+build/
+dist/
+.ruff_cache/
+.pytest_cache/
+
+# local data and settings (never commit: secrets and personal data)
+.local/
+*.sqlite
+*.sqlite-*
+.env
+.env.*
+!.env.example
+
+# generated
+dev/signature/email-signature.html
