@@ -7,6 +7,12 @@ dist/
 .ruff_cache/
 .pytest_cache/
 
+# editors, agents and OS
+.vscode/
+.idea/
+.claude/
+.DS_Store
+
 # local data and settings (never commit: secrets and personal data)
 .local/
 *.sqlite
