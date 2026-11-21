@@ -69,6 +69,8 @@ docker compose -f docker/compose.yml up -d blog
 
 Its links to the portfolio point to fabiohcsouza.dev, so they work only once the portfolio is up.
 
+**Without the newsletter**: `NEWSLETTER=false` in `.env` hides the subscribe form; turn it on later and restart.
+
 **Both**: set `BLOG=true` in `.env`, then
 
 ```bash

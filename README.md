@@ -2,12 +2,12 @@
 
 **English** · [Português](README.pt-BR.md)
 
-My portfolio and my blog, in English and Portuguese.
+My portfolio and blog posts.
 
 | Site | Domain |
 | --- | --- |
-| Portfolio: who I am, what I built, contact | [fabiohcsouza.dev](https://fabiohcsouza.dev) |
-| Blog: notes on VoIP, networks, automation, code and AI | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
+| Professional portfolio | [fabiohcsouza.dev](https://fabiohcsouza.dev) |
+| Blog: notes on subjects I'm into: VoIP, networks, automation, labs, development and AI | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
 
 ![The portfolio home](docs/screenshots/home-light.png)
 
@@ -25,9 +25,8 @@ My portfolio and my blog, in English and Portuguese.
 
 The blog screenshots use the sample posts from `tests/sample/`.
 
-Python 3.14 and FastAPI render every page on the server with Jinja2; the CSS and JavaScript are plain files, with no
-build step. Pages, projects and posts are Markdown folders in `content/`. SQLite keeps the contact messages and the
-newsletter, and e-mail goes out over SMTP. One Docker image serves either site.
+Python 3.14 and FastAPI render every page on the server with Jinja2. Pages, projects and posts are Markdown folders
+in `content/`. SQLite keeps the contact messages and the newsletter, and e-mail goes out over SMTP.
 
 ## Run it
 
@@ -36,12 +35,12 @@ uv sync
 ```
 
 ```bash
-uv run python -m app serve --reload
+uv run task dev
 ```
 
 Open http://portfolio.localhost:8000 and http://blog.localhost:8000 (`*.localhost` points to your machine); Portuguese
-is under `/pt/`. Settings are optional in development: copy `.env.example` to `.env` to change them. With Docker
-instead: `docker compose -f docker/compose.dev.yml up --build`.
+is under `/pt/`. To change a setting, copy `.env.example` to `.env`. With Docker:
+`docker compose -f docker/compose.dev.yml up --build`.
 
 ## Commands
 
@@ -58,11 +57,17 @@ instead: `docker compose -f docker/compose.dev.yml up --build`.
 | `i18n` | collect the interface strings into the Portuguese catalog |
 | `purge` | apply the data retention rules now |
 
-Checks, the same as CI:
+## Tasks
 
-```bash
-uv run ruff check app tests && uv run ty check && uv run bandit -c pyproject.toml -r app -q && uv run djlint app/templates --lint && uv run pytest
-```
+`uv run task <task>` (taskipy; `uv run task --list` shows them all)
+
+| Task | What it does |
+| --- | --- |
+| `dev` | run both sites with reload |
+| `check` | everything CI checks: `lint`, `types`, `sec`, `templates`, `test` |
+| `lint`, `types`, `sec`, `templates`, `test` | Ruff, ty, Bandit, djLint and pytest, one at a time |
+| `audit` | known vulnerabilities in the installed packages |
+| `i18n` | collect the interface strings into the Portuguese catalog |
 
 ## Layout
 
@@ -75,7 +80,7 @@ app/content/    reads content/: pages, projects, posts
 app/utils/      Markdown, e-mail, rendering, JSON-LD
 app/templates/  Jinja templates; app/locales/ the Portuguese catalog
 content/        pages, projects and posts, one folder each, images in its assets/; site.yml
-static/assets/  CSS, JavaScript, fonts, icons
+app/static/     CSS, JavaScript, fonts, icons
 docker/         Dockerfile, compose.yml (production), compose.dev.yml, .env.example
 dev/            fake posts for development, the share image source, the e-mail signature
 tests/          pytest, with sample posts in tests/sample/

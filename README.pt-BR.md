@@ -2,12 +2,12 @@
 
 [English](README.md) · **Português**
 
-Meu portfólio e meu blog, em inglês e português.
+Meu portfólio e posts do blog.
 
 | Site | Domínio |
 | --- | --- |
-| Portfólio: quem eu sou, o que construí, contato | [fabiohcsouza.dev](https://fabiohcsouza.dev) |
-| Blog: notas sobre VoIP, redes, automação, código e IA | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
+| Portfólio profissional | [fabiohcsouza.dev](https://fabiohcsouza.dev) |
+| Blog: notas sobre assuntos que me interessam: VoIP, redes, automação, laboratórios, desenvolvimento e IA | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
 
 ![A home do portfólio](docs/screenshots/home-light.png)
 
@@ -25,9 +25,8 @@ Meu portfólio e meu blog, em inglês e português.
 
 Os prints do blog usam os posts de exemplo de `tests/sample/`.
 
-Python 3.14 e FastAPI geram todas as páginas no servidor com Jinja2; o CSS e o JavaScript são arquivos puros, sem
-build. Páginas, projetos e posts são pastas de Markdown em `content/`. O SQLite guarda as mensagens de contato e a
-newsletter, e os e-mails saem por SMTP. Uma imagem Docker serve qualquer um dos dois sites.
+Python 3.14 e FastAPI geram todas as páginas no servidor com Jinja2. Páginas, projetos e posts são pastas de
+Markdown em `content/`. O SQLite guarda as mensagens de contato e a newsletter, e os e-mails saem por SMTP.
 
 ## Rodar
 
@@ -36,12 +35,12 @@ uv sync
 ```
 
 ```bash
-uv run python -m app serve --reload
+uv run task dev
 ```
 
 Abra http://portfolio.localhost:8000 e http://blog.localhost:8000 (`*.localhost` aponta para a sua máquina); o
-português fica em `/pt/`. Em desenvolvimento as configurações são opcionais: copie o `.env.example` para `.env` para
-mudar alguma. Com Docker: `docker compose -f docker/compose.dev.yml up --build`.
+português fica em `/pt/`. Para mudar alguma configuração, copie o `.env.example` para `.env`. Com Docker:
+`docker compose -f docker/compose.dev.yml up --build`.
 
 ## Comandos
 
@@ -58,11 +57,17 @@ mudar alguma. Com Docker: `docker compose -f docker/compose.dev.yml up --build`.
 | `i18n` | junta os textos da interface no catálogo em português |
 | `purge` | aplica agora as regras de retenção de dados |
 
-Checagens, as mesmas do CI:
+## Tarefas
 
-```bash
-uv run ruff check app tests && uv run ty check && uv run bandit -c pyproject.toml -r app -q && uv run djlint app/templates --lint && uv run pytest
-```
+`uv run task <tarefa>` (taskipy; `uv run task --list` mostra todas)
+
+| Tarefa | O que faz |
+| --- | --- |
+| `dev` | roda os dois sites com reload |
+| `check` | tudo o que o CI confere: `lint`, `types`, `sec`, `templates`, `test` |
+| `lint`, `types`, `sec`, `templates`, `test` | Ruff, ty, Bandit, djLint e pytest, um por vez |
+| `audit` | vulnerabilidades conhecidas nos pacotes instalados |
+| `i18n` | junta os textos da interface no catálogo em português |
 
 ## Estrutura
 
@@ -75,15 +80,13 @@ app/content/    lê o content/: páginas, projetos, posts
 app/utils/      Markdown, e-mail, renderização, JSON-LD
 app/templates/  templates Jinja; app/locales/ o catálogo em português
 content/        páginas, projetos e posts, uma pasta cada, imagens no assets/; site.yml
-static/assets/  CSS, JavaScript, fontes, ícones
+app/static/     CSS, JavaScript, fontes, ícones
 docker/         Dockerfile, compose.yml (produção), compose.dev.yml, .env.example
 dev/            posts falsos para desenvolvimento, a fonte das imagens de compartilhamento, a assinatura de e-mail
 tests/          pytest, com posts de exemplo em tests/sample/
 ```
 
 ## Documentação
-
-As docs estão em inglês:
 
 - [Content](docs/content.md): como escrever páginas, projetos e posts, com imagens
 - [Deploy](docs/deploy.md): produção, um site ou os dois, atualizações, backup

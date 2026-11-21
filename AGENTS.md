@@ -13,13 +13,12 @@ production each site runs in its own container (`SITE=portfolio|blog`) behind a 
 
 ```bash
 uv sync                                   # dependencies
-uv run python -m app serve --reload       # both sites: http://portfolio.localhost:8000, http://blog.localhost:8000
-uv run pytest                             # tests
-uv run ruff check app tests && uv run ty check && uv run bandit -c pyproject.toml -r app -q && uv run djlint app/templates --lint
-uv run python -m app i18n                 # after changing interface strings; then fill the empty msgstr lines
+uv run task dev                           # both sites: http://portfolio.localhost:8000, http://blog.localhost:8000
+uv run task check                         # ruff, ty, bandit, djlint and pytest: what CI runs
+uv run task i18n                          # after changing interface strings; then fill the empty msgstr lines
 ```
 
-Run the checks and the tests before saying a change is done. CI runs the same, plus `pip-audit` and the image build.
+Run `uv run task check` before saying a change is done. CI runs the same, plus `pip-audit` and the image build.
 
 ## Where things are
 
@@ -37,6 +36,7 @@ Run the checks and the tests before saying a change is done. CI runs the same, p
 | `app/templates/` | `layout/`, `ui/` (one macro per file, called as `ui.<name>(…)`), `portfolio/`, `blog/`, `email/` |
 | `content/` | `pages/`, `projects/`, `posts/`: one folder per item, `<slug>.md` (English) + `<slug>.pt.md`, images in `assets/` |
 | `tests/` | pytest; `tests/sample/posts/` are the sample posts (production ships no fake posts) |
+| `app/static/` | CSS, JavaScript, fonts and icons, served at `/assets` |
 | `docker/`, `.github/` | Dockerfile (dev/prod targets), compose files, `.env.example`; CI that publishes the image to GHCR |
 
 ## Rules

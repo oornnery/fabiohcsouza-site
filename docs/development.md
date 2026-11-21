@@ -5,7 +5,7 @@ uv sync
 ```
 
 ```bash
-uv run python -m app serve --reload
+uv run task dev
 ```
 
 http://portfolio.localhost:8000 and http://blog.localhost:8000, Portuguese under `/pt/`; one process serves both
@@ -19,8 +19,11 @@ reloads on changes, on the same addresses.
 ## Tests and checks
 
 ```bash
-uv run pytest
+uv run task check
 ```
+
+That is Ruff, ty, Bandit, djLint and pytest, the same as CI; each one also runs alone (`uv run task test`, `lint`,
+`types`, `sec`, `templates`).
 
 | File | Covers |
 | --- | --- |
@@ -30,8 +33,8 @@ uv run pytest
 | `test_security.py` | headers, CSRF, limits, input validation, production settings, Turnstile |
 | `test_i18n.py` | the Portuguese catalog is complete and keeps placeholders and markup |
 
-The tests read `content/` plus the sample posts in `tests/sample/posts/`. CI also runs `ruff`, `ty`, `bandit`,
-`djlint` and `pip-audit`, then builds and publishes the image (the README has the one-line version).
+The tests read `content/` plus the sample posts in `tests/sample/posts/`. CI runs `task check` and `pip-audit`, then
+builds and publishes the image.
 
 ## Translations
 
@@ -65,7 +68,7 @@ test that opens it in both languages.
 ## Share images and the e-mail signature
 
 - `dev/og.html#portfolio` and `#blog` are the sources of the two share images (1200×630). Serve the repository root
-  (`python3 -m http.server`), open them at that size, screenshot, and save as `static/assets/img/og-portfolio.png`
+  (`python3 -m http.server`), open them at that size, screenshot, and save as `app/static/assets/img/og-portfolio.png`
   and `og-blog.png`.
 - `uv run python dev/signature/make.py` writes `dev/signature/email-signature.html`: open it and press **Copy**. It
   isn't part of the sites; for real use, its images (`dev/signature/img/`) have to be online.

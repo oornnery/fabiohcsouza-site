@@ -10,11 +10,13 @@
 ## Newsletter (blog)
 
 - Only the e-mail address, with the page's language. Subscribing sends a confirmation link; only confirmed addresses
-  get posts. Subscribing an address that is already there sends nothing and gives the same answer.
+  get posts. Subscribing again sends a new link only if the address isn't confirmed and the last one is over 10
+  minutes old; the answer is always the same.
 - The confirm and unsubscribe links open a page with a button; only the button acts, because mail scanners open every
   link they see. The links are signed with `SECRET_KEY` and stop working once the address is deleted.
 - Posts go out only with `send-post <slug> --send`: published posts, confirmed addresses, once each, in the
   subscriber's language when the post has it.
+- `NEWSLETTER=false` hides the form and answers 404 on `/subscribe`; the links in e-mails already sent keep working.
 - Every post e-mail has an unsubscribe link and one-click unsubscribe for Gmail, Yahoo and Apple Mail (RFC 8058).
   Unsubscribing deletes the address at once.
 
