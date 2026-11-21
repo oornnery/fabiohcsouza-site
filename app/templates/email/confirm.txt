@@ -1,0 +1,7 @@
+Subject: {{ _("Confirm your subscription") }}
+
+{% trans %}Someone, probably you, asked for new posts from {{ blog }} at this address. To confirm, open this link and press the button:{% endtrans %}
+
+{{ link }}
+
+{{ _("If it wasn't you, ignore this e-mail. Nothing else will arrive.") }}

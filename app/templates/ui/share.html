@@ -1,0 +1,16 @@
+{#- share(p, cls, title, langs): copy link (post.js) + X / LinkedIn / WhatsApp intents, plain links to the canonical URL. -#}
+{% macro share(p, cls, title, langs=none) -%}
+{% set url = p.canonical(langs) %}
+{% set intents = {
+  "xcom": ("https://x.com/intent/post?url=" ~ (url | urlencode) ~ "&text=" ~ (title | urlencode), _("Share on X")),
+  "linkedin": ("https://www.linkedin.com/sharing/share-offsite/?url=" ~ (url | urlencode), _("Share on LinkedIn")),
+  "whatsapp": ("https://wa.me/?text=" ~ ((title ~ " " ~ url) | urlencode), _("Share on WhatsApp")),
+} %}
+<div class="share {{ cls }}">
+          <span class="share-label">{{ _("Share") }}</span>
+          <button type="button" class="tap share-btn" data-copy="{{ url }}" aria-label="{{ _('Copy link') }}" title="{{ _('Copy link') }}">{{ ui.icon(p, "link") }}<span class="copied" role="status">{{ _("Copied") }}</span></button>
+{% for name, (href, label) in intents.items() %}
+          <a class="tap share-btn" href="{{ href }}" target="_blank" rel="noopener noreferrer" aria-label="{{ label }}" title="{{ label }}">{{ ui.icon(p, name) }}</a>
+{% endfor %}
+        </div>
+{%- endmacro %}

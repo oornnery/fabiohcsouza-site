@@ -1,0 +1,81 @@
+{% extends "layout/base.html" %}
+{% set v = post.v(p.lang) %}
+{% set title = v.title %}
+{% set description = v.summary or v.title %}
+{% set og_type = "article" %}
+{% set og_image = p.og_image(post.image) %}
+{% set published = post.created.isoformat() %}
+{% set modified = post.updated.isoformat() %}
+{% set main_class = "home post-layout" %}
+{% set jsonld = schema.post(p, c, post) %}
+{% set langs = post.versions | list %}
+{% block main %}
+    <article class="prose" lang="{{ p.html_lang if post.translated(p.lang) else html_langs[post.source] }}">
+{% if post.series %}
+      <a class="back" href="{{ p.url('/posts/' ~ post.series.slug) }}">{{ ui.icon(p, "arrowLeft") }}{{ post.series.v(p.lang).title }} · {{ _("part %(n)s of %(total)s", n=post.series.parts.index(post) + 1, total=post.series.parts | length) }}</a>
+{% else %}
+      <a class="back" href="{{ p.url('/posts') }}">{{ ui.icon(p, "arrowLeft") }}{{ _("Posts") }}</a>
+{% endif %}
+      <div class="post-meta">
+        <time datetime="{{ published }}">{{ p.date(post.created) }}</time>
+{% if post.updated > post.created %}
+        <span>{{ _("Updated") }} <time datetime="{{ modified }}">{{ p.date(post.updated) }}</time></span>
+{% endif %}
+        <span>{{ post.read }} {{ _("min read") }}</span>
+{% set project = c.project_page(post.project) if post.project else None %}
+{% if project %}
+        <a class="tag-link" href="{{ p.url('/projects/' ~ project.slug, site='portfolio') }}">{{ _("Project") }}: {{ project.title(p.lang) }}</a>
+{% endif %}
+      </div>
+      <h1>{{ v.title }}</h1>
+{% if post.tags %}
+      <div class="post-meta post-tags">
+{% for tag in post.tags %}        <a class="tag-link" href="{{ p.url('/tags/' ~ tag) }}">#{{ tag }}</a>
+{% endfor %}
+      </div>
+{% endif %}
+{% if not post.translated(p.lang) %}
+      <p class="lang-note">{{ _("This post is only available in Portuguese for now.") if p.lang == "en" else _("This post is only available in English for now.") }}</p>
+{% endif %}
+{% if v.goal %}
+      <p class="lead">{{ v.goal }}</p>
+{% endif %}
+{% if v.toc %}
+      {#- phones (no side column): a bar that sticks to the top, names the section in view and fills as you read;
+          tap it for the full table of contents -#}
+      <details class="toc-bar">
+        <summary><span class="toc-bar-label">{{ _("On this page") }}</span><span class="toc-bar-current" data-toc-current>{{ v.toc[0][2] }}</span>{{ ui.icon(p, "chevronDown") }}</summary>
+        <nav class="toc" aria-label="{{ _('On this page') }}">
+{{ ui.toc(p, v.toc) }}        </nav>
+        <span class="toc-bar-progress" aria-hidden="true"></span>
+      </details>
+{% endif %}
+{{ v.html | safe }}
+{% if post.parts %}
+      <h2 id="parts">{{ _("Parts") }}</h2>
+      <ul class="items">
+{% for part in post.parts %}{{ ui.post_item(p, part, badge=False) }}
+{% endfor %}
+      </ul>
+{% endif %}
+{% if post.series %}{{ ui.series(p, post, "series-end") }}{% endif %}
+        {{ ui.share(p, "share-end", v.title, langs) }}
+{% if prev or next %}
+      <nav class="post-nav" aria-label="{{ _('More posts') }}">
+        {% if prev %}<a href="{{ p.url('/posts/' ~ prev.slug) }}" rel="prev"><small>{{ _("← previous") }}</small>{{ prev.v(p.lang).title }}</a>{% else %}<span></span>{% endif %}
+        {% if next %}<a class="next" href="{{ p.url('/posts/' ~ next.slug) }}" rel="next"><small>{{ _("next →") }}</small>{{ next.v(p.lang).title }}</a>{% endif %}
+      </nav>
+{% endif %}
+    </article>
+    <aside class="prose post-aside">
+      <div class="aside-sticky">
+{% if v.toc %}
+        <nav class="toc" aria-label="{{ _('On this page') }}">
+          <h2>{{ _("On this page") }}</h2>
+{{ ui.toc(p, v.toc) }}        </nav>
+{% endif %}
+{% if post.series %}{{ ui.series(p, post) }}{% endif %}
+        {{ ui.share(p, "share-aside", v.title, langs) }}
+      </div>
+    </aside>
+{% endblock %}

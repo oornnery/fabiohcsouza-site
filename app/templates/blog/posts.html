@@ -1,0 +1,22 @@
+{% extends "layout/base.html" %}
+{% set title = _("Posts") %}
+{% set description = _("Every post on the blog, newest first: VoIP, networks, automation, code and AI.") %}
+{% set jsonld = schema.posts(p, title) %}
+{% block main %}
+    <h1>{{ _("Posts") }}</h1>
+    <p class="lead">{{ _("Everything I've written, newest first.") }}</p>
+{{ ui.search(p, "posts") }}
+    <p class="archive-note" hidden>{{ _("Showing") }} <strong data-archive-label></strong> · <a href="{{ p.url('/posts') }}">{{ _("show all") }}</a></p>
+    <div data-pager data-page-size="8">
+{% for year, posts in c.blog.years().items() %}
+      <section data-year>
+        <h2>{{ year }}</h2>
+        <ul class="items">
+{% for post in posts %}{{ ui.post_item(p, post, year=False, attrs={"data-date": post.created.strftime("%Y-%m")}) }}
+{% endfor %}
+        </ul>
+      </section>
+{% endfor %}
+      {{ ui.more(p) }}
+    </div>
+{% endblock %}

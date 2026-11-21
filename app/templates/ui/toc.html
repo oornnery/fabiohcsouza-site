@@ -1,0 +1,6 @@
+{#- toc(p, toc): the post's table of contents links (h2, h3 indented). Used by the side column and the phone bar;
+    post.js marks the section in view. -#}
+{% macro toc(p, toc) -%}
+{% for level, hid, text in toc %}          <a{% if level == 3 %} class="sub"{% endif %} href="#{{ hid }}">{{ text }}</a>
+{% endfor %}
+{%- endmacro %}

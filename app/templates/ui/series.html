@@ -1,0 +1,8 @@
+{#- series(p, post, cls=""): the parts of the series a post belongs to, in order, the current one marked, and a link to the series page. -#}
+{% macro series(p, post, cls="") -%}
+        <nav class="toc {{ cls }}" aria-label="{{ _('In this series') }}">
+          <h2>{{ _("In this series") }}</h2>
+{% for part in post.series.parts %}          <a href="{{ p.url('/posts/' ~ part.slug) }}"{% if part == post %} class="active" aria-current="page"{% endif %}>{{ part.v(p.lang).title }}</a>
+{% endfor %}          <a class="all" href="{{ p.url('/posts/' ~ post.series.slug) }}">{{ _("All parts →") }}</a>
+        </nav>
+{%- endmacro %}

@@ -1,0 +1,26 @@
+{% extends "layout/base.html" %}
+{% set title = _("Timeline") %}
+{% set description = _("Every post on the blog, grouped by year and month, from the latest to the first.") %}
+{% block main %}
+{% set years = c.blog.years() %}
+    <h1>{{ _("Timeline") }}</h1>
+    <p class="lead">{% trans n=c.blog.posts | length %}Every post, by year and month. {{ n }} so far.{% endtrans %}</p>
+    <p class="year-jump">{% for year in years %}<a href="#y{{ year }}">{{ year }}</a> {% endfor %}</p>
+    <div data-pager data-page-size="3" data-page-size-sm="1" data-unit="years">
+{% for year, posts in years.items() %}
+{% set months = {} %}{% for post in posts %}{% set _ = months.setdefault(post.created.month, []).append(post) %}{% endfor %}
+      <section class="arch-year" id="y{{ year }}" data-item>
+        <h2>{{ year }} <span class="faint">{{ posts | length }}</span></h2>
+{% for m in months | sort(reverse=True) %}
+        <div class="arch-month">
+          <h3><a href="{{ p.url('/posts?m=' ~ year ~ '-' ~ '%02d' % m) }}">{{ p.month(m, full=True) }}</a> <span class="faint">{{ months[m] | length }}</span></h3>
+          <ul class="arch-list">
+{% for post in months[m] %}            <li><span class="meta">{{ '%02d' % post.created.day }}</span><span><a href="{{ p.url('/posts/' ~ post.slug) }}">{{ post.v(p.lang).title }}</a>{% if post.series %} <a class="badge" href="{{ p.url('/posts/' ~ post.series.slug) }}">{{ post.series.v(p.lang).title }}</a>{% endif %}</span></li>
+{% endfor %}          </ul>
+        </div>
+{% endfor %}
+      </section>
+{% endfor %}
+      {{ ui.more(p) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{#- post_item(p, post, year=True, attrs={}, badge=True): a blog post as an item; a part of a series carries its name, linked to the series. -#}
+{% macro post_item(p, post, year=True, attrs={}, badge=True) -%}
+{% set v = post.v(p.lang) %}
+{% set s = post.series if badge else None %}
+{{ ui.item(p, v.title, p.url('/posts/' ~ post.slug, site='blog'), v.summary, post.tags, "blog", [], p.date(post.created, year), s.v(p.lang).title if s else None, attrs, p.url('/posts/' ~ s.slug, site='blog') if s else None) }}
+{%- endmacro %}

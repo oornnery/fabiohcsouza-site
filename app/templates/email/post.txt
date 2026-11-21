@@ -1,0 +1,9 @@
+Subject: {{ title }}
+
+{{ summary }}
+
+{{ _("Read it:") }} {{ url }}
+
+--
+{% trans %}You get this because you subscribed to new posts on {{ blog }}.{% endtrans %}
+{{ _("Unsubscribe:") }} {{ unsub }}

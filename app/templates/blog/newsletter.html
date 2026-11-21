@@ -1,0 +1,30 @@
+{#- The newsletter's pages, one per `state`: form | sent (/subscribe), confirm | confirmed (/subscribe/confirm),
+    unsubscribe | unsubscribed (/unsubscribe), invalid (a link that doesn't verify). A GET only shows a button:
+    mail scanners open every link, so only the POST confirms or unsubscribes (app.api.routes.newsletter). -#}
+{% extends "layout/base.html" %}
+{% set title = _("Newsletter") %}
+{% set description = _("New posts by e-mail. One e-mail per post, nothing else.") %}
+{% set noindex = state not in ("form", "sent") %}
+{% block main %}
+    <h1>{{ _("Newsletter") }}</h1>
+{% if state in ("form", "sent") %}
+    <p class="lead">{{ _("New posts by e-mail. One e-mail per post, nothing else.") }}</p>
+{% if state == "sent" %}
+    <p class="thanks shown" role="status">{{ _("Almost there. Open the link in the e-mail I just sent to confirm.") }}</p>
+{% endif %}
+{{ ui.newsletter(p) }}
+    <p class="muted">{% trans rss=p.url("/rss.xml"), privacy=p.url("/privacy", site="portfolio") %}You confirm by e-mail first, and every e-mail has a link to unsubscribe. Prefer a feed reader? Use the <a href="{{ rss }}">RSS feed</a>. What I keep: <a href="{{ privacy }}">privacy</a>.{% endtrans %}</p>
+{% elif state in ("confirm", "unsubscribe") %}
+    <p class="lead">{{ _("Confirm your subscription?") if state == "confirm" else _("Stop getting new posts by e-mail?") }}</p>
+    <form method="post" action="{{ p.url(('/subscribe/confirm' if state == 'confirm' else '/unsubscribe') ~ '?id=' ~ id ~ '&t=' ~ t) }}">
+      <button type="submit">{{ _("Yes, subscribe me") if state == "confirm" else _("Yes, unsubscribe me") }}</button>
+    </form>
+{% elif state == "confirmed" %}
+    <p class="lead">{{ _("Subscribed. New posts will arrive by e-mail.") }}</p>
+{% elif state == "unsubscribed" %}
+    <p class="lead">{{ _("Unsubscribed. Your address was deleted.") }}</p>
+{% else %}
+    <p class="lead">{{ _("This link doesn't work. It may be incomplete, or the address was already removed.") }}</p>
+    <p><a href="{{ p.url('/subscribe') }}">{{ _("Subscribe again") }}</a></p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{#- /tags (every post) and /tags/<tag> (context: tag, posts): the same page, the tags are links between them. -#}
+{% extends "layout/base.html" %}
+{% set tag = tag | default("") %}
+{% set posts = posts | default(c.blog.posts) %}
+{% set title = ("#" ~ tag) if tag else _("Tags") %}
+{% if tag %}
+{% set description = _("Posts about %(tag)s.", tag=tag) %}
+{% else %}
+{% set description = _("Posts by topic: VoIP, networks, automation, code and AI.") %}
+{% endif %}
+{% block main %}
+    <h1>{{ title }}</h1>
+    <p class="lead">{{ description if tag else _("Pick a topic.") }}</p>
+{% set open = c.blog.tags[12:] | map("first") | select("equalto", tag) | list %}
+    <nav class="filters{{ ' open' if open }}" aria-label="{{ _('Filter by tag') }}">
+      <a href="{{ p.url('/tags') }}"{% if not tag %} aria-current="page"{% endif %}>{{ _("all") }} <span class="faint">{{ c.blog.posts | length }}</span></a>
+{% for name, n in c.blog.tags %}
+      <a href="{{ p.url('/tags/' ~ name) }}"{% if loop.index > 12 %} class="extra"{% endif %}{% if name == tag %} aria-current="page"{% endif %}>#{{ name }} <span class="faint">{{ n }}</span></a>
+{% endfor %}
+{% if c.blog.tags | length > 12 %}
+      <button type="button" class="filters-more" data-filters-more aria-expanded="{{ 'true' if open else 'false' }}" hidden>{{ _("All tags") }} ({{ c.blog.tags | length }})</button>
+{% endif %}
+    </nav>
+    <div class="list-top" data-pager data-page-size="8">
+      <ul class="items">
+{% for post in posts %}{{ ui.post_item(p, post) }}
+{% endfor %}
+      </ul>
+      {{ ui.more(p) }}
+    </div>
+{% endblock %}

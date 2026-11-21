@@ -1,0 +1,41 @@
+{% extends "layout/base.html" %}
+{% set main_class = "home" %}
+{% set jsonld = schema.blog_home(p, c) %}
+{% block main %}
+    <div class="prose">
+      <h1>{{ _("Field notes") }}</h1>
+      <p class="lead">{{ _("Notes on VoIP, networks, automation, code and AI.") }}</p>
+      <h2 id="latest"><a href="#latest">{{ _("Latest") }}</a></h2>
+      <ul class="items">
+{% for post in c.blog.posts[:5] %}{{ ui.post_item(p, post) }}
+{% endfor %}
+      </ul>
+      <p class="list-end"><a class="show-more" href="{{ p.url('/posts') }}">{{ _("All posts →") }}</a></p>
+    </div>
+
+    <aside class="prose" aria-label="{{ _('About me') }}">
+      {{ ui.section_head(p, "about-me", _("About me"), p.url('/', site='portfolio'), label=_("More →"), aria=_("More about me")) }}
+      <img class="avatar" src="{{ p.asset(me.avatar) }}" alt="{{ me.name }}" width="72" height="72" decoding="async">
+      <p>{{ c.page("about", p.lang, p.url)[0].short | safe }}</p>
+{{ ui.links(p, me, icons_only=True) }}
+
+      {{ ui.section_head(p, "tags", _("Tags"), p.url("/tags"), count=c.blog.tags | length) }}
+      <p class="tag-cloud">
+{% for tag, n in c.blog.tags[:6] %}        <a href="{{ p.url('/tags/' ~ tag) }}">#{{ tag }} <span class="faint">{{ n }}</span></a>
+{% endfor %}      </p>
+
+      {{ ui.section_head(p, "timeline", _("Timeline"), p.url("/timeline")) }}
+{% set years = c.blog.years() %}
+      <ul class="timeline">
+{% for year, posts in years.items() %}{% if loop.index <= 3 %}
+        <li class="year"><a href="{{ p.url('/timeline#y' ~ year) }}">{{ year }}</a><span>{{ posts | length }}</span></li>
+{% if loop.first %}
+{% set months = {} %}{% for post in posts %}{% set _ = months.update({post.created.month: months.get(post.created.month, 0) + 1}) %}{% endfor %}
+        <li class="months"><ul>
+{% for m in months | sort(reverse=True) %}{% if loop.index <= 3 %}          <li><a href="{{ p.url('/posts?m=' ~ year ~ '-' ~ '%02d' % m) }}">{{ p.month(m) }}</a><span>{{ months[m] }}</span></li>
+{% endif %}{% endfor %}        </ul></li>
+{% endif %}
+{% endif %}{% endfor %}
+      </ul>
+    </aside>
+{% endblock %}

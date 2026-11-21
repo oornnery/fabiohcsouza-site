@@ -1,0 +1,9 @@
+{#- newsletter(p): the subscribe form (forms.js): POSTs JSON to the blog's /api/subscribe, or a plain POST + redirect. -#}
+{% macro newsletter(p) -%}
+    <form class="contact-form" data-form action="{{ p.url('/api/subscribe', site='blog') }}" method="post">
+{{ ui.field(p, "email", _("Email"), type="email", full=True, autocomplete="email", placeholder=_("you@example.com"), maxlength=254) }}
+{{ ui.guards(p) }}
+      <div class="full form-foot"><button type="submit">{{ _("Subscribe →") }}</button><span class="form-status" role="status" aria-live="polite"></span></div>
+      <p class="thanks full" role="status">{{ _("Almost there. Open the link in the e-mail I just sent to confirm.") }}</p>
+    </form>
+{%- endmacro %}
