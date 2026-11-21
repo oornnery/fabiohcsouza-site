@@ -1,0 +1,13 @@
+/* ---------- code blocks (app.markdown: <figure class="code"> + Pygments classes with the "hl-" prefix) ----------
+   Syntax colors reuse the signal palette so code reads like the rest of the site in both themes. */
+.prose figure.code { margin: 1.75em 0; border-radius: var(--radius); background: var(--code-bg); overflow: hidden; }
+.prose figure.code pre { margin: 0; border-radius: 0; background: none; }
+.code-name { padding: var(--space-2) var(--space-6); border-bottom: 1px solid var(--line); color: var(--muted); font: var(--text-2xs) / 1.6 var(--font-mono); }
+
+.code .hl-c, .code .hl-c1, .code .hl-cm, .code .hl-cs, .code .hl-ch, .code .hl-cp, .code .hl-cpf { color: var(--muted); font-style: italic; }
+.code .hl-k, .code .hl-kn, .code .hl-kd, .code .hl-kr, .code .hl-kc, .code .hl-ow, .code .hl-kt { color: var(--green); }
+.code .hl-s, .code .hl-s1, .code .hl-s2, .code .hl-sb, .code .hl-sd, .code .hl-se, .code .hl-sh, .code .hl-si, .code .hl-sx, .code .hl-sr, .code .hl-ss, .code .hl-sa, .code .hl-dl { color: var(--amber); }
+.code .hl-m, .code .hl-mi, .code .hl-mf, .code .hl-mh, .code .hl-mo, .code .hl-il { color: var(--orange); }
+.code .hl-nf, .code .hl-fm, .code .hl-nc, .code .hl-nd, .code .hl-nb, .code .hl-bp { color: var(--blue); }
+.code .hl-nt, .code .hl-na { color: var(--green); }
+.code .hl-err { color: inherit; }

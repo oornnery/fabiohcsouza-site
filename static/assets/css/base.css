@@ -1,0 +1,42 @@
+/* ---------- base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--space-8); }
+body {
+  margin: 0 auto;
+  max-width: var(--page-max);
+  padding: var(--space-8) var(--page-pad-x);
+  background: var(--bg);
+  color: var(--text);
+  font: var(--text-base) / var(--leading-body) var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, .items .title { font-family: var(--font-heading); }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }   /* width/height attributes reserve the space; the image keeps its proportions when narrowed */
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent-ui); outline-offset: 3px; border-radius: 2px; }
+::selection { background: color-mix(in srgb, var(--blue-ui) 35%, transparent); color: var(--fg); }
+.icon { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 560px) { body { padding: var(--space-8) var(--page-pad-x-sm); } }
+
+/* ---------- utilities ---------- */
+.muted { color: var(--muted); }
+.faint { color: var(--faint); }
+.meta { color: var(--faint); font: 400 var(--text-xs) / var(--leading-snug) var(--font-mono); white-space: nowrap; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip {
+  position: absolute; left: var(--space-4); top: -100px; z-index: 10; padding: var(--space-2) var(--space-4);
+  background: var(--fg); color: var(--bg); font: 500 var(--text-sm) var(--font-sans); text-decoration: none; border-radius: var(--radius);
+}
+.skip:focus { top: var(--space-4); }
+[hidden], [data-item][hidden], .show-more[hidden] { display: none !important; }
+
+/* tap-sized icon button (≥ 32px hit area, icon stays small) */
+.tap { display: inline-grid; place-items: center; min-width: var(--tap); min-height: var(--tap); padding: 0; background: none; border: 0; cursor: pointer; color: var(--muted); text-decoration: none; transition: color var(--dur); }
+
+/* ---------- hit areas for small standalone links (WCAG 2.2 target size) ---------- */
+.prose .arch-month h3 a, .prose ul.timeline a, .post-meta .tag-link { display: inline-block; min-width: 24px; min-height: 24px; padding: 0.2em 0; }
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }

@@ -1,0 +1,4 @@
+{#- tag_href(p, kind, tag): where a tag links. "blog" -> the tag's page; "projects" -> the Projects search. -#}
+{% macro tag_href(p, kind, tag) -%}
+{{ p.url('/tags/' ~ tag, site='blog') if kind == "blog" else p.url('/projects?q=%23' ~ tag, site='portfolio') }}
+{%- endmacro %}

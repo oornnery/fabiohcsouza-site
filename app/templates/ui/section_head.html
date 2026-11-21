@@ -1,0 +1,6 @@
+{#- section_head(p, id, title, href=None, label=_("All →"), count=None): a heading with a "see all" link on the right.
+    Texts arrive translated (_() where they are written). -#}
+{% macro section_head(p, id, title, href=None, label=None, count=None, tag="h2", aria=None) -%}
+<div class="aside-head"><{{ tag }} id="{{ id }}"><a href="#{{ id }}">{{ title }}</a></{{ tag }}>
+{%- if href %}<a class="all" href="{{ href }}"{% if aria %} aria-label="{{ aria }}"{% endif %}>{{ (label or _("All →")) if count is none else _("All") }}{% if count is not none %} <span class="faint">{{ count }}</span> →{% endif %}</a>{% endif %}</div>
+{%- endmacro %}

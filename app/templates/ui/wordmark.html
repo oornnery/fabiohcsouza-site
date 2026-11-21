@@ -1,0 +1,4 @@
+{#- wordmark(p): status LED + ~/<domain>. The LED cycles the 4 signal colors; on error pages html[data-status] fixes it. -#}
+{% macro wordmark(p) -%}
+<a class="wordmark" href="{{ p.url('/') }}" aria-label="{{ p.domain }} — {{ _('Home') }}"><span class="led" aria-hidden="true"></span><span class="wm-path">~/</span><span class="wm-name">{{ p.domain }}</span></a>
+{%- endmacro %}

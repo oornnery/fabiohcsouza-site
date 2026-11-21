@@ -1,0 +1,69 @@
+{#- <head>: SEO (title, description, canonical, hreflang, Open Graph, Twitter, JSON-LD), icons, feeds, CSS, JS.
+    Pages set: title, description, og_type, og_image, jsonld (dict or list), published/modified (posts),
+    langs (the languages this page exists in; default: all).
+    No inline script or style: the CSP only allows files from 'self' (JSON-LD is data, not script). -#}
+{% set page_title = title | default("") %}
+{% set langs = langs | default(none) %}
+{% set page_desc = description | default(_("VoIP engineer, network engineer and developer. SIP, SBCs, BGP, automation and software.") if p.site == "portfolio" else _("Field notes by Fabio Souza on VoIP, networks, automation, code and AI.")) %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{#- search results cut titles around 60 chars: the site suffix only goes in when it fits -#}
+{% set full_title = (page_title ~ " · " ~ p.domain) if page_title else (me.name ~ " · " ~ p.domain) %}
+  <title>{{ full_title if full_title | length <= 62 else page_title }}</title>
+  <meta name="description" content="{{ page_desc }}">
+  <meta name="author" content="{{ me.name }}">
+{% if p.status >= 400 or noindex | default(false) %}{#- error pages -#}
+  <meta name="robots" content="noindex">
+{% else %}
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="{{ p.canonical(langs) }}">
+{% for lang in p.langs(langs) %}
+  <link rel="alternate" hreflang="{{ html_langs[lang] }}" href="{{ p.canonical([lang]) }}">
+{% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ p.canonical(p.langs(langs)[:1]) }}">
+{% endif %}
+  <meta property="og:type" content="{{ og_type | default('website') }}">
+  <meta property="og:site_name" content="{{ p.domain }}">
+  <meta property="og:locale" content="{{ p.og_locale }}">
+  <meta property="og:title" content="{{ page_title or me.name }}">
+  <meta property="og:description" content="{{ page_desc }}">
+  <meta property="og:url" content="{{ p.canonical(langs) }}">
+  <meta property="og:image" content="{{ og_image | default(p.og_image()) }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ page_title or me.name }}">
+{% if published is defined %}
+  <meta property="article:published_time" content="{{ published }}">
+  <meta property="article:modified_time" content="{{ modified }}">
+  <meta property="article:author" content="{{ p.settings.portfolio_url }}">
+{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)">
+  <meta name="fs:sprite" content="{{ p.asset('img/icons.svg') }}">
+{% if p.lang != "en" %}  <meta name="fs:strings" content="{{ p.js_strings }}">
+{% endif %}
+{#- favicon dot = header LED: green, amber on 4xx, orange on 500, blue on 503 (maintenance) -#}
+{% set fav = "" if p.status < 400 else "-maint" if p.status == 503 else "-error" if p.status >= 500 else "-warn" %}
+  <link rel="icon" href="{{ p.asset('img/favicon' ~ fav ~ '.svg') }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+{% if p.shows("blog") %}
+  <link rel="alternate" type="application/rss+xml" title="{{ me.name }} · Field notes" href="{{ p.url('/rss.xml', site='blog', absolute=True) }}">
+{% endif %}
+{#- the two fonts above the fold, fetched with the CSS instead of after it (same URL as fonts.css: no ?v=) -#}
+{% for font in ["fraunces-opsz-normal", "geist-wght-normal"] %}
+  <link rel="preload" href="/assets/fonts/{{ font }}.woff2" as="font" type="font/woff2" crossorigin>
+{% endfor %}
+{% for css in ["fonts", "tokens", "base", "layout", "prose", "components", "forms", "pages", "code", "effects"] %}
+  <link rel="stylesheet" href="{{ p.asset('css/' ~ css ~ '.css') }}">
+{% endfor %}
+  <script src="{{ p.asset('js/theme-init.js') }}"></script>
+{% for js in ["core", "theme", "wordmark", "nav", "pager", "search", "filters", "post", "forms"] %}
+  <script src="{{ p.asset('js/' ~ js ~ '.js') }}" defer></script>
+{% endfor %}
+{% if p.settings.cf_analytics_token %}
+  <script src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ p.settings.cf_analytics_token }}"}' defer></script>
+{% endif %}
+{% if jsonld is defined %}
+  <script type="application/ld+json">{{ jsonld | json_ld }}</script>
+{% endif %}

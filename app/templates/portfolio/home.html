@@ -1,0 +1,26 @@
+{% extends "layout/base.html" %}
+{% set main_class = "home" %}
+{% set jsonld = schema.portfolio_home(p, c) %}
+{% block main %}
+    <div class="prose">
+{% include "portfolio/_about.html" %}
+    </div>
+
+    <aside class="prose" aria-label="{{ _('Projects') }} · {{ _('Posts') }}">
+      {{ ui.section_head(p, "projects", _("Projects"), p.url("/projects")) }}
+      <ul class="items compact">
+{% for w in c.work[:2] %}{{ ui.project_item(p, w, badge=_("Work")) }}
+{% endfor %}
+{% for w in c.open_source[:1] %}{{ ui.project_item(p, w, badge=_("Open Source")) }}
+{% endfor %}
+      </ul>
+{% if p.shows("blog") and c.blog.posts %}{#- BLOG=true (app.core.config) -#}
+
+      {{ ui.section_head(p, "posts", _("Posts"), p.url("/posts", site="blog")) }}
+      <ul class="items compact">
+{% for post in c.blog.posts[:2] %}{{ ui.post_item(p, post) }}
+{% endfor %}
+      </ul>
+{% endif %}
+    </aside>
+{% endblock %}

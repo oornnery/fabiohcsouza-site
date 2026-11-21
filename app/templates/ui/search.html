@@ -1,0 +1,12 @@
+{#- search(p, what): the underline search field (search.js). -#}
+{% macro search(p, what) -%}
+{% set label, placeholder = {"posts": (_("Search posts"), _("Search posts…")), "projects": (_("Search projects"), _("Search projects…"))}[what] -%}
+    <div class="search" role="search">
+      {{ ui.icon(p, "search") }}
+      <label class="sr-only" for="search-{{ what }}">{{ label }}</label>
+      <input id="search-{{ what }}" type="search" data-search placeholder="{{ placeholder }}" autocomplete="off" spellcheck="false" maxlength="200" enterkeyhint="search">
+      <span class="search-count" data-search-count aria-live="polite"></span>
+      <button class="search-clear" type="button" data-search-clear aria-label="{{ _('Clear search') }}" title="{{ _('Clear search') }}" hidden>{{ ui.icon(p, "x") }}</button>
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+{%- endmacro %}

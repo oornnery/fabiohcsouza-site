@@ -1,0 +1,20 @@
+/* ---------- fonts: self-hosted, latin subset (covers Portuguese) ----------
+   Variable fonts from Fontsource 5.3.0: Fraunces (opsz + wght, normal and italic), Geist and Geist Mono (wght).
+   Served from this domain: no request to Google (visitor IPs stay here, LGPD) and the CSP stays 'self' only.
+   License: SIL Open Font License 1.1 (assets/fonts/OFL.txt). */
+@font-face {
+  font-family: "Fraunces"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("../fonts/fraunces-opsz-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces"; font-style: italic; font-weight: 100 900; font-display: swap;
+  src: url("../fonts/fraunces-opsz-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("../fonts/geist-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("../fonts/geist-mono-wght-normal.woff2") format("woff2");
+}

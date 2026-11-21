@@ -1,0 +1,10 @@
+{#- About body (content/pages/about/): used by the portfolio home (left column) and /about.
+    Context: c.page("about", …) = (fields, body_html), in the page's language. -#}
+{% set fields, html = c.page("about", p.lang, p.url) %}
+      <h1>{{ fields.title | striptags }}</h1>
+      <img class="avatar" src="{{ p.asset(me.avatar) }}" alt="{{ me.name }}" width="72" height="72" decoding="async">
+      <p class="lead">{{ fields.lead | safe }}<br><a class="where" href="https://www.google.com/maps/place/{{ me.location.en | urlencode }}">{{ ui.icon(p, "mappin") }}{{ me.location[p.lang] }}</a></p>
+{{ html | safe }}
+      <p class="tag-cloud">{% for k in me.knows_about %}<span>#{{ k.split("(")[-1].rstrip(")") | lower | replace(" ", "-") }}</span>{% endfor %}</p>
+      <p class="open-to"><span class="dot" aria-hidden="true"></span><span>{{ fields.open_to | safe }}</span></p>
+{{ ui.links(p, me) }}

@@ -1,0 +1,18 @@
+{#- item(...): one row of a list (post or project): meta → title [badge, a link with badge_href] → summary → tags + links. -#}
+{% macro item(p, title, href=None, desc="", tags=[], tag_kind="blog", links=[], meta="", badge=None, attrs={}, badge_href=None) -%}
+        <li class="item" data-item{% for k, v in attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+          <span class="item-main">
+            {%- set t -%}
+              {%- if href %}<a class="title" href="{{ href }}">{{ title }}</a>{% else %}<span class="title">{{ title }}</span>{% endif -%}
+            {%- endset -%}
+            {%- if badge %}<span class="title-row">{{ t }}{% if badge_href %}<a class="badge" href="{{ badge_href }}">{{ badge }}</a>{% else %}<span class="badge">{{ badge }}</span>{% endif %}</span>{% else %}{{ t }}{% endif -%}
+            <span class="desc">{{ desc }}</span>
+            <span class="item-foot"><span class="item-tags">
+              {%- for tg in tags %}<a class="tag-link" href="{{ ui.tag_href(p, tag_kind, tg) }}">#{{ tg }}</a>{% endfor -%}
+            </span><span class="item-links">
+              {%- for kind, url in links %}<a href="{{ url }}"{% if url.startswith('http') %} rel="noopener noreferrer"{% endif %}>{{ ui.icon(p, {'repo': 'github', 'site': 'external', 'post': 'filetext'}[kind]) }}{{ {'repo': _('repo'), 'site': _('site'), 'post': _('post')}[kind] }}</a>{% endfor -%}
+            </span></span>
+          </span>
+          <span class="meta">{{ meta }}</span>
+        </li>
+{%- endmacro %}

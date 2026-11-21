@@ -1,0 +1,24 @@
+{% extends "layout/base.html" %}
+{% set title = _("Projects") %}
+{% set description = _("Projects by Fabio Souza: open source code and internal work on SIP, voice networks, automation and web apps.") %}
+{% set jsonld = schema.projects(p, c, title) %}
+{% block main %}
+    <h1>{{ _("Projects") }}</h1>
+    <p class="lead">{{ _("Projects from work and open source.") }}</p>
+{{ ui.search(p, "projects") }}
+{% for gid, gtitle, note, items in [
+  ("work", _("Work"), _("Projects without public code."), c.work),
+  ("open-source", _("Open Source"), _("Side projects and experiments with public code."), c.open_source)] %}
+    <section aria-labelledby="{{ gid }}">
+      <h2 id="{{ gid }}"><a href="#{{ gid }}">{{ gtitle }}</a></h2>
+      <p class="muted section-note">{{ note }}</p>
+      <div data-pager data-page-size="5">
+        <ul class="items">
+{% for w in items %}{{ ui.project_item(p, w) }}
+{% endfor %}
+        </ul>
+        {{ ui.more(p) }}
+      </div>
+    </section>
+{% endfor %}
+{% endblock %}

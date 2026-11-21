@@ -1,0 +1,13 @@
+{#- contact(p): the contact form (forms.js): POSTs JSON to /api/contact, or a plain POST + redirect without JS. -#}
+{% macro contact(p) -%}
+    <form class="contact-form" data-form action="{{ p.url('/api/contact') }}" method="post">
+{{ ui.field(p, "subject", _("Subject"), full=True, placeholder=_("What's it about?"), minlength=3, maxlength=120) }}
+{{ ui.field(p, "name", _("Name"), autocomplete="name", placeholder=_("Your name"), minlength=2, maxlength=80) }}
+{{ ui.field(p, "email", _("Email"), type="email", autocomplete="email", placeholder=_("you@example.com"), maxlength=254) }}
+{{ ui.field(p, "phone", _("Phone"), type="tel", required=False, full=True, autocomplete="tel", placeholder=_("+1 555 …"), maxlength=30, optional=True) }}
+{{ ui.field(p, "message", _("Message"), full=True, minlength=10, maxlength=5000, rows=6) }}
+{{ ui.guards(p) }}
+      <div class="full form-foot"><button type="submit">{{ _("Send message →") }}</button><span class="form-status" role="status" aria-live="polite"></span></div>
+      <p class="thanks full" role="status">{{ _("Message received. I'll reply within two days.") }}</p>
+    </form>
+{%- endmacro %}

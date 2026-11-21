@@ -1,0 +1,7 @@
+{% extends "layout/base.html" %}
+{% set title = _("About") %}
+{% set description = _("About Fabio Souza: VoIP and network engineer at net2phone Brazil, developer.") %}
+{% set jsonld = schema.about(p, c) %}
+{% block main %}
+{% include "portfolio/_about.html" %}
+{% endblock %}

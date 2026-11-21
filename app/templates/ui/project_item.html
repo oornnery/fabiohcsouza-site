@@ -1,0 +1,10 @@
+{#- project_item(p, w, badge=None): a project: title to its page (/projects/<slug>; a project post: the post), the date of its
+    last update (or the year), links: repo, site, post. -#}
+{% macro project_item(p, w, badge=None) -%}
+{% set links = [] %}
+{% for kind in ["repo", "site", "post"] if w.links.get(kind) and (kind != "post" or p.shows("blog")) %}
+{% set _ = links.append((kind, p.url('/posts/' ~ w.links.post, site='blog') if kind == "post" else w.links[kind])) %}
+{% endfor %}
+{% set href = p.url('/projects/' ~ w.slug, site='portfolio') if w.slug else (links[0][1] if links else None) %}
+{{ ui.item(p, w.title(p.lang), href, w.desc[p.lang], w.tags, "projects", links, p.date(w.updated) if w.updated else (w.year or ""), badge) }}
+{%- endmacro %}

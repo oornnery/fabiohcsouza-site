@@ -1,0 +1,17 @@
+{% extends "layout/base.html" %}
+{% set title = _("Contact") %}
+{% set description = _("Tell me what you need.") %}
+{% set main_class = "contact-layout" %}
+{% set jsonld = schema.contact(p, c) %}
+{% block main %}
+    <div class="prose contact-intro">
+      <h1>{{ _("Contact") }}</h1>
+      <p class="lead">{{ _("Tell me what you need.") }}</p>
+{% if sent %}
+      <p class="thanks shown" role="status">{{ _("Message received. I'll reply within two days.") }}</p>
+{% endif %}
+      <p class="muted contact-direct">{{ _("Or reach me directly:") }}</p>
+{{ ui.links(p, me, icons_only=True) }}
+    </div>
+{{ ui.contact(p) }}
+{% endblock %}

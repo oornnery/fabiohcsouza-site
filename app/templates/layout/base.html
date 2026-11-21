@@ -1,0 +1,18 @@
+{#- Page skeleton for both sites.
+    Context: p (app.utils.web.Page), c (app.content.Content), me (content/site.yml).
+    Pages may set (top level, before blocks): title, description, og_type, og_image, jsonld, main_class.
+    Block: main. -#}
+<!doctype html>
+<html lang="{{ p.html_lang }}"{% if p.status >= 400 %} data-status="{{ p.status }}"{% endif %}>
+<head>
+{% include "layout/head.html" %}
+</head>
+<body>
+  <a class="skip" href="#main">{{ _("Skip to content") }}</a>
+{% include "layout/header.html" %}
+  <main id="main" class="{{ main_class | default('page prose') }}">
+{% block main %}{% endblock %}
+  </main>
+{% include "layout/footer.html" %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+{#- Footer: brand, the menus of the sites present (app.api.pages), elsewhere (with icons), copyright + the four status LEDs. -#}
+  <footer class="site-footer">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        {{ ui.wordmark(p) }}
+        <p>{{ _("VoIP engineer, network engineer and developer") }}</p>
+      </div>
+{% for site, name, heading in [("portfolio", "Portfolio", _("Portfolio")), ("blog", "Blog", "Blog")] if p.shows(site) %}
+      <nav aria-label="{{ name }}">
+        <h2>{{ heading }}</h2>
+{% for item in menus[site] if item.footer and p.shows(item.site) %}
+        <a href="{{ p.url(item.path, site=item.site) }}">{{ _(item.label) }}</a>
+{% endfor %}
+      </nav>
+{% endfor %}
+      <nav aria-label="{{ _('Elsewhere') }}">
+        <h2>{{ _("Elsewhere") }}</h2>
+        <a href="{{ me.socials.github }}" rel="me">{{ ui.icon(p, "github") }}GitHub</a>
+        <a href="{{ me.socials.linkedin }}" rel="me">{{ ui.icon(p, "linkedin") }}LinkedIn</a>
+        <a href="mailto:{{ me.email }}">{{ ui.icon(p, "mail") }}{{ _("Email") }}</a>
+        <a href="{{ me.socials.whatsapp }}">{{ ui.icon(p, "whatsapp") }}WhatsApp</a>
+      </nav>
+    </div>
+    <p class="foot-bottom"><span>© {{ now().year }} {{ me.name }} · <a href="{{ p.url('/about', site='portfolio') }}">{{ me.location[p.lang] }}</a></span><span class="leds" aria-hidden="true"><i></i><i></i><i></i><i></i></span></p>
+  </footer>

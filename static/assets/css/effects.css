@@ -1,0 +1,57 @@
+/* ---------- wordmark: status LED + ~/name ----------
+   <a class="wordmark"><span class="led"></span><span class="wm-path">~/</span><span class="wm-name">fabiohcsouza.dev</span></a>
+   Header: the LED pulses and cycles the four signal colors (green → blue → amber → orange) and a terminal cursor
+   blinks after the name, always. Hover: the path lights up and the pulse speeds up. The footer copy stays still.
+   On error pages <html data-status="404|500|503…"> the header keeps cycling; the status color goes to the error
+   code dot, the footer LED and the favicon (amber 4xx, orange 5xx, blue 503). */
+.wordmark { display: inline-flex; align-items: center; gap: 0; }
+.wm-path { color: var(--faint); transition: color var(--dur); }
+.wm-name::after { content: "_"; display: inline-block; width: 0.6em; margin-left: 1px; color: var(--accent-ui); opacity: 0; }
+.wordmark:hover .wm-path, .wordmark:focus-visible .wm-path { color: var(--accent-ui); }
+.site-header .wm-name::after { animation: fs-caret 1s steps(1) infinite; }
+/* first page of a visit: the name is typed key by key (wordmark.js) and the caret stays lit while it moves */
+.typing .site-header .wm-name:not(.on) { visibility: hidden; }
+.typing .site-header .wm-name::after { opacity: 1; animation: none; }
+
+.led {
+  position: relative; display: inline-block; flex: none; width: 7px; height: 7px; margin-right: 0.6em;
+  border-radius: 50%; background: var(--green-ui); color: var(--green-ui); animation: fs-cycle 8s steps(1) infinite;
+}
+/* the pulse is a ring of sparks (dotted, like the e-mail signature's LED): it grows from the dot and thins out, in the LED's
+   current color (fs-cycle sets color too, the ring uses currentColor) */
+.led::after { content: ""; position: absolute; inset: 0; border: 2px dotted currentColor; border-radius: 50%; opacity: 0; }
+.site-header .led::after { animation: fs-ring 2s ease-out infinite; }
+.site-header .wordmark:hover .led::after, .site-header .wordmark:focus-visible .led::after { animation-duration: 0.8s; }
+.site-footer .led { animation: none; }   /* the footer repeats the brand, quietly */
+:root[data-status] .site-footer .led { background: var(--amber-ui); }   /* error pages: the footer LED takes the status color */
+:root[data-status^="5"] .site-footer .led { background: var(--orange-ui); }
+:root[data-status="503"] .site-footer .led { background: var(--blue-ui); }
+
+@keyframes fs-cycle {
+  0% { background: var(--green-ui); color: var(--green-ui); }
+  25% { background: var(--blue-ui); color: var(--blue-ui); }
+  50% { background: var(--amber-ui); color: var(--amber-ui); }
+  75% { background: var(--orange-ui); color: var(--orange-ui); }
+}
+@keyframes fs-ring { 0% { inset: 0; border-width: 2px; opacity: 1; } 75% { inset: -4px; border-width: 1px; opacity: 0; } 100% { opacity: 0; } }
+@keyframes fs-caret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ---------- signal colors on hover ----------
+   green = go / action · blue = information / reading · (amber and orange stay for warnings and labels) */
+.site-header .nav > a:hover { text-decoration: underline; text-decoration-color: var(--green-ui); text-decoration-thickness: 1px; }
+.tap:hover { color: var(--green); }
+.prose .aside-head .all:hover, .prose .item-links a:hover, .show-more:hover, .form-foot button:hover:not([disabled]) { color: var(--green); }
+.prose .items a.title:hover, .prose .arch-list a:hover, .prose .post-nav a:hover { color: var(--blue); }
+.prose .item-tags a:hover, .prose .tag-cloud a:hover, .post-meta .tag-link:hover, .prose .filters a:hover { color: var(--blue); }
+.prose ul.timeline a:hover, .prose .year-jump a:hover, .prose .arch-month h3 a:hover { color: var(--green); }
+.prose .links a:hover, .prose .lead .where:hover, .site-footer nav a:hover, .prose .toc a:hover { color: var(--blue); }
+.share-btn:hover { color: var(--blue); }
+
+/* status dots pulse with the same ring: "open to" (available) and the error code (its color in --c) */
+.open-to .dot, .error-page .code .dot { position: relative; }
+.open-to .dot::after, .error-page .code .dot::after { content: ""; position: absolute; inset: 0; border: 2px dotted var(--c, var(--accent-ui)); border-radius: 50%; opacity: 0; animation: fs-ring 2s ease-out infinite; }
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .led, .led::after, .site-header .led::after, .site-header .wordmark:hover .led::after, .site-header .wm-name::after, .open-to .dot::after, .error-page .code .dot::after { animation: none; }
+}

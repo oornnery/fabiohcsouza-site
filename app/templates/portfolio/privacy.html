@@ -1,0 +1,9 @@
+{% extends "layout/base.html" %}
+{% set fields, html = c.page("privacy", p.lang, p.url) %}
+{% set title = fields.title %}
+{% set description = fields.lead %}
+{% block main %}
+      <h1>{{ fields.title }}</h1>
+      <p class="lead">{{ fields.lead }}</p>
+{{ html | safe }}
+{% endblock %}

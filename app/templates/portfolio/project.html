@@ -1,0 +1,44 @@
+{#- /projects/<slug>: one project. The summary is the lead; the body of its .md (details, images) follows. -#}
+{% extends "layout/base.html" %}
+{% set title = project.title(p.lang) %}
+{% set description = project.desc[p.lang] %}
+{% set jsonld = schema.project(p, c, project) %}
+{% set gid = "work" if project.kind == "work" else "open-source" %}
+{% block main %}
+    <a class="back" href="{{ p.url('/projects#' ~ gid) }}">{{ ui.icon(p, "arrowLeft") }}{{ _("Projects") }}</a>
+    <div class="post-meta">
+      <span>{{ _("Work") if project.kind == "work" else _("Open Source") }}</span>
+{% if project.updated %}
+      <span>{{ _("Updated") }} <time datetime="{{ project.updated.isoformat() }}">{{ p.date(project.updated) }}</time></span>
+{% elif project.year %}
+      <span>{{ project.year }}</span>
+{% endif %}
+    </div>
+    <h1>{{ title }}</h1>
+{% if project.tags %}
+    <div class="post-meta post-tags">
+{% for tag in project.tags %}      <a class="tag-link" href="{{ ui.tag_href(p, 'projects', tag) }}">#{{ tag }}</a>
+{% endfor %}
+    </div>
+{% endif %}
+    <p class="lead">{{ project.desc[p.lang] }}</p>
+{% set links = [] %}
+{% for kind in ["repo", "site", "post"] if project.links.get(kind) and (kind != "post" or p.shows("blog")) %}
+{% set _ = links.append((kind, p.url('/posts/' ~ project.links.post, site='blog') if kind == "post" else project.links[kind])) %}
+{% endfor %}
+{% if links %}
+    <p class="item-links">
+{% for kind, url in links %}      <a href="{{ url }}"{% if url.startswith('http') %} rel="noopener noreferrer"{% endif %}>{{ ui.icon(p, {'repo': 'github', 'site': 'external', 'post': 'filetext'}[kind]) }}{{ {'repo': _('repo'), 'site': _('site'), 'post': _('post')}[kind] }}</a>
+{% endfor %}
+    </p>
+{% endif %}
+{{ project.html[p.lang] | safe }}
+{% set posts = c.blog.about(project.slug) if p.shows("blog") else [] %}
+{% if posts %}
+    <h2 id="posts">{{ _("Posts") }}</h2>
+    <ul class="items">
+{% for post in posts %}{{ ui.post_item(p, post) }}
+{% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

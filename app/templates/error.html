@@ -1,0 +1,23 @@
+{#- Error page for both sites. p.status sets <html data-status>, which colors the code dot, the footer LED and
+    the favicon (4xx amber, 5xx orange, 503 blue). -#}
+{% extends "layout/base.html" %}
+{% set copy = {
+  400: (_("Bad request."), _("The request is invalid. Check the address and try again.")),
+  403: (_("Forbidden."), _("This request isn't allowed.")),
+  404: (_("Page not found."), _("This address doesn't exist or has moved.")),
+  405: (_("Method not allowed."), _("This address doesn't accept this kind of request.")),
+  413: (_("Request too large."), _("The request is larger than this site accepts.")),
+  429: (_("Too many requests."), _("Try again in a minute.")),
+  500: (_("Server error."), _("The error was logged. Try again in a moment.")),
+  503: (_("Under maintenance."), _("The site is under maintenance. Try again in a few minutes.")),
+} %}
+{#- any other status: generic 4xx (the request) or 5xx (the server) text -#}
+{% set heading, text = copy.get(p.status) or (copy[500] if p.status >= 500 else (_("The request failed."), _("This request couldn't be completed. Check the address and try again."))) %}
+{% set title = heading %}
+{% set main_class = "page prose error-page" %}
+{% block main %}
+    <p class="code"><span class="dot" aria-hidden="true"></span>{{ p.status }} · {{ p.status_phrase }}</p>
+    <h1>{{ heading }}</h1>
+    <p class="lead">{{ text }}</p>
+    <p class="actions"><a href="{{ p.url('/') }}">{{ _("← Back to home") }}</a></p>{# this site's home: blog → blog, portfolio → portfolio #}
+{% endblock %}

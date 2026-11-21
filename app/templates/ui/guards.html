@@ -1,0 +1,9 @@
+{#- guards(p): the honeypot ("website") and, when configured, the Turnstile widget with its script (only pages
+    with a form talk to Cloudflare's challenge host). -#}
+{% macro guards(p) -%}
+      <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+{% if p.settings.turnstile_site_key %}
+      <div class="cf-turnstile full" data-sitekey="{{ p.settings.turnstile_site_key }}" data-response-field-name="turnstile"></div>
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+{% endif %}
+{%- endmacro %}

@@ -1,0 +1,22 @@
+{#- Header: wordmark with status LED, nav (the site's menu, app.api.pages), RSS (blog), language and theme toggles.
+    Below 800px: wordmark + menu button; the links, then RSS / language / theme, open below (nav.js). Without JS all stay visible. #}
+  <header class="site-header">
+    {{ ui.wordmark(p) }}
+    <nav class="nav" id="site-nav" aria-label="{{ _('Main') }}">
+{% for item in menus[p.site] if item.header and p.shows(item.site) %}
+      <a href="{{ p.url(item.path, site=item.site) }}"{% if item.site == p.site and p.nav == item.path %} aria-current="page"{% endif %}>{{ _(item.label) }}</a>
+{% endfor %}
+    </nav>
+    <div class="nav-icons">
+{% if p.site == "blog" %}
+      <a class="tap" href="{{ p.url('/rss.xml') }}" aria-label="{{ _('RSS feed') }}" title="{{ _('RSS feed') }}">{{ ui.icon(p, "rss") }}</a>
+{% endif %}
+{#- the next language of i18n.LANGS; the label is written in the language it leads to -#}
+{% set codes = html_langs | list %}
+{% set other = codes[(codes.index(p.lang) + 1) % codes | length] %}
+{% set view = {"en": "View in English", "pt": "Ver em português"}[other] %}
+      <a class="tap lang-toggle" href="{{ p.url(p.path, lang=other) }}" hreflang="{{ html_langs[other] }}" lang="{{ html_langs[other] }}" aria-label="{{ view }}" title="{{ view }}">{{ ui.icon(p, "languages") }}<span>{{ p.lang | upper }}</span></a>
+      <button class="tap theme-toggle" type="button" aria-label="{{ _('Toggle theme') }}" title="{{ _('Toggle theme') }}">{{ ui.icon(p, "moon") }}</button>
+    </div>
+    <button class="tap menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="{{ _('Menu') }}" title="{{ _('Menu') }}">{{ ui.icon(p, "menu") }}{{ ui.icon(p, "x") }}</button>
+  </header>

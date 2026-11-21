@@ -1,0 +1,4 @@
+{#- icon(p, name): a symbol from /assets/img/icons.svg. Decorative: pair it with text or an aria-label. -#}
+{% macro icon(p, name, cls="icon") -%}
+<svg class="{{ cls }}" aria-hidden="true"><use href="{{ p.asset('img/icons.svg') }}#i-{{ name }}"/></svg>
+{%- endmacro %}

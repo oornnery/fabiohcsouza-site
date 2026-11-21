@@ -1,0 +1,65 @@
+/* ---------- post ---------- */
+.prose .back { display: inline-flex; align-items: center; gap: 0.4em; padding: var(--space-1) 0; color: var(--muted); font: 400 var(--text-sm) var(--font-sans); text-decoration: none; }
+.prose .back:hover { color: var(--fg); }
+.post-meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); margin: var(--space-6) 0 var(--space-3); color: var(--faint); font: var(--text-xs) var(--font-mono); }
+.post-meta .tag-link { color: var(--muted); font-weight: 400; text-decoration: none; }
+.post-tags { gap: 0 var(--space-3); margin: calc(-1 * var(--space-2)) 0 var(--space-6); }   /* under the title, a line of their own */
+.post-layout article h1 { margin-top: 0; }
+
+.share { display: flex; align-items: center; gap: var(--space-1); margin-top: var(--space-12); font-family: var(--font-sans); }
+.share-label { margin-right: var(--space-2); color: var(--faint); font: 500 var(--text-2xs) / 1.6 var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-label); }
+.share-btn { position: relative; border-radius: var(--radius); transition: color var(--dur), background var(--dur); }
+.share-btn:hover { background: var(--code-bg); }
+.share-btn .icon { width: 1rem; height: 1rem; }
+.share-btn .copied { position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -4px); color: var(--green); font: var(--text-2xs) var(--font-mono); white-space: nowrap; opacity: 0; transition: opacity var(--dur); pointer-events: none; }
+.share-btn.done .copied { opacity: 1; }
+.share-aside { flex-wrap: wrap; margin-top: var(--space-8); }
+.share-aside .share-label { flex-basis: 100%; margin-bottom: var(--space-1); }
+.share-aside .share-btn:first-of-type { margin-left: calc((var(--tap) - 1rem) / -2); }
+@media (min-width: 768px) { .share-end, .series-end { display: none; } }   /* the side column has them */
+
+.post-nav { display: flex; justify-content: space-between; gap: var(--space-6); margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--line); font-size: var(--text-sm); }
+.share-end + .post-nav { margin-top: var(--space-6); }
+.prose .post-nav a { color: var(--fg); text-decoration: none; }
+.prose .post-nav a:hover { text-decoration: underline; text-decoration-color: var(--blue-ui); }
+.post-nav small { display: block; color: var(--faint); font: var(--text-2xs) var(--font-mono); }
+.post-nav .next { text-align: right; }
+
+.post-aside .aside-sticky { position: sticky; top: var(--space-8); margin-top: 5.5rem; }
+.toc { display: flex; flex-direction: column; gap: var(--space-1); font: var(--text-sm) var(--font-body); }
+.prose .toc h2 { margin: 0 0 var(--space-1); color: var(--faint); font: 500 var(--text-2xs) / 1.6 var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-label); }
+.prose .toc a { padding: 0.2em 0; color: var(--muted); font-weight: 400; text-decoration: none; }
+.toc + .toc, .prose .series-end { margin-top: var(--space-8); }   /* the series' parts, after the table of contents */
+.prose .toc a.all { margin-top: var(--space-1); color: var(--faint); }   /* "all parts", to the series page */
+.prose .toc a.sub { padding-left: var(--space-3); }
+.prose .toc a.active { color: var(--fg); }
+.prose .toc a.active::before { content: ""; display: inline-block; width: 0.75rem; height: 2px; margin-right: 0.5rem; vertical-align: middle; background: var(--accent-ui); }
+@media (max-width: 767px) { .post-aside { display: none; } }
+
+/* phones: table of contents as a bar stuck to the top (section in view + reading progress); tap to open */
+.toc-bar { display: none; }
+@media (max-width: 767px) {
+  .prose .toc-bar {
+    position: sticky; top: 0; z-index: 5; display: block; margin: var(--space-6) calc(var(--page-pad-x) * -1) 0;
+    padding: 0 var(--page-pad-x); background: var(--bg); border-bottom: 1px solid var(--line); font-family: var(--font-sans);
+  }
+  html:has(.toc-bar) { scroll-padding-top: 3.75rem; }   /* headings land below the bar */
+  .toc-bar summary { display: flex; align-items: center; gap: var(--space-3); min-height: 2.75rem; cursor: pointer; list-style: none; font-size: var(--text-sm); }
+  .toc-bar summary::-webkit-details-marker { display: none; }
+  .toc-bar-label { flex: none; color: var(--faint); font: 500 var(--text-2xs) / 1 var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-label); }
+  .toc-bar-current { flex: 1; min-width: 0; overflow: hidden; color: var(--fg); text-overflow: ellipsis; white-space: nowrap; }
+  .toc-bar summary .icon { width: 1rem; height: 1rem; color: var(--muted); transition: transform var(--dur); }
+  .toc-bar[open] summary .icon { transform: rotate(180deg); }
+  .prose .toc-bar .toc { max-height: 60vh; overflow-y: auto; padding: 0 0 var(--space-3); }
+  @media (max-width: 560px) { .prose .toc-bar { margin-inline: calc(var(--page-pad-x-sm) * -1); padding-inline: var(--page-pad-x-sm); } }
+  .toc-bar-progress { position: absolute; left: 0; bottom: -1px; width: 100%; height: 2px; background: var(--accent-ui); transform: scaleX(var(--read, 0)); transform-origin: left; }
+}
+
+/* ---------- error pages (404, 403, 429, 500, 503) ----------
+   <html data-status="…"> colors the footer LED (effects.css) and this status dot. */
+.error-page .code { display: flex; align-items: center; gap: 0.6em; margin: 0 0 var(--space-3); color: var(--faint); font: 500 var(--text-xs) var(--font-mono); }  /* same rhythm as .post-meta */
+.error-page .code .dot { margin: 0; --c: var(--amber-ui); background: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 25%, transparent); }
+:root[data-status^="5"] .error-page .code .dot { --c: var(--orange-ui); }
+:root[data-status="503"] .error-page .code .dot { --c: var(--blue-ui); }
+.error-page .actions { margin: var(--space-8) 0 0; font: var(--text-sm) var(--font-sans); }
+

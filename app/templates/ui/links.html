@@ -1,0 +1,8 @@
+{#- links(p, me, icons_only=False): GitHub, LinkedIn, Email, WhatsApp. -#}
+{% macro links(p, me, icons_only=False) -%}
+      <ul class="links{{ ' icons-only' if icons_only }}">
+{% for name, href, ico in [("GitHub", me.socials.github, "github"), ("LinkedIn", me.socials.linkedin, "linkedin"), (_("Email"), "mailto:" ~ me.email, "mail"), ("WhatsApp", me.socials.whatsapp, "whatsapp")] %}
+        <li><a href="{{ href }}"{% if icons_only %} aria-label="{{ name }}" title="{{ name }}"{% endif %}{% if ico in ('github', 'linkedin') %} rel="me"{% endif %}>{{ ui.icon(p, ico) }}{% if not icons_only %}{{ name }}{% endif %}</a></li>
+{% endfor %}
+      </ul>
+{%- endmacro %}

@@ -1,0 +1,7 @@
+Subject: Contact: {{ lead.subject }}
+
+From: {{ lead.name }} <{{ lead.email }}>
+Phone: {{ lead.phone or "-" }}
+Language: {{ lead.lang }}
+
+{{ lead.message }}
