@@ -45,16 +45,6 @@ def test_post_navigation_and_toc(blog):
     assert 'class="toc"' in html and 'href="#the-three-algorithms"' in html
 
 
-def test_demo_posts_in_development_only(settings):
-    from app import content
-
-    s = settings.model_copy(update={"demo_posts": 50})
-    dev, prod = content.get(s, drafts=True).blog, content.get(s).blog
-    assert dev and prod
-    assert sum(p.slug.startswith("demo-") for p in dev.posts) == 50
-    assert not any(p.slug.startswith("demo-") for p in prod.posts)  # production view / newsletter: no drafts, no demo
-
-
 def test_every_registered_page_is_in_the_sitemap(blog):
     sitemap = blog.get("/sitemap.xml").text
     for page, path, _ in routes.router.urls(_c):

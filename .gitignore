@@ -20,6 +20,3 @@ dist/
 .env
 .env.*
 !.env.example
-
-# generated
-dev/signature/email-signature.html

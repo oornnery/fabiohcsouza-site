@@ -35,10 +35,6 @@ class Settings(BaseSettings):
 
     database_url: str = f"sqlite:///{ROOT / '.local' / 'app.sqlite'}"
     content_dir: Path = ROOT / "content"
-    # Development only: load the first N fake posts of demo_file to test pagination, Timeline and filters.
-    # Ignored in production.
-    demo_posts: int = 0
-    demo_file: Path = ROOT / "dev" / "demo-posts.json"
 
     # Public origin of each site. One process serves both and picks the site by Host. Writes must come from the
     # same origin (CSRF). In development *.localhost resolves to this machine without any setup.

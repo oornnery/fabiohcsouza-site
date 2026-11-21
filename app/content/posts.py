@@ -11,7 +11,6 @@ type (`project` also lists it under Projects > Open Source), series + part (this
 Images go in the post's folder, next to the .md, and are written by name: ![alt](shot.png)."""
 
 import datetime as dt
-import json
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Literal
@@ -112,22 +111,7 @@ def _version(front: Front | Translation, body: str, folder: Path) -> Version:
     return Version(front.title, front.summary, front.goal, r.html, r.toc, r.words)
 
 
-def demo_posts(path: Path, n: int) -> list[Post]:
-    """The first N fake posts from dev/demo-posts.json, to exercise pagination, Timeline and filters in development.
-    Never in production (see get)."""
-    out = []
-    for d in json.loads(path.read_text(encoding="utf-8"))["posts"][:n]:
-        versions = {}
-        for lang in LANGS:
-            r = markdown.render(d[lang]["body"])
-            versions[lang] = Version(d[lang]["title"], d[lang]["summary"], "", r.html, r.toc, r.words)
-        created = dt.date.fromisoformat(d["created"])
-        out.append(Post(slug=d["slug"], created=created, updated=created, status="published", type="post",
-                        tags=d["tags"], read=d["read"], repo=None, versions=versions))
-    return out
-
-
-def load(root: Path, include_drafts: bool = False, demo: int = 0, demo_file: Path | None = None) -> Posts:
+def load(root: Path, include_drafts: bool = False) -> Posts:
     by_slug: dict[str, Post] = {}
     parent: dict[str, str] = {}  # part slug -> slug of its series
     folder_ = root / "posts"
@@ -159,8 +143,6 @@ def load(root: Path, include_drafts: bool = False, demo: int = 0, demo_file: Pat
     for slug, series in parent.items():
         if series not in by_slug:
             raise ValueError(f"posts/{slug}: series {series!r} is not a post")
-    for post in demo_posts(demo_file, demo) if demo and demo_file else []:
-        by_slug[post.slug] = post
 
     visible = [p for p in by_slug.values() if p.published or include_drafts]
     for p in visible:

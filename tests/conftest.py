@@ -24,7 +24,7 @@ def make_settings(**more) -> Settings:  # noqa: ANN003
 
 @pytest.fixture
 def settings(tmp_path) -> Settings:
-    # _env_file=None: a developer's .env (real e-mail keys, DEMO_POSTS…) never leaks into the tests
+    # _env_file=None: a developer's .env (real e-mail keys…) never leaks into the tests
     return make_settings(database_url=f"sqlite:///{tmp_path / 'test.sqlite'}", form_limit=5)
 
 

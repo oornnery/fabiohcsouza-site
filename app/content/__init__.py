@@ -56,7 +56,7 @@ class Content:
         return next((p for p in self.project_pages if p.slug == slug), None)
 
 
-def load(root: Path, include_drafts: bool = False, demo: int = 0, demo_file: Path | None = None) -> Content:
+def load(root: Path, include_drafts: bool = False) -> Content:
     pages: dict[str, dict[str, PageText]] = {}
     for path in sorted((root / "pages").glob("*/*.md")):
         name = path.parent.name
@@ -64,7 +64,7 @@ def load(root: Path, include_drafts: bool = False, demo: int = 0, demo_file: Pat
         doc = frontmatter.loads(path.read_text(encoding="utf-8"))
         pages.setdefault(name, {})[lang] = PageText({k: str(v) for k, v in doc.metadata.items()}, doc.content, path.parent)
     all_projects = projects.load(root, include_drafts)
-    blog = posts.load(root, include_drafts, demo, demo_file)
+    blog = posts.load(root, include_drafts)
     if missing := {p.project for p in blog.by_slug.values() if p.project} - {p.slug for p in all_projects}:
         raise ValueError(f"posts about projects that don't exist: {sorted(missing)}")
     open_source = [*map(posts.as_project, blog.project_posts), *(p for p in all_projects if p.kind == "open_source")]
@@ -96,13 +96,12 @@ def _stamp(root: Path) -> float:
 
 def get(settings: Settings, drafts: bool = False) -> Content:
     """The content, loaded once per process. In development it reloads when a file in content/ changes (checked at
-    most once a second), shows drafts (`drafts`) and adds DEMO_POSTS fake posts (never in production)."""
-    demo = settings.demo_posts if drafts and not settings.production else 0
-    key = (settings.content_dir, drafts, demo, settings.demo_file)
+    most once a second) and shows drafts (`drafts`)."""
+    key = (settings.content_dir, drafts)
     cached = _cache.get(key)
     if cached and (settings.production or time.monotonic() - cached[1] < 1):
         return cached[2]
     stamp = _stamp(settings.content_dir)
-    content = cached[2] if cached and cached[0] == stamp else load(settings.content_dir, drafts, demo, settings.demo_file)
+    content = cached[2] if cached and cached[0] == stamp else load(settings.content_dir, drafts)
     _cache[key] = (stamp, time.monotonic(), content)
     return content
