@@ -13,6 +13,13 @@
 {% elif project.year %}
       <span>{{ project.year }}</span>
 {% endif %}
+{% set links = [] %}
+{% for kind in ["repo", "site", "post"] if project.links.get(kind) and (kind != "post" or p.shows("blog")) %}
+{% set _ = links.append((kind, p.url('/posts/' ~ project.links.post, site='blog') if kind == "post" else project.links[kind])) %}
+{% endfor %}
+{% for kind, url in links %}
+      <a class="tag-link meta-link" href="{{ url }}"{% if url.startswith('http') %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ ui.icon(p, {'repo': 'github', 'site': 'external', 'post': 'filetext'}[kind]) }}{{ {'repo': _('repo'), 'site': _('site'), 'post': _('post')}[kind] }}</a>
+{% endfor %}
     </div>
     <h1>{{ title }}</h1>
 {% if project.tags %}
@@ -22,16 +29,6 @@
     </div>
 {% endif %}
     <p class="lead">{{ project.desc[p.lang] }}</p>
-{% set links = [] %}
-{% for kind in ["repo", "site", "post"] if project.links.get(kind) and (kind != "post" or p.shows("blog")) %}
-{% set _ = links.append((kind, p.url('/posts/' ~ project.links.post, site='blog') if kind == "post" else project.links[kind])) %}
-{% endfor %}
-{% if links %}
-    <p class="item-links">
-{% for kind, url in links %}      <a href="{{ url }}"{% if url.startswith('http') %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ ui.icon(p, {'repo': 'github', 'site': 'external', 'post': 'filetext'}[kind]) }}{{ {'repo': _('repo'), 'site': _('site'), 'post': _('post')}[kind] }}</a>
-{% endfor %}
-    </p>
-{% endif %}
 {{ project.html[p.lang] | safe }}
 {% set posts = c.blog.about(project.slug) if p.shows("blog") else [] %}
 {% if posts %}
