@@ -2,6 +2,7 @@
 app.api.routes.newsletter.
 
     POST /api/posts/<slug>/like     one more like: JSON {"likes": n} for post.js, a redirect for a plain form POST.
+    DELETE /api/posts/<slug>/like   one less (post.js, when the browser takes its like back): JSON {"likes": n}.
                                     Only the total is kept; the browser remembers it liked (localStorage)."""
 
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -38,17 +39,28 @@ def post_page(request: Request, slug: str, c: ContentDep, engine: EngineDep):
     return render_page(request, "blog/post.html", nav="/posts", likes=likes, **_post(c, slug))
 
 
-@api.post("/posts/{slug}/like")
-def like(request: Request, slug: str, c: ContentDep, settings: SettingsDep, engine: EngineDep):
+def _likeable(request: Request, slug: str, c: Content, settings: SettingsDep, engine: EngineDep) -> None:
     _post(c, slug)  # 404 for a post that doesn't exist (or is a draft in production)
     key = f"like:{security.client_key(request.state.client_ip)}"
     if not security.db_hit(engine, key, LIKE_LIMIT, settings.form_window_seconds):
         raise HTTPException(429, "too many requests")
+
+
+@api.post("/posts/{slug}/like")
+def like(request: Request, slug: str, c: ContentDep, settings: SettingsDep, engine: EngineDep):
+    _likeable(request, slug, c, settings, engine)
     with Session(engine) as s:
         count = crud.like(s, slug)
     if "application/json" in request.headers.get("accept", ""):
         return {"likes": count}
     return RedirectResponse(f"{i18n.prefix(request.state.lang)}/posts/{slug}#like", 303)
+
+
+@api.delete("/posts/{slug}/like")
+def unlike(request: Request, slug: str, c: ContentDep, settings: SettingsDep, engine: EngineDep):
+    _likeable(request, slug, c, settings, engine)
+    with Session(engine) as s:
+        return {"likes": crud.unlike(s, slug)}
 
 
 def _tag(c: Content, tag: str) -> dict:

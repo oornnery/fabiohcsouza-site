@@ -55,6 +55,7 @@
   --blue: light-dark(#0369a1, #7dd3fc);   --blue-ui: light-dark(#7cc4ec, #7dd3fc);
   --amber: light-dark(#a16207, #fcd34d);  --amber-ui: light-dark(#f59e0b, #fbbf24);
   --orange: light-dark(#b4580f, #fdba74); --orange-ui: #fb923c;
+  --red: light-dark(#b91c1c, #f87171);  /* the like heart */
   --accent: var(--green); --accent-ui: var(--green-ui);
 }
 :root[data-theme="light"] { color-scheme: light; }

@@ -143,6 +143,8 @@ def test_like_counts_and_answers_json_or_redirect(blog):
     r = blog.post("/pt/api/posts/hello-world/like", headers=origin, follow_redirects=False)  # a plain form POST
     assert r.status_code == 303 and r.headers["location"] == "/pt/posts/hello-world#like"
     assert 'data-like-count>2<' in blog.get("/posts/hello-world").text
+    assert blog.delete("/api/posts/hello-world/like", headers=origin).json() == {"likes": 1}  # taken back
+    assert blog.delete("/api/posts/nope/like", headers=origin).status_code == 404
     assert blog.post("/api/posts/nope/like", headers=origin).status_code == 404
     assert blog.post("/api/posts/hello-world/like").status_code == 403  # no Origin: CSRF guard
 

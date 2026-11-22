@@ -19,6 +19,7 @@ RESEND_AFTER = timedelta(minutes=10)  # a second subscribe of an unconfirmed add
 
 
 LIKE = text("INSERT INTO post_like (slug, count) VALUES (:slug, 1) ON CONFLICT (slug) DO UPDATE SET count = count + 1 RETURNING count")
+UNLIKE = text("UPDATE post_like SET count = max(count - 1, 0) WHERE slug = :slug RETURNING count")
 
 
 # ---- likes
@@ -28,6 +29,13 @@ def like(session: Session, slug: str) -> int:
     count = session.connection().execute(LIKE, {"slug": slug}).scalar_one()
     session.commit()
     return count
+
+
+def unlike(session: Session, slug: str) -> int:
+    """One like less, never below zero; returns the new total."""
+    count = session.connection().execute(UNLIKE, {"slug": slug}).scalar_one_or_none()
+    session.commit()
+    return count or 0
 
 
 def likes(session: Session, slug: str) -> int:
