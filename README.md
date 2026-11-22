@@ -7,7 +7,7 @@ My portfolio and blog posts.
 | Site | Domain |
 | --- | --- |
 | Professional portfolio | [fabiohcsouza.dev](https://fabiohcsouza.dev) |
-| Blog: notes on subjects I'm into: VoIP, networks, automation, labs, development and AI | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
+| Blog: writing on VoIP, networks, automation, development and AI | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
 
 ![The portfolio home](docs/screenshots/home-light.png)
 

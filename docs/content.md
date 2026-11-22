@@ -34,7 +34,7 @@ WebP next to each PNG or JPEG, and the pages then use the WebP. The images of a 
 ---
 title: sipx
 summary: An async SIP library for Python, in the style of httpx.
-kind: open_source            # or work (no public code)
+kind: open_source            # or work (professional: at work or for a client)
 updated: 2026-06-14          # the last commit; `python -m app projects-dates` reads it from GitHub
 year: 2025                   # optional, shown when there is no updated
 tags: [python, sip, voip]

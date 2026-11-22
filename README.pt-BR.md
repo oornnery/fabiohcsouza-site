@@ -7,7 +7,7 @@ Meu portfólio e posts do blog.
 | Site | Domínio |
 | --- | --- |
 | Portfólio profissional | [fabiohcsouza.dev](https://fabiohcsouza.dev) |
-| Blog: notas sobre assuntos que me interessam: VoIP, redes, automação, laboratórios, desenvolvimento e IA | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
+| Blog: textos sobre VoIP, redes, automação, desenvolvimento e IA | [blog.fabiohcsouza.dev](https://blog.fabiohcsouza.dev) |
 
 ![A home do portfólio](docs/screenshots/home-light.png)
 
