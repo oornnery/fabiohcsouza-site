@@ -50,6 +50,7 @@ the front matter is the project's page. Lists show Work, then Open Source, each 
 
 ## Posts
 
+`content/posts/hello-world/` is the template: copy the folder and follow the comments in its front matter.
 `content/posts/<slug>/<slug>.md`:
 
 ```markdown
