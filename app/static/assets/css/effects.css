@@ -17,7 +17,7 @@
   position: relative; display: inline-block; flex: none; width: 7px; height: 7px; margin-right: 0.6em;
   border-radius: 50%; background: var(--green-ui); color: var(--green-ui); animation: fs-cycle 8s steps(1) infinite;
 }
-/* the pulse is a ring of sparks (dotted, like the e-mail signature's LED): it grows from the dot and thins out, in the LED's
+/* the pulse is a ring of sparks (dotted): it grows from the dot and thins out, in the LED's
    current color (fs-cycle sets color too, the ring uses currentColor) */
 .led::after { content: ""; position: absolute; inset: 0; border: 2px dotted currentColor; border-radius: 50%; opacity: 0; }
 .site-header .led::after { animation: fs-ring 2s ease-out infinite; }
