@@ -1,6 +1,6 @@
 [project]
 name = "fabiohcsouza-site"
-version = "1.9.2"
+version = "1.10.0"
 description = "fabiohcsouza.dev (portfolio) and blog.fabiohcsouza.dev: FastAPI + Jinja2, SQLite, vanilla CSS/JS"
 requires-python = ">=3.14"
 dependencies = [

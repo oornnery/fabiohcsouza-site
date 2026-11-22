@@ -1,30 +1,30 @@
-#: app/api/routes/blog.py:31 app/api/routes/portfolio.py:23
+#: app/api/routes/blog.py:60 app/api/routes/portfolio.py:23
 #: app/templates/ui/wordmark.html:3
 msgid "Home"
 msgstr "Início"
 
-#: app/api/routes/blog.py:32 app/templates/blog/post.html:17
+#: app/api/routes/blog.py:61 app/templates/blog/post.html:17
 #: app/templates/blog/posts.html:2 app/templates/blog/posts.html:6
 #: app/templates/portfolio/home.html:9 app/templates/portfolio/home.html:19
 #: app/templates/portfolio/project.html:38 app/utils/schema.py:87
 msgid "Posts"
 msgstr "Posts"
 
-#: app/api/routes/blog.py:33 app/templates/blog/home.html:28
+#: app/api/routes/blog.py:62 app/templates/blog/home.html:28
 #: app/templates/blog/tags.html:5
 msgid "Tags"
 msgstr "Tags"
 
-#: app/api/routes/blog.py:35 app/templates/blog/home.html:33
+#: app/api/routes/blog.py:64 app/templates/blog/home.html:33
 #: app/templates/blog/timeline.html:2 app/templates/blog/timeline.html:6
 msgid "Timeline"
 msgstr "Linha do tempo"
 
-#: app/api/routes/blog.py:36 app/templates/layout/footer.html:8
+#: app/api/routes/blog.py:65 app/templates/layout/footer.html:8
 msgid "Portfolio"
 msgstr "Portfólio"
 
-#: app/api/routes/blog.py:41 app/templates/blog/home.html:23
+#: app/api/routes/blog.py:70 app/templates/blog/home.html:23
 #: app/templates/blog/newsletter.html:5 app/templates/blog/newsletter.html:9
 msgid "Newsletter"
 msgstr "Newsletter"
@@ -140,7 +140,7 @@ msgid "More →"
 msgstr "Mais →"
 
 #: app/templates/blog/home.html:24 app/templates/blog/newsletter.html:6
-#: app/templates/blog/newsletter.html:11 app/templates/blog/post.html:63
+#: app/templates/blog/newsletter.html:11 app/templates/blog/post.html:66
 msgid "New posts by e-mail."
 msgstr "Posts novos por e-mail."
 
@@ -211,7 +211,7 @@ msgid "This post is only available in English for now."
 msgstr "Este post ainda está só em inglês."
 
 #: app/templates/blog/post.html:47 app/templates/blog/post.html:48
-#: app/templates/blog/post.html:76 app/templates/blog/post.html:77
+#: app/templates/blog/post.html:79 app/templates/blog/post.html:80
 msgid "On this page"
 msgstr "Nesta página"
 
@@ -219,19 +219,23 @@ msgstr "Nesta página"
 msgid "Parts"
 msgstr "Partes"
 
-#: app/templates/blog/post.html:63 app/templates/ui/newsletter.html:6
+#: app/templates/blog/post.html:63
+msgid "Like this post"
+msgstr "Curtir este post"
+
+#: app/templates/blog/post.html:66 app/templates/ui/newsletter.html:6
 msgid "Subscribe →"
 msgstr "Inscrever →"
 
-#: app/templates/blog/post.html:67
+#: app/templates/blog/post.html:70
 msgid "More posts"
 msgstr "Mais posts"
 
-#: app/templates/blog/post.html:68
+#: app/templates/blog/post.html:71
 msgid "← previous"
 msgstr "← anterior"
 
-#: app/templates/blog/post.html:69
+#: app/templates/blog/post.html:72
 msgid "next →"
 msgstr "próximo →"
 

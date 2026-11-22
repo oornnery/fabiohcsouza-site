@@ -1,7 +1,30 @@
-/* Post page: the copy-link button, the table of contents scroll spy
+/* Post page: the like button, the copy-link button, the table of contents scroll spy
    (highlights the section in view) and, on phones, the top bar: section name + reading progress (--read, 0..1). */
 FS.on(function () {
   "use strict";
+  // like: POST, show the new total; localStorage remembers this browser liked (no cookie, nothing on the server)
+  document.querySelectorAll("form[data-like]").forEach(function (form) {
+    var key = "liked:" + form.dataset.like;
+    var button = form.querySelector("button");
+    var count = form.querySelector("[data-like-count]");
+    function mark(on) {
+      button.disabled = on;
+      if (on) button.setAttribute("aria-pressed", "true"); else button.removeAttribute("aria-pressed");
+    }
+    try { mark(!!localStorage.getItem(key)); } catch (e) { /* storage blocked: the button still works */ }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      mark(true);
+      fetch(form.action, { method: "POST", headers: { Accept: "application/json" } })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (d) {
+          count.textContent = d.likes;
+          try { localStorage.setItem(key, "1"); } catch (e) { /* not remembered: fine */ }
+        })
+        .catch(function () { mark(false); });
+    });
+  });
+
   document.querySelectorAll("[data-copy]").forEach(function (b) {
     b.hidden = !navigator.clipboard;  // http:// on a LAN address: no clipboard API, no button
     b.addEventListener("click", function () {

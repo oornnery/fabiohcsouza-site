@@ -63,3 +63,11 @@
 :root[data-status="503"] .error-page .code .dot { --c: var(--blue-ui); }
 .error-page .actions { margin: var(--space-8) 0 0; font: var(--text-sm) var(--font-sans); }
 
+
+/* like: a heart and the total (post.js); filled once this browser liked the post */
+.like { margin-top: var(--space-8); }
+.like button { display: inline-flex; align-items: center; gap: 0.4em; padding: var(--space-1) var(--space-2); border-radius: var(--radius); color: var(--muted); font: var(--text-sm) var(--font-mono); transition: color var(--dur), background var(--dur); }
+.like button:hover:not([disabled]) { color: var(--orange); background: var(--code-bg); }
+.like .icon { width: 1.1rem; height: 1.1rem; fill: none; }
+.like button[aria-pressed="true"] { color: var(--orange); }
+.like button[aria-pressed="true"] .icon { fill: currentColor; }

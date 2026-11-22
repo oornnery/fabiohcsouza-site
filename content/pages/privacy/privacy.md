@@ -9,7 +9,9 @@ lead: "What this site keeps about you, for how long, and how to have it deleted.
 
 **Visits.** I count visits with Cloudflare Web Analytics, which sets no cookies and builds no profile of visitors.
 
-**IP address.** It is kept for up to 10 minutes, only to block floods of requests and form posts.
+**Likes.** Only the total per post. Your browser remembers that you liked a post (local storage, not a cookie); the server doesn't know who liked it.
+
+**IP address.** It is kept for up to 10 minutes, only to block floods of requests, form posts and likes.
 
 ## Cookies
 

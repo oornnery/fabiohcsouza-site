@@ -9,7 +9,9 @@ lead: "O que o site guarda sobre você, por quanto tempo e como pedir para apaga
 
 **Visitas.** Conto as visitas com o Cloudflare Web Analytics, que não grava cookies e não monta perfil de quem visita.
 
-**Endereço IP.** Fica guardado por até 10 minutos, só para barrar excesso de requisições e de envios de formulário.
+**Curtidas.** Só o total de cada post. Seu navegador lembra que você curtiu (armazenamento local, não é cookie); o servidor não sabe quem curtiu.
+
+**Endereço IP.** Fica guardado por até 10 minutos, só para barrar excesso de requisições, envios de formulário e curtidas.
 
 ## Cookies
 

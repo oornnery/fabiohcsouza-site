@@ -4,18 +4,35 @@ import hmac
 import time
 from datetime import timedelta
 
-from sqlalchemy import Engine
+from sqlalchemy import Engine, text
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, col, delete, func, select
 
 from .core import security
 from .core.config import Settings
 from .core.db import now
-from .models import ContactIn, Delivery, Lead, RateLimit, Subscriber
+from .models import ContactIn, Delivery, Lead, PostLike, RateLimit, Subscriber
 
 KEEP_LEADS = timedelta(days=730)  # contact messages: 2 years
 KEEP_UNCONFIRMED = timedelta(days=7)  # newsletter addresses never confirmed
 RESEND_AFTER = timedelta(minutes=10)  # a second subscribe of an unconfirmed address sends the link again after this
+
+
+LIKE = text("INSERT INTO post_like (slug, count) VALUES (:slug, 1) ON CONFLICT (slug) DO UPDATE SET count = count + 1 RETURNING count")
+
+
+# ---- likes
+
+def like(session: Session, slug: str) -> int:
+    """One more like (one atomic statement); returns the new total."""
+    count = session.connection().execute(LIKE, {"slug": slug}).scalar_one()
+    session.commit()
+    return count
+
+
+def likes(session: Session, slug: str) -> int:
+    row = session.get(PostLike, slug)
+    return row.count if row else 0
 
 
 # ---- contact

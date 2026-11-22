@@ -7,6 +7,6 @@ from .routes import blog, contact, newsletter, portfolio, seo
 
 SITES: dict[str, list[APIRouter]] = {
     "portfolio": [portfolio.router, seo.router, contact.router],
-    "blog": [blog.router, seo.router, seo.feed, newsletter.router, newsletter.api],
+    "blog": [blog.router, blog.api, seo.router, seo.feed, newsletter.router, newsletter.api],
 }
 PAGES: dict[str, Pages] = {"portfolio": portfolio.router, "blog": blog.router}

@@ -1,7 +1,7 @@
 """The database tables and the input of the public forms.
 
-Tables (SQLite; app.core.db creates them): Lead (contact messages), Subscriber and Delivery (newsletter), RateLimit
-(form counters). Personal data is kept to the minimum and deleted on a schedule (app.crud.purge).
+Tables (SQLite; app.core.db creates them): Lead (contact messages), Subscriber and Delivery (newsletter), PostLike
+(a count per post), RateLimit (form counters). Personal data is kept to the minimum and deleted on a schedule (app.crud.purge).
 
 Forms: browser checks are UX only, these models are the real boundary. Every field is length-capped; single-line
 fields reject every control character, line/paragraph separators and bidi overrides (they end up in e-mail subjects
@@ -46,6 +46,14 @@ class Delivery(SQLModel, table=True):
     slug: str = Field(primary_key=True)
     subscriber_id: int = Field(primary_key=True, foreign_key="subscriber.id", ondelete="CASCADE")
     sent_at: str = Field(default_factory=now)
+
+
+class PostLike(SQLModel, table=True):
+    """The likes of a post: only the total, nothing about who liked it."""
+
+    __tablename__ = "post_like"
+    slug: str = Field(primary_key=True)
+    count: int = 0
 
 
 class RateLimit(SQLModel, table=True):

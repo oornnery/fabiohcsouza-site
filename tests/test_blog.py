@@ -135,6 +135,24 @@ def _link(text: str) -> str:
     return m.group(1)
 
 
+def test_like_counts_and_answers_json_or_redirect(blog):
+    origin = {"Origin": B_ORIGIN}
+    assert 'data-like-count>0<' in blog.get("/posts/hello-world").text
+    r = blog.post("/api/posts/hello-world/like", headers={**origin, "Accept": "application/json"})
+    assert r.status_code == 200 and r.json() == {"likes": 1}
+    r = blog.post("/pt/api/posts/hello-world/like", headers=origin, follow_redirects=False)  # a plain form POST
+    assert r.status_code == 303 and r.headers["location"] == "/pt/posts/hello-world#like"
+    assert 'data-like-count>2<' in blog.get("/posts/hello-world").text
+    assert blog.post("/api/posts/nope/like", headers=origin).status_code == 404
+    assert blog.post("/api/posts/hello-world/like").status_code == 403  # no Origin: CSRF guard
+
+
+def test_like_rate_limit(blog):
+    headers = {"Origin": B_ORIGIN, "Accept": "application/json"}
+    codes = [blog.post("/api/posts/hello-world/like", headers=headers).status_code for _ in range(routes.LIKE_LIMIT + 1)]
+    assert codes[-2] == 200 and codes[-1] == 429
+
+
 def test_subscribe_confirm_with_a_button(blog, engine, monkeypatch):
     sent = _outbox(monkeypatch)
     r = blog.post("/pt/api/subscribe", json={"email": "Ana@Example.com"}, headers={"Origin": B_ORIGIN})

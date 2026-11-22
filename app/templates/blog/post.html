@@ -59,6 +59,9 @@
       </ul>
 {% endif %}
 {% if post.series %}{{ ui.series(p, post, "series-end") }}{% endif %}
+      <form class="like" id="like" method="post" action="{{ p.url('/api/posts/' ~ post.slug ~ '/like') }}" data-like="{{ post.slug }}">
+        <button type="submit" class="tap" aria-label="{{ _('Like this post') }}" title="{{ _('Like this post') }}">{{ ui.icon(p, "heart") }}<span data-like-count>{{ likes }}</span></button>
+      </form>
 {% if p.on("newsletter") %}
       <p class="muted">{{ _("New posts by e-mail.") }} <a href="{{ p.url('/subscribe') }}">{{ _("Subscribe →") }}</a></p>
 {% endif %}
