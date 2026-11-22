@@ -28,7 +28,7 @@
 {% endfor %}
 {% if links %}
     <p class="item-links">
-{% for kind, url in links %}      <a href="{{ url }}"{% if url.startswith('http') %} rel="noopener noreferrer"{% endif %}>{{ ui.icon(p, {'repo': 'github', 'site': 'external', 'post': 'filetext'}[kind]) }}{{ {'repo': _('repo'), 'site': _('site'), 'post': _('post')}[kind] }}</a>
+{% for kind, url in links %}      <a href="{{ url }}"{% if url.startswith('http') %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ ui.icon(p, {'repo': 'github', 'site': 'external', 'post': 'filetext'}[kind]) }}{{ {'repo': _('repo'), 'site': _('site'), 'post': _('post')}[kind] }}</a>
 {% endfor %}
     </p>
 {% endif %}
