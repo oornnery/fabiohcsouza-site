@@ -1,8 +1,8 @@
 ---
 title: Hey, I'm Fabio
-lead: "I work in VoIP engineering, computer networks and software development."
+lead: "I'm a network engineer focused on VoIP and SIP, and a full-stack developer."
 open_to: "Have an idea in mind, or need help with your PBX, fixing failed calls, a deploy, restructuring your infrastructure, building an app or an automation? [Get in touch](/contact)."
-short: "I'm Fabio. I work in VoIP engineering, networks and software development, and write about them here."
+short: "I'm Fabio, a network engineer focused on VoIP and SIP and a full-stack developer. I write about that here."
 ---
 
 I've been in telecom since 2018, and at net2phone Brazil (IDT Corporation) since 2020. I configure and maintain SBCs, SIP trunks, SS7 signaling, wholesale routes and carrier interconnects. In networking, I work with P2P links, ISP connections and BGP, and respond to critical incidents. I monitor call quality and troubleshoot with SIP traces and Wireshark captures.
