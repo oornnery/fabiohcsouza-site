@@ -3,7 +3,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         {{ ui.wordmark(p) }}
-        <p>{{ _("VoIP engineer, network engineer and developer") }}</p>
+        <p>{{ me.role[p.lang] }}</p>
       </div>
 {% for site, name, heading in [("portfolio", "Portfolio", _("Portfolio")), ("blog", "Blog", "Blog")] if p.shows(site) %}
       <nav aria-label="{{ name }}">

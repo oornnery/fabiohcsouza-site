@@ -26,7 +26,7 @@ def author(p: Page, c: Content) -> dict:
 def portfolio_home(p: Page, c: Content) -> dict:
     me, url = c.site, p.settings.portfolio_url
     person = {
-        **author(p, c), "image": f"{url}/assets/{me['avatar']}", "email": f"mailto:{me['email']}", "jobTitle": me["role"],
+        **author(p, c), "image": f"{url}/assets/{me['avatar']}", "email": f"mailto:{me['email']}", "jobTitle": me["role"][p.lang],
         "worksFor": {"@type": "Organization", "name": me["company"]},
         "address": {"@type": "PostalAddress", "addressLocality": me["city"], "addressCountry": me["country"]},
         "knowsAbout": me["knows_about"], "sameAs": [me["socials"]["github"], me["socials"]["linkedin"]],

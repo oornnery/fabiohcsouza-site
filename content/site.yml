@@ -1,6 +1,8 @@
 # Personal data shared by both sites. Texts that need translation live in pages/*.md.
 name: Fabio Souza
-role: VoIP engineer, network engineer and developer
+role:                   # footer, page descriptions and structured data
+  en: Network engineer (VoIP/SIP) and full-stack developer
+  pt: Engenheiro de redes (VoIP/SIP) e desenvolvedor full-stack
 company: net2phone Brazil (IDT Corporation)
 location:
   en: São Paulo, Brazil
@@ -17,16 +19,16 @@ knows_about:            # schema.org structured data and the #tags closing the A
   - SIP
   - VoIP
   - SIP trunking
-  - Session Border Controllers (SBC)
+  - SBC
   - Carrier interconnection
   - Wholesale voice
   - Call routing
-  - Signalling System No. 7 (SS7)
+  - SS7
   - BGP
   - Linux
   - Firewalls
-  - Web application firewall (WAF)
-  - Amazon Web Services (AWS)
+  - WAF
+  - AWS
   - Docker
   - Network monitoring
   - Wireshark
@@ -38,5 +40,6 @@ knows_about:            # schema.org structured data and the #tags closing the A
   - Python
   - FastAPI
   - AI agents
-  - Retrieval-augmented generation (RAG)
-  - Model Context Protocol (MCP)
+  - Agent harness
+  - RAG
+  - MCP
