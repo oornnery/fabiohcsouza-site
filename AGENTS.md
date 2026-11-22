@@ -38,7 +38,7 @@ Run `uv run task check` before saying a change is done. CI runs the same, plus `
 | `tests/` | pytest; `tests/sample/posts/` are the sample posts (production ships no fake posts) |
 | `app/static/` | CSS, JavaScript, fonts and icons, served at `/assets` |
 | `docker/`, `.github/` | Dockerfile (dev/prod targets), compose files; CI that publishes the image to GHCR |
-| `.env.example` | every setting, with the production values; production reads `.env` at the root |
+| `.env.example` | every setting, with the development values; production reads `.env` at the root |
 
 ## Rules
 

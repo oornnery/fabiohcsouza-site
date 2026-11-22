@@ -44,10 +44,12 @@ cp .env.example .env
 chmod 600 .env
 ```
 
-Fill in `SMTP_USER`, `SMTP_PASSWORD`, `OWNER_EMAIL`, the Turnstile keys and, for the blog, `SECRET_KEY`
+`.env.example` holds the development values. Fill in the production ones: `PORTFOLIO_URL` and `BLOG_URL` (https),
+`CLIENT_IP_HEADER=cf-connecting-ip`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `EMAIL_FROM`,
+`OWNER_EMAIL`, the Turnstile keys and, for the blog, `SECRET_KEY`
 (`python -c "import secrets; print(secrets.token_urlsafe(32))"`; keep it: a new one breaks the links already sent).
-The URLs and the mail server are already there. With something missing or insecure the app doesn't start, and the log
-says why.
+`SMTP_HOST` is the mail server's DNS-only name: SMTP doesn't pass through the Cloudflare proxy. With something missing
+or insecure the app doesn't start, and the log says why.
 
 After the first CI run, make the image public once: GitHub > your profile > Packages > fabiohcsouza-site > Package
 settings > Change visibility > Public. GitHub creates packages as private even for a public repository; once public,

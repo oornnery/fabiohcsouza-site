@@ -39,7 +39,7 @@ uv run task dev
 ```
 
 Open http://portfolio.localhost:8000 and http://blog.localhost:8000 (`*.localhost` points to your machine); Portuguese
-is under `/pt/`. To change a setting, put that line in a `.env` (`.env.example` lists them all, with the production values). With Docker:
+is under `/pt/`. To change a setting, put that line in a `.env` (`.env.example` lists them all, with the development values). With Docker:
 `docker compose -f docker/compose.dev.yml up --build`.
 
 ## Commands
@@ -82,7 +82,7 @@ app/templates/  Jinja templates; app/locales/ the Portuguese catalog
 content/        pages, projects and posts, one folder each, images in its assets/; site.yml
 app/static/     CSS, JavaScript, fonts, icons
 docker/         Dockerfile, compose.yml (production), compose.dev.yml
-.env.example    every setting, with the production values
+.env.example    every setting, with the development values
 tests/          pytest, with sample posts in tests/sample/
 ```
 
