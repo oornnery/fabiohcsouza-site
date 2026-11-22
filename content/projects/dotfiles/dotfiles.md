@@ -2,7 +2,7 @@
 title: dotfiles
 kind: open_source
 year: 2023
-summary: My work setup, Arch Linux on WSL, managed by one command.
+summary: "My work environment: configs, scripts and the tools I use."
 tags: [shell, linux, wsl, stow]
 repo: https://github.com/oornnery/dotfiles
 updated: 2026-11-11

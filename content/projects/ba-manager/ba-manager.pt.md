@@ -1,10 +1,10 @@
 ---
 title: Gestor de BAs
-summary: Sistema que escrevi do zero para tratar BAs de interconexão, integrado ao Jira e ao e-mail.
+summary: Centraliza os BAs de interconexão da ABR Telecom, ligados ao Jira, com alertas de SLA e automações. FastAPI e Preact.
 ---
 
 BA (Boletim de Anormalidade) é como as operadoras registram uma falha na interconexão entre as redes delas, pelo
-[sistema da ABR Telecom](https://www.abrtelecom.com.br/servicos/outras-solucoes/ba%27s-de-interconexao). Escrevi este sistema do zero para tratar esses boletins.
+[sistema da ABR Telecom](https://www.abrtelecom.com.br/servicos/outras-solucoes/ba%27s-de-interconexao). Criei este sistema para tratar esses boletins.
 
 Ele fica sincronizado com a ABR pelo web service SOAP. Os BAs são abertos, alterados e encerrados pela plataforma,
 com predefinições e modelos de mensagem que preenchem o texto. Cada BA recebido abre um chamado no Jira; os dois ficam

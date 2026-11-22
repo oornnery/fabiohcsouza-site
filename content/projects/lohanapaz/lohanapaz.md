@@ -1,7 +1,7 @@
 ---
 title: Lohana Paz website
 kind: work
-summary: Website for an advertising professional, with her services, work and contact. Built with Astro.
+summary: Landing page that presents Lohana Paz's advertising work and brings clients to WhatsApp. Static Astro on Cloudflare.
 tags: [astro, typescript, cloudflare, web]
 site: https://lohanapaz.com
 year: 2026

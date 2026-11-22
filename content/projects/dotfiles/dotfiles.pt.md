@@ -1,6 +1,6 @@
 ---
 title: dotfiles
-summary: Meu ambiente de trabalho, Arch Linux no WSL, gerenciado por um comando.
+summary: "Meu ambiente de trabalho: configurações, scripts e as ferramentas que uso."
 ---
 
 Meu ambiente com Arch Linux no WSL, pronto para voltar ao Arch num desktop. Todo script pode rodar de novo sem quebrar.

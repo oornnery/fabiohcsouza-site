@@ -1,6 +1,6 @@
 ---
 title: Site da Lohana Paz
-summary: Site de uma publicitária, com serviços, trabalhos e contato. Feito em Astro.
+summary: Landing page que apresenta o trabalho da publicitária Lohana Paz e leva clientes para o WhatsApp. Astro estático na Cloudflare.
 ---
 
 O site da Lohana Paz, publicitária: uma página em português com quem ela é, os serviços, os trabalhos, como um

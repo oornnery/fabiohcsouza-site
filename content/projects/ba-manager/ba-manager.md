@@ -3,12 +3,12 @@ title: BA Manager
 kind: work
 year: 2026
 updated: 2026-11-17
-summary: A system I wrote from scratch to handle interconnection fault reports (BAs), integrated with Jira and e-mail.
+summary: Tracks the interconnection fault reports (BAs) from ABR Telecom in one place, linked to Jira, with SLA alerts and automations. FastAPI and Preact.
 tags: [python, fastapi, preact, jira, automation, telecom]
 ---
 
 A BA (Boletim de Anormalidade) is how Brazilian carriers report a fault on the interconnection between their
-networks, through the [ABR Telecom system](https://www.abrtelecom.com.br/servicos/outras-solucoes/ba%27s-de-interconexao). I wrote this system from scratch to handle those reports.
+networks, through the [ABR Telecom system](https://www.abrtelecom.com.br/servicos/outras-solucoes/ba%27s-de-interconexao). I built this system to handle them.
 
 It stays in sync with ABR through its SOAP web service. BAs are opened, changed and closed from the platform, with
 presets and message templates that fill in the text. Each BA that arrives opens an issue in Jira; the two stay linked
