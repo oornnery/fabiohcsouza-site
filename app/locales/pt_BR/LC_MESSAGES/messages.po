@@ -142,7 +142,7 @@ msgstr "Mais →"
 #: app/templates/blog/home.html:24 app/templates/blog/newsletter.html:6
 #: app/templates/blog/newsletter.html:11 app/templates/blog/post.html:63
 msgid "New posts by e-mail."
-msgstr "Posts novos por e-mail. Um e-mail por post, mais nada."
+msgstr "Posts novos por e-mail."
 
 #: app/templates/blog/newsletter.html:13 app/templates/ui/newsletter.html:7
 msgid "Almost there. Open the link in the e-mail I just sent to confirm."
