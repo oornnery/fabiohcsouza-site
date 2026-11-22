@@ -23,8 +23,8 @@
 ## Likes (blog)
 
 - A heart under each post and the total. Only the total is stored (`post_like`), nothing about who liked it.
-- The browser remembers it liked the post (localStorage) and shows the heart filled. Without JavaScript the button is a
-  plain form POST that comes back to the post.
+- The browser remembers it liked the post (localStorage) and shows the heart filled and red; a second tap takes the
+  like back (DELETE). Without JavaScript the button is a plain form POST that comes back to the post.
 - 20 likes per 10 minutes per IP; the CSRF check applies as for the forms.
 
 ## Data retention
