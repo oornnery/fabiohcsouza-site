@@ -1,8 +1,8 @@
 ---
 title: Oi, eu sou o Fabio
 lead: "Trabalho como engenheiro de redes (VoIP/SIP) e desenvolvedor full-stack."
-open_to: "Está com alguma ideia em mente ou precisa de ajuda com o seu PABX, resolver chamadas que falham, fazer um deploy, reestruturar sua infraestrutura, desenvolver uma aplicação ou uma automação? [Fale comigo](/contact)."
-short: "Sou o Fabio, engenheiro de redes (VoIP/SIP) e desenvolvedor full-stack. Escrevo aqui sobre isso."
+open_to: "Tem um projeto ou um problema com VoIP, rede ou software? [Fale comigo](/contact)."
+short: "Sou o Fabio, engenheiro de redes (VoIP/SIP) e desenvolvedor full-stack."
 ---
 
 Atuo em telecom desde 2018 e, desde 2020, na net2phone Brazil (IDT Corporation).

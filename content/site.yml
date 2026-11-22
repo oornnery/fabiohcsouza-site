@@ -32,12 +32,19 @@ knows_about:            # schema.org structured data and the #tags closing the A
   - Docker
   - Network monitoring
   - Wireshark
+  - sngrep
+  - HOMER
   - Splunk
   - Grafana
   - Zabbix
   - Incident response
   - Automation
   - Python
+  - JavaScript
+  - TypeScript
+  - Lua
+  - HTML
+  - CSS
   - FastAPI
   - AI agents
   - Agent harness

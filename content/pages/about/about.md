@@ -1,8 +1,8 @@
 ---
 title: Hey, I'm Fabio
 lead: "I work as a network engineer (VoIP/SIP) and full-stack developer."
-open_to: "Have an idea in mind, or need help with your PBX, fixing failed calls, a deploy, restructuring your infrastructure, building an app or an automation? [Get in touch](/contact)."
-short: "I'm Fabio, a network engineer (VoIP/SIP) and full-stack developer. I write about that here."
+open_to: "Have a project or a problem with VoIP, networks or software? [Get in touch](/contact)."
+short: "I'm Fabio, a network engineer (VoIP/SIP) and full-stack developer."
 ---
 
 I've been in telecom since 2018, and at net2phone Brazil (IDT Corporation) since 2020.
