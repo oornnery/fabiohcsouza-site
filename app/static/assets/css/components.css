@@ -22,6 +22,11 @@
 .prose .item-tags a { display: inline-block; padding: 0.25em 0; color: var(--faint); font-weight: 400; text-decoration: none; }
 .item-links { display: flex; gap: 1em; }
 .prose .item-links a { display: inline-flex; align-items: center; gap: 0.35em; padding: 0.25em 0; color: var(--muted); font-weight: 400; text-decoration: none; }
+/* the whole row opens the item: the title's link covers it; badge, tags and links stay on top */
+.prose .items li { position: relative; }
+.prose .items a.title::after { content: ""; position: absolute; inset: 0; }
+.prose .items .badge, .item-tags a, .item-links a { position: relative; z-index: 1; }
+.prose .items li:has(a.title):hover .title { color: var(--blue); text-decoration-color: var(--blue-ui); }
 .title-row { display: flex; align-items: baseline; gap: 0.6em; min-width: 0; }
 .title-row .title { min-width: 0; }
 .badge { flex: none; color: var(--orange); font: 400 var(--text-2xs) / 1 var(--font-mono); white-space: nowrap; }
