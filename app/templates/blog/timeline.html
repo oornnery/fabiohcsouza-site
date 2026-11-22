@@ -1,10 +1,10 @@
 {% extends "layout/base.html" %}
 {% set title = _("Timeline") %}
-{% set description = _("Every post on the blog, grouped by year and month, from the latest to the first.") %}
+{% set description = _("The blog's posts by year and month.") %}
 {% block main %}
 {% set years = c.blog.years() %}
     <h1>{{ _("Timeline") }}</h1>
-    <p class="lead">{% trans n=c.blog.posts | length %}Every post, by year and month. {{ n }} so far.{% endtrans %}</p>
+    <p class="lead">{{ _("Posts by year and month.") }}</p>
     <p class="year-jump">{% for year in years %}<a href="#y{{ year }}">{{ year }}</a> {% endfor %}</p>
     <div data-pager data-page-size="3" data-page-size-sm="1" data-unit="years">
 {% for year, posts in years.items() %}

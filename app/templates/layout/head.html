@@ -4,7 +4,7 @@
     No inline script or style: the CSP only allows files from 'self' (JSON-LD is data, not script). -#}
 {% set page_title = title | default("") %}
 {% set langs = langs | default(none) %}
-{% set page_desc = description | default(me.role[p.lang] ~ ". " ~ _("SIP, SBCs, BGP, automation and software.") if p.site == "portfolio" else _("Field notes by Fabio Souza: VoIP, networks, automation, labs, development and AI.")) %}
+{% set page_desc = description | default(me.role[p.lang] ~ ". " ~ _("SIP, SBCs, BGP, automation and software.") if p.site == "portfolio" else _("Fabio Souza's blog: VoIP, networks, automation, development and AI.")) %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 {#- search results cut titles around 60 chars: the site suffix only goes in when it fits -#}
@@ -48,7 +48,7 @@
   <link rel="icon" href="{{ p.asset('img/favicon' ~ fav ~ '.svg') }}" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {% if p.shows("blog") %}
-  <link rel="alternate" type="application/rss+xml" title="{{ me.name }} · Field notes" href="{{ p.url('/rss.xml', site='blog', absolute=True) }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ me.name }} · Blog" href="{{ p.url('/rss.xml', site='blog', absolute=True) }}">
 {% endif %}
 {#- the two fonts above the fold, fetched with the CSS instead of after it (same URL as fonts.css: no ?v=) -#}
 {% for font in ["fraunces-opsz-normal", "geist-wght-normal"] %}

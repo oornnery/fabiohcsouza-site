@@ -19,7 +19,7 @@ from ..pages import Pages
 router = APIRouter()
 feed = APIRouter()  # the blog only
 
-TAGLINE = i18n.N_("Notes on subjects I'm into: VoIP, networks, automation, labs, development and AI.")  # the feed's
+TAGLINE = i18n.N_("Writing on VoIP, networks, automation, development and AI.")  # the feed's
 DAY = {"Cache-Control": "public, max-age=86400"}  # fixed URLs (no ?v=): crawlers and browsers ask for them by name
 
 
@@ -118,7 +118,7 @@ def rss(settings: Settings, c: Content, lang: str = "en", limit: int = 30) -> st
             f"<description>{escape(v.summary)}</description>"
             f"<content:encoded>{escape(v.html)}</content:encoded>{cats}</item>"  # the whole post: readers stay in the feed
         )
-    title = f"{i18n.t('Field notes', lang)} · {c.site['name']}"
+    title = f"Blog · {c.site['name']}"
     newest = max((p.updated for p in posts), default=None)
     built = f"<lastBuildDate>{format_datetime(datetime.combine(newest, time(12), UTC))}</lastBuildDate>" if newest else ""
     return (

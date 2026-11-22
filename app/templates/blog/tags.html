@@ -6,11 +6,11 @@
 {% if tag %}
 {% set description = _("Posts about %(tag)s.", tag=tag) %}
 {% else %}
-{% set description = _("Posts by topic: VoIP, networks, automation, labs, development and AI.") %}
+{% set description = _("Posts by topic: VoIP, networks, automation, development and AI.") %}
 {% endif %}
 {% block main %}
     <h1>{{ title }}</h1>
-    <p class="lead">{{ description if tag else _("Pick a topic.") }}</p>
+    <p class="lead">{{ description if tag else _("Posts by topic.") }}</p>
 {% set open = c.blog.tags[12:] | map("first") | select("equalto", tag) | list %}
     <nav class="filters{{ ' open' if open }}" aria-label="{{ _('Filter by tag') }}">
       <a href="{{ p.url('/tags') }}"{% if not tag %} aria-current="page"{% endif %}>{{ _("all") }} <span class="faint">{{ c.blog.posts | length }}</span></a>

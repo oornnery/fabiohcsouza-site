@@ -3,12 +3,12 @@
     mail scanners open every link, so only the POST confirms or unsubscribes (app.api.routes.newsletter). -#}
 {% extends "layout/base.html" %}
 {% set title = _("Newsletter") %}
-{% set description = _("New posts by e-mail.") %}
+{% set description = _("Get new posts by e-mail.") %}
 {% set noindex = state not in ("form", "sent") %}
 {% block main %}
     <h1>{{ _("Newsletter") }}</h1>
 {% if state in ("form", "sent") %}
-    <p class="lead">{{ _("New posts by e-mail.") }}</p>
+    <p class="lead">{{ _("Get new posts by e-mail.") }}</p>
 {% if state == "sent" %}
     <p class="thanks shown" role="status">{{ _("Almost there. Open the link in the e-mail I just sent to confirm.") }}</p>
 {% endif %}

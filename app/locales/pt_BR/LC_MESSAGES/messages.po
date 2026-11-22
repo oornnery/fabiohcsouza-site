@@ -55,13 +55,8 @@ msgid "Contact"
 msgstr "Contato"
 
 #: app/api/routes/seo.py:22 app/templates/blog/home.html:7
-msgid "Notes on subjects I'm into: VoIP, networks, automation, labs, development and AI."
-msgstr "Notas sobre assuntos que me interessam: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
-
-#: app/api/routes/seo.py:121 app/templates/blog/home.html:6
-#: app/utils/schema.py:69
-msgid "Field notes"
-msgstr "Notas de campo"
+msgid "Writing on VoIP, networks, automation, development and AI."
+msgstr "Textos sobre VoIP, redes, automação, desenvolvimento e IA."
 
 #: app/static/assets/js/filters.js:11
 msgid "Fewer tags"
@@ -141,8 +136,8 @@ msgstr "Mais →"
 
 #: app/templates/blog/home.html:24 app/templates/blog/newsletter.html:6
 #: app/templates/blog/newsletter.html:11 app/templates/blog/post.html:66
-msgid "New posts by e-mail."
-msgstr "Posts novos por e-mail."
+msgid "Get new posts by e-mail."
+msgstr "Receba novos posts por e-mail."
 
 #: app/templates/blog/newsletter.html:13 app/templates/ui/newsletter.html:7
 msgid "Almost there. Open the link in the e-mail I just sent to confirm."
@@ -240,12 +235,12 @@ msgid "next →"
 msgstr "próximo →"
 
 #: app/templates/blog/posts.html:3
-msgid "Every post on the blog, newest first: VoIP, networks, automation, labs, development and AI."
-msgstr "Todos os posts do blog, do mais novo ao mais antigo: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
+msgid "Every post on the blog: VoIP, networks, automation, development and AI."
+msgstr "Todos os posts do blog: VoIP, redes, automação, desenvolvimento e IA."
 
 #: app/templates/blog/posts.html:7
-msgid "Everything I've written, newest first."
-msgstr "Tudo o que escrevi, do mais novo ao mais antigo."
+msgid "Every post."
+msgstr "Todos os posts."
 
 #: app/templates/blog/posts.html:9
 msgid "Showing"
@@ -261,12 +256,12 @@ msgid "Posts about %(tag)s."
 msgstr "Posts sobre %(tag)s."
 
 #: app/templates/blog/tags.html:9
-msgid "Posts by topic: VoIP, networks, automation, labs, development and AI."
-msgstr "Posts por assunto: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
+msgid "Posts by topic: VoIP, networks, automation, development and AI."
+msgstr "Os posts por assunto: VoIP, redes, automação, desenvolvimento e IA."
 
 #: app/templates/blog/tags.html:13
-msgid "Pick a topic."
-msgstr "Escolha um assunto."
+msgid "Posts by topic."
+msgstr "Os posts por assunto."
 
 #: app/templates/blog/tags.html:15
 msgid "Filter by tag"
@@ -281,13 +276,12 @@ msgid "All tags"
 msgstr "Todas as tags"
 
 #: app/templates/blog/timeline.html:3
-msgid "Every post on the blog, grouped by year and month, from the latest to the first."
-msgstr "Todos os posts do blog, agrupados por ano e mês, do mais recente ao primeiro."
+msgid "The blog's posts by year and month."
+msgstr "Os posts do blog por ano e mês."
 
 #: app/templates/blog/timeline.html:7
-#, python-format
-msgid "Every post, by year and month. %(n)s so far."
-msgstr "Todos os posts, por ano e mês. %(n)s até agora."
+msgid "Posts by year and month."
+msgstr "Os posts por ano e mês."
 
 #: app/templates/email/confirm.txt:1
 msgid "Confirm your subscription"
@@ -409,8 +403,8 @@ msgid "SIP, SBCs, BGP, automation and software."
 msgstr "SIP, SBCs, BGP, automação e software."
 
 #: app/templates/layout/head.html:7
-msgid "Field notes by Fabio Souza: VoIP, networks, automation, labs, development and AI."
-msgstr "Notas de campo de Fabio Souza: VoIP, redes, automação, laboratórios, desenvolvimento e IA."
+msgid "Fabio Souza's blog: VoIP, networks, automation, development and AI."
+msgstr "Blog de Fabio Souza: VoIP, redes, automação, desenvolvimento e IA."
 
 #: app/templates/layout/header.html:5
 msgid "Main"
@@ -472,12 +466,12 @@ msgid "Projects from work and open source."
 msgstr "Projetos do trabalho e de código aberto."
 
 #: app/templates/portfolio/projects.html:10
-msgid "Projects without public code."
-msgstr "Projetos sem código público."
+msgid "Professional projects: at work and for clients."
+msgstr "Projetos profissionais: no trabalho e para clientes."
 
 #: app/templates/portfolio/projects.html:11
-msgid "Side projects and experiments with public code."
-msgstr "Projetos pessoais e experimentos com código aberto."
+msgid "Personal projects."
+msgstr "Projetos pessoais."
 
 #: app/templates/ui/contact.html:4
 msgid "Subject"

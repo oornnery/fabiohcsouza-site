@@ -63,7 +63,7 @@
         <button type="submit" class="tap" aria-label="{{ _('Like this post') }}" title="{{ _('Like this post') }}">{{ ui.icon(p, "heart") }}<span data-like-count>{{ likes }}</span></button>
       </form>
 {% if p.on("newsletter") %}
-      <p class="muted">{{ _("New posts by e-mail.") }} <a href="{{ p.url('/subscribe') }}">{{ _("Subscribe →") }}</a></p>
+      <p class="muted">{{ _("Get new posts by e-mail.") }} <a href="{{ p.url('/subscribe') }}">{{ _("Subscribe →") }}</a></p>
 {% endif %}
         {{ ui.share(p, "share-end", v.title, langs) }}
 {% if prev or next %}

@@ -2,7 +2,7 @@
 
 Interface strings are written in English where they are used and marked for translation:
     templates   {{ _("Posts") }}, {% trans n=… %}…{% endtrans %}   (jinja2.ext.i18n, new style: %(name)s, autoescaped)
-    Python      i18n.t("Field notes", lang), N_("Works") for strings translated later (menus, messages)
+    Python      i18n.t("Posts", lang), N_("Works") for strings translated later (menus, messages)
     JavaScript  FS.t("Sending…")   (the PT strings reach the browser in <meta name="fs:strings">)
 
 Catalog: app/locales/pt_BR/LC_MESSAGES/messages.po, read at start (no .mo to build or commit). After changing strings:

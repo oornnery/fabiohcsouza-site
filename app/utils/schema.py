@@ -66,7 +66,7 @@ def project(p: Page, c: Content, w: Project) -> dict:
 # ---- the blog
 
 def blog_home(p: Page, c: Content) -> dict:
-    return {"@context": CONTEXT, "@type": "Blog", "@id": p.settings.blog_url + "/#blog", "name": p.t("Field notes"),
+    return {"@context": CONTEXT, "@type": "Blog", "@id": p.settings.blog_url + "/#blog", "name": "Blog",
             "url": p.settings.blog_url, "inLanguage": p.html_lang, "author": author(p, c)}
 
 

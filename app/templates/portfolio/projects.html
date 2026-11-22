@@ -7,8 +7,8 @@
     <p class="lead">{{ _("Projects from work and open source.") }}</p>
 {{ ui.search(p, "projects") }}
 {% for gid, gtitle, note, items in [
-  ("work", _("Work"), _("Projects without public code."), c.work),
-  ("open-source", _("Open Source"), _("Side projects and experiments with public code."), c.open_source)] %}
+  ("work", _("Work"), _("Professional projects: at work and for clients."), c.work),
+  ("open-source", _("Open Source"), _("Personal projects."), c.open_source)] %}
     <section aria-labelledby="{{ gid }}">
       <h2 id="{{ gid }}"><a href="#{{ gid }}">{{ gtitle }}</a></h2>
       <p class="muted section-note">{{ note }}</p>
