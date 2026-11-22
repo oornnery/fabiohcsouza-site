@@ -1,30 +1,30 @@
-#: app/api/routes/blog.py:60 app/api/routes/portfolio.py:23
+#: app/api/routes/blog.py:72 app/api/routes/portfolio.py:23
 #: app/templates/ui/wordmark.html:3
 msgid "Home"
 msgstr "Início"
 
-#: app/api/routes/blog.py:61 app/templates/blog/post.html:17
+#: app/api/routes/blog.py:73 app/templates/blog/post.html:17
 #: app/templates/blog/posts.html:2 app/templates/blog/posts.html:6
 #: app/templates/portfolio/home.html:9 app/templates/portfolio/home.html:19
-#: app/templates/portfolio/project.html:38 app/utils/schema.py:87
+#: app/templates/portfolio/project.html:35 app/utils/schema.py:87
 msgid "Posts"
 msgstr "Posts"
 
-#: app/api/routes/blog.py:62 app/templates/blog/home.html:28
+#: app/api/routes/blog.py:74 app/templates/blog/home.html:28
 #: app/templates/blog/tags.html:5
 msgid "Tags"
 msgstr "Tags"
 
-#: app/api/routes/blog.py:64 app/templates/blog/home.html:33
+#: app/api/routes/blog.py:76 app/templates/blog/home.html:33
 #: app/templates/blog/timeline.html:2 app/templates/blog/timeline.html:6
 msgid "Timeline"
 msgstr "Linha do tempo"
 
-#: app/api/routes/blog.py:65 app/templates/layout/footer.html:8
+#: app/api/routes/blog.py:77 app/templates/layout/footer.html:8
 msgid "Portfolio"
 msgstr "Portfólio"
 
-#: app/api/routes/blog.py:70 app/templates/blog/home.html:23
+#: app/api/routes/blog.py:82 app/templates/blog/home.html:23
 #: app/templates/blog/newsletter.html:5 app/templates/blog/newsletter.html:9
 msgid "Newsletter"
 msgstr "Newsletter"
@@ -78,23 +78,27 @@ msgstr "Escreva um pouco mais."
 msgid "Too long."
 msgstr "Muito longo."
 
-#: app/static/assets/js/forms.js:56
+#: app/static/assets/js/forms.js:13
+msgid "Use digits only, at least 8."
+msgstr "Use só números, pelo menos 8."
+
+#: app/static/assets/js/forms.js:57
 msgid "Sending…"
 msgstr "Enviando…"
 
-#: app/static/assets/js/forms.js:69
+#: app/static/assets/js/forms.js:70
 msgid "Too many tries. Wait a minute and try again."
 msgstr "Muitas tentativas. Espere um minuto e tente de novo."
 
-#: app/static/assets/js/forms.js:70
+#: app/static/assets/js/forms.js:71
 msgid "Check the fields and try again."
 msgstr "Confira os campos e tente de novo."
 
-#: app/static/assets/js/forms.js:71
-msgid "Something went wrong. Try again or email me."
-msgstr "Algo deu errado. Tente de novo ou me mande um e-mail."
+#: app/static/assets/js/forms.js:72
+msgid "Something went wrong. Try again or send an e-mail."
+msgstr "Algo deu errado. Tente de novo ou mande um e-mail."
 
-#: app/static/assets/js/forms.js:74
+#: app/static/assets/js/forms.js:75
 msgid "No connection. Try again."
 msgstr "Sem conexão. Tente de novo."
 
@@ -140,13 +144,13 @@ msgid "Get new posts by e-mail."
 msgstr "Receba novos posts por e-mail."
 
 #: app/templates/blog/newsletter.html:13 app/templates/ui/newsletter.html:7
-msgid "Almost there. Open the link in the e-mail I just sent to confirm."
-msgstr "Quase lá. Abra o link do e-mail que acabei de enviar para confirmar."
+msgid "Almost there. Open the link in the e-mail just sent to confirm."
+msgstr "Quase lá. Abra o link do e-mail enviado para confirmar."
 
 #: app/templates/blog/newsletter.html:16
 #, python-format
-msgid "You confirm by e-mail first, and every e-mail has a link to unsubscribe. Prefer a feed reader? Use the <a href=\"%(rss)s\">RSS feed</a>. What I keep: <a href=\"%(privacy)s\">privacy</a>."
-msgstr "Você confirma por e-mail antes, e todo e-mail tem um link para cancelar. Prefere um leitor de feeds? Use o <a href=\"%(rss)s\">RSS</a>. O que eu guardo: <a href=\"%(privacy)s\">privacidade</a>."
+msgid "You confirm by e-mail first, and every e-mail has a link to unsubscribe. Prefer a feed reader? Use the <a href=\"%(rss)s\">RSS feed</a>. What is kept: <a href=\"%(privacy)s\">privacy</a>."
+msgstr "Você confirma por e-mail antes, e todo e-mail tem um link para cancelar. Prefere um leitor de feeds? Use o <a href=\"%(rss)s\">RSS</a>. O que fica guardado: <a href=\"%(privacy)s\">privacidade</a>."
 
 #: app/templates/blog/newsletter.html:18
 msgid "Confirm your subscription?"
@@ -428,8 +432,8 @@ msgid "Tell me what you need."
 msgstr "Conte o que você precisa."
 
 #: app/templates/portfolio/contact.html:11 app/templates/ui/contact.html:11
-msgid "Message received. I'll reply within two days."
-msgstr "Mensagem recebida. Respondo em até dois dias."
+msgid "Message received. You can also reach me through the other contacts on this page."
+msgstr "Mensagem recebida. Você também pode falar comigo pelos outros contatos desta página."
 
 #: app/templates/portfolio/contact.html:13
 msgid "Or reach me directly:"
@@ -445,15 +449,15 @@ msgstr "Trabalho"
 msgid "Open Source"
 msgstr "Código aberto"
 
-#: app/templates/portfolio/project.html:31 app/templates/ui/item.html:13
+#: app/templates/portfolio/project.html:21 app/templates/ui/item.html:13
 msgid "repo"
 msgstr "repo"
 
-#: app/templates/portfolio/project.html:31 app/templates/ui/item.html:13
+#: app/templates/portfolio/project.html:21 app/templates/ui/item.html:13
 msgid "site"
 msgstr "site"
 
-#: app/templates/portfolio/project.html:31 app/templates/ui/item.html:13
+#: app/templates/portfolio/project.html:21 app/templates/ui/item.html:13
 msgid "post"
 msgstr "post"
 

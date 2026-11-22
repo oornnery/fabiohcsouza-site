@@ -10,6 +10,7 @@ FS.on(function () {
     if (v.typeMismatch) return FS.t("Enter a valid email.");
     if (v.tooShort) return FS.t("A bit more, please.");
     if (v.tooLong) return FS.t("Too long.");
+    if (v.patternMismatch) return FS.t("Use digits only, at least 8.");
     return "";
   }
 
@@ -68,7 +69,7 @@ FS.on(function () {
         if (res.status === 403 && window.turnstile) window.turnstile.reset(); // a token works once: get a new one
         if (res.status === 429) say(FS.t("Too many tries. Wait a minute and try again."));
         else if (res.status === 422) say(FS.t("Check the fields and try again."));
-        else say(FS.t("Something went wrong. Try again or email me."));
+        else say(FS.t("Something went wrong. Try again or send an e-mail."));
       }, function () {
         button.disabled = false;
         say(FS.t("No connection. Try again."));

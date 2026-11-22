@@ -44,7 +44,7 @@ def test_contact_is_saved_then_e_mailed(portfolio, engine, monkeypatch):
 def test_contact_without_javascript_redirects(portfolio):
     r = portfolio.post("/pt/api/contact", data=GOOD, headers={"Origin": P_ORIGIN}, follow_redirects=False)
     assert r.status_code == 303 and r.headers["location"] == "/pt/contact?sent=1"
-    assert "Mensagem recebida. Respondo em até dois dias." in portfolio.get("/pt/contact?sent=1").text
+    assert "Mensagem recebida." in portfolio.get("/pt/contact?sent=1").text
 
 
 def test_honeypot_looks_accepted_but_stores_nothing(portfolio, engine):

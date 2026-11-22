@@ -1,7 +1,7 @@
 {#- field(p, name, label, …): an underlined form field (input, or textarea when rows is set); label/placeholder arrive translated. The server validates again (app.models). -#}
-{% macro field(p, name, label, type="text", required=True, full=False, autocomplete=None, placeholder="", minlength=None, maxlength=200, optional=False, rows=None) -%}
+{% macro field(p, name, label, type="text", required=True, full=False, autocomplete=None, placeholder="", minlength=None, maxlength=200, optional=False, rows=None, pattern=None) -%}
       <label class="field{{ ' full' if full }}" for="f-{{ name }}"><span>{{ label }}{% if optional %} <em>{{ _("optional") }}</em>{% endif %}</span>
         {%- if rows %}<textarea id="f-{{ name }}" name="{{ name }}" rows="{{ rows }}"{{ ' required' if required }}{% if minlength %} minlength="{{ minlength }}"{% endif %} maxlength="{{ maxlength }}" placeholder="{{ placeholder }}"></textarea>
-        {%- else %}<input id="f-{{ name }}" type="{{ type }}" name="{{ name }}"{{ ' required' if required }}{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if minlength %} minlength="{{ minlength }}"{% endif %} maxlength="{{ maxlength }}" placeholder="{{ placeholder }}">{% endif -%}
+        {%- else %}<input id="f-{{ name }}" type="{{ type }}" name="{{ name }}"{{ ' required' if required }}{% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if minlength %} minlength="{{ minlength }}"{% endif %}{% if pattern %} pattern="{{ pattern }}"{% endif %} maxlength="{{ maxlength }}" placeholder="{{ placeholder }}">{% endif -%}
       </label>
 {%- endmacro %}
