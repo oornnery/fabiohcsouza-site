@@ -14,7 +14,7 @@ visitor → Cloudflare → Tunnel → the site's container → Guard (app/core/s
 | Site | Routers (`app/api/routes/`) |
 | --- | --- |
 | portfolio | `portfolio.py` (pages), `contact.py` (`/api/contact`), `seo.py` (sitemap, robots, og.png, /media) |
-| blog | `blog.py` (pages), `newsletter.py` (`/api/subscribe`, confirm, unsubscribe), `seo.py` (+ rss.xml) |
+| blog | `blog.py` (pages, `/api/posts/<slug>/like`), `newsletter.py` (`/api/subscribe`, confirm, unsubscribe), `seo.py` (+ rss.xml) |
 
 - One image, one container per site (`SITE=portfolio` or `blog`); in development one process serves both. The
   `Host` header picks the site.
@@ -31,7 +31,7 @@ visitor → Cloudflare → Tunnel → the site's container → Guard (app/core/s
 app/
   main.py          create_app(): the Guard, one sub-app per site, /healthz, the daily purge
   __main__.py      the command line
-  models.py        tables (Lead, Subscriber, Delivery, RateLimit) and form input (ContactIn, SubscribeIn)
+  models.py        tables (Lead, Subscriber, Delivery, PostLike, RateLimit) and form input (ContactIn, SubscribeIn)
   crud.py          reads and writes of those tables, and the data retention rules
   api/
     main.py        the routers of each site

@@ -1,8 +1,11 @@
 # TODO
 
-What may come later: pieces left out on purpose (with why and where they go back) and the plan for observability.
-The code of the webhook and the queue existed and was tested before the cut: a copy is in
-`.local/antes-dos-cortes.tar.gz` on the development machine (not in git).
+What may come later: pieces left out on purpose (with why and where they go back), the plan for observability and
+what is still to do.
+
+## To do
+
+- Review the home and About copy (`content/pages/about/`): the long text still reads like a résumé.
 
 ## Webhook for new contacts
 

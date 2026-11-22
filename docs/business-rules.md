@@ -20,6 +20,13 @@
 - Every post e-mail has an unsubscribe link and one-click unsubscribe for Gmail, Yahoo and Apple Mail (RFC 8058).
   Unsubscribing deletes the address at once.
 
+## Likes (blog)
+
+- A heart under each post and the total. Only the total is stored (`post_like`), nothing about who liked it.
+- The browser remembers it liked the post (localStorage) and shows the heart filled. Without JavaScript the button is a
+  plain form POST that comes back to the post.
+- 20 likes per 10 minutes per IP; the CSRF check applies as for the forms.
+
 ## Data retention
 
 Applied at start and once a day (`python -m app purge` applies it now).
@@ -40,6 +47,7 @@ change both together.
 - Any request: 240 a minute per IP.
 - Each form: 5 per 10 minutes per IP, plus a honeypot and, when configured, Cloudflare Turnstile. If Turnstile can't
   be reached, the form is refused and the visitor is asked to try again.
+- Likes: 20 per 10 minutes per IP.
 - In front of it all, the Cloudflare rate-limit rule (see [deploy](deploy.md)).
 
 ## Content
